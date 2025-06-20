@@ -1,44 +1,49 @@
 using System.Collections.Generic;
-using Phone;
 using UnityEngine;
 
-public class AppManager : MonoBehaviour
+namespace Phone
 {
-    [SerializeField] private List<AAppWindow> _phoneApps;
-    
-    private EAppType _currentAppType = EAppType.None;
-
-    public void OpenPhoneApp(EAppType appType)
+    public class AppManager : MonoBehaviour
     {
-        if (_currentAppType == appType)
-            return;
+        [SerializeField] private List<AApp> _phoneApps;
+    
+        private EAppType _currentAppType = EAppType.None;
 
-        if (_currentAppType != EAppType.None)
+        public void OpenPhoneApp(EAppType appType)
         {
-            ClosePhoneApp();
-        }
-        
-        _currentAppType = appType;
-
-        foreach (var app in _phoneApps)
-        {
-            if (app.GetAppType() == appType)
-            {
-                app.Open();
+            if (_currentAppType == appType)
                 return;
+
+            if (_currentAppType != EAppType.None)
+            {
+                ClosePhoneApp();
+            }
+        
+            _currentAppType = appType;
+
+            foreach (var app in _phoneApps)
+            {
+                if (app.AppType == appType)
+                {
+                    app.Open();
+                    return;
+                }
             }
         }
-    }
 
-    public void ClosePhoneApp()
-    {
-        foreach (var app in _phoneApps)
+        public void ClosePhoneApp()
         {
-            if (app.GetAppType() == _currentAppType)
-            {
-                app.Close();
-                _currentAppType = EAppType.None;
+            if (_currentAppType == EAppType.None)
                 return;
+        
+            foreach (var app in _phoneApps)
+            {
+                if (app.AppType == _currentAppType)
+                {
+                    app.Close();
+                    _currentAppType = EAppType.None;
+                    return;
+                }
             }
         }
     }
