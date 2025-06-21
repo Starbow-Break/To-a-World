@@ -557,18 +557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb78443d52df984194d8dfb3a1e583c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStartDrag:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStopDrag:
-    m_PersistentCalls:
-      m_Calls: []
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  _baseTransform: {fileID: 1388972647}
-  _targetTransform: {fileID: 1724360593}
+  _base: {fileID: 1388972647}
+  _target: {fileID: 1724360593}
   _sensitivity: 4
+  _updateBasePositionOnStartInput: 1
 --- !u!1001 &298435783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2235,10 +2227,10 @@ MonoBehaviour:
   GesturePerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 221721370}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221721372}
+        m_TargetAssemblyTypeName: HandGestureJoystick, Assembly-CSharp
+        m_MethodName: StartInput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2250,10 +2242,10 @@ MonoBehaviour:
   GestureEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 221721370}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221721372}
+        m_TargetAssemblyTypeName: ABaseInput`1[[UnityEngine.Vector2, UnityEngine
+        m_MethodName: StopInput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2664,8 +2656,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1388972647}
+  m_Children: []
   m_Father: {fileID: 1882438416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1237316578
@@ -2680,8 +2671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a6c5d4152ac46469652a1270ba060c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handGestureJoystickInput: {fileID: 221721372}
   _characterController: {fileID: 1882438417}
+  _moveHandInput: {fileID: 221721372}
   _maxSpeed: 5
 --- !u!1 &1237955120
 GameObject:
@@ -3384,7 +3375,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1237316577}
+  m_Father: {fileID: 1882438418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1388972648
 MeshRenderer:
@@ -3943,8 +3934,8 @@ Transform:
   m_GameObject: {fileID: 1724360592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.03}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1882438415}
@@ -4544,6 +4535,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1388972647}
     - targetCorrespondingSourceObject: {fileID: 7887823656286205917, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       insertIndex: 0
       addedObject: {fileID: 298435785}
@@ -4574,6 +4568,11 @@ Transform:
 --- !u!143 &1882438417 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 6873022368256633593, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+  m_PrefabInstance: {fileID: 1882438414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1882438418 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
   m_PrefabInstance: {fileID: 1882438414}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1917593923

@@ -1,57 +1,67 @@
+using System;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class HandGestureJoystick : MonoBehaviour
+public class HandGestureJoystick : ABaseInput<Vector2>
 {
-    public UnityEvent OnStartDrag;
-    public UnityEvent OnStopDrag;
-    public UnityEvent<Vector3> OnValueChanged;
-    
-    public Vector3 Value { get; private set; } = default;
-
-    [SerializeField] private Transform _baseTransform;
-    [SerializeField] private Transform _targetTransform;
+    #region Fields
+    [SerializeField] private Transform _base;
+    [SerializeField] private Transform _target;
     [SerializeField] private float _sensitivity = 4f;
+
+    [SerializeField] private bool _updateBasePositionOnStartInput = true; 
     
     private Vector3 _startPosition;
-    private bool _isDragging = false;
-
-    private void OnEnable()
+    #endregion
+    
+    #region Unity Lifecycle
+    private void Awake()
     {
-        if (_targetTransform != null && !_isDragging)
-        {
-            _baseTransform.position = _targetTransform.position;
-            _isDragging = true;
-            OnStartDrag?.Invoke();
-        }
-    }
-
-    public void OnDisable()
-    {
-        if (_targetTransform != null && _isDragging)
-        {
-            _isDragging = false;
-            TryChangeValue(default);
-            OnStopDrag?.Invoke();
-        }
+        TestAssertion();
     }
 
     public void Update()
     {
-        if (_isDragging)
+        if (_isActive)
         {
-            Vector3 currentValue = _targetTransform.position - _baseTransform.position;
-            TryChangeValue(currentValue);
+            Vector3 currentDistance = _target.position - _base.position;
+            Vector2 newValue = CalculateInputValue(currentDistance);
+            Value = newValue;
         }
+    }
+    #endregion
+
+    #region Methods
+    public override void StartInput()
+    {
+        if (_updateBasePositionOnStartInput)
+        {
+            _base.position = _target.position;
+        }
+        
+        base.StartInput();
+    }
+    
+    private Vector2 CalculateInputValue(Vector3 distance)
+    {
+        Vector3 projDist = Vector3.ProjectOnPlane(distance, _base.up);
+        Vector3 standardProjDist = Quaternion.Inverse(_base.rotation) * projDist;
+
+        Vector2 rawValue = new(standardProjDist.x, standardProjDist.z);
+        
+        float maxMagnitude = 1f / _sensitivity;
+        Vector2 value = rawValue.sqrMagnitude > maxMagnitude * maxMagnitude 
+            ? maxMagnitude * rawValue.normalized
+            : rawValue;
+
+        return value;
     }
 
-    private void TryChangeValue(Vector3 newValue)
+    private void TestAssertion()
     {
-        Vector3 value = newValue.sqrMagnitude > Mathf.Pow(1f / _sensitivity, 2) ? _sensitivity * newValue.normalized : newValue;
-        if (Value != value)
-        {
-            Value = value;
-            OnValueChanged?.Invoke(Value);
-        }
+        Assert.IsNotNull(_base, "Field Base is null");
+        Assert.IsNotNull(_target, "Field Target is null");
     }
+    #endregion
 }
