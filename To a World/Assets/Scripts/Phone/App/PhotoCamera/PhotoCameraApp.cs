@@ -9,18 +9,6 @@ namespace Phone
         [SerializeField] private Camera photoCamera;
 
         [SerializeField] private RenderTexture photoRenderTexture;
-
-        private void Start()
-        {
-            window.gameObject.SetActive(false);
-            photoCamera.gameObject.SetActive(false);
-            
-            // 카메라에 렌더텍스처 연결
-            photoCamera.targetTexture = photoRenderTexture;
-
-            // 핸드폰 UI에 해당 텍스처 연결
-            window.Screen.texture = photoRenderTexture;
-        }
         
         public override void Open()
         {
@@ -32,6 +20,33 @@ namespace Phone
         {
             window.Close();
             photoCamera.gameObject.SetActive(false);
+        }
+        
+        private void Start()
+        {
+            window.gameObject.SetActive(false);
+            photoCamera.gameObject.SetActive(false);
+            
+            // 카메라에 렌더텍스처 연결
+            photoCamera.targetTexture = photoRenderTexture;
+
+            // 핸드폰 UI에 해당 텍스처 연결
+            window.Screen.texture = photoRenderTexture;
+        }
+
+        private void OnEnable()
+        {
+            window.TakePhotoButton.onClick.AddListener(TakePhoto);
+        }
+
+        private void OnDisable()
+        {
+            window.TakePhotoButton.onClick.RemoveListener(TakePhoto);
+        }
+        
+        private void TakePhoto()
+        {
+            
         }
     }
 }

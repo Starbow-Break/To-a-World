@@ -8,6 +8,9 @@ namespace Phone
         [SerializeField] private RawImage screen;
         public RawImage Screen => screen;
         
+        [SerializeField] private Button takePhotoButton;
+        public Button TakePhotoButton => takePhotoButton;
+        
         public void Open()
         {
             gameObject.SetActive(true);
