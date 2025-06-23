@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+using UnityEngine.Assertions;
 
 public enum GroupType
 {
@@ -26,7 +26,7 @@ public static class Statistics
         }
         
         int divisor = groupType == GroupType.Population ? values.Count : values.Count - 1;
-        Assert.Greater(divisor, 0);
+        Assert.AreNotEqual(divisor, 0);
         
         float stDev = temp / divisor;
         

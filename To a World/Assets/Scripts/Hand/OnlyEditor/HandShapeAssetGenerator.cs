@@ -1,9 +1,7 @@
 #if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.Hands;
@@ -14,7 +12,7 @@ public class HandShapeAssetGenerator : MonoBehaviour
     [Header("Settings")]
     [SerializeField] Handedness m_Handedness = Handedness.Right;
     [SerializeField] private KeyCode _captureKey = KeyCode.Alpha1;
-    [SerializeField] private string _savePath = "Assets/HandShapes/NewHandShape.asset";
+    [SerializeField] private string _savePath = "Assets/Hand Shapes";
     [SerializeField] private string _saveFileName = "Test Hand Shape";
     [SerializeField, Min(2)] private int _needCaptureCount = 10;
     

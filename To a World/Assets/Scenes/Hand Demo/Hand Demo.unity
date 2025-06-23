@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _base: {fileID: 1388972647}
   _target: {fileID: 1724360593}
-  _sensitivity: 4
+  _sensitivity: 12
   _updateBasePositionOnStartInput: 1
 --- !u!1001 &298435783
 PrefabInstance:

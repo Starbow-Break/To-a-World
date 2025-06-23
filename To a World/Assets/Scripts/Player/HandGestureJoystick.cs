@@ -1,7 +1,5 @@
-using System;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class HandGestureJoystick : ABaseInput<Vector2>
 {
@@ -51,9 +49,9 @@ public class HandGestureJoystick : ABaseInput<Vector2>
         Vector2 rawValue = new(standardProjDist.x, standardProjDist.z);
         
         float maxMagnitude = 1f / _sensitivity;
-        Vector2 value = rawValue.sqrMagnitude > maxMagnitude * maxMagnitude 
+        Vector2 value = _sensitivity * (rawValue.sqrMagnitude > maxMagnitude * maxMagnitude 
             ? maxMagnitude * rawValue.normalized
-            : rawValue;
+            : rawValue);
 
         return value;
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine.XR.Hands;
+﻿#if UNITY_EDITOR
+using UnityEngine.XR.Hands;
 
 public class FingerShapeData
 {
@@ -13,3 +14,4 @@ public class FingerShapeData
         }
     }
 }
+#endif

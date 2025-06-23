@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
 using UnityEngine.XR.Hands.Gestures;
 
 public static class FingerShapeDataGenerator
@@ -16,3 +16,4 @@ public static class FingerShapeDataGenerator
         return fingerShapeData;
     }
 }
+#endif

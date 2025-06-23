@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Hands.Gestures;
 
@@ -36,3 +36,4 @@ public static class HandShapeDataGenerator
         }
     }
 }
+#endif

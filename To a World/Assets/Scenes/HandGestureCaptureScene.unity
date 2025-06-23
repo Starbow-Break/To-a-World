@@ -496,8 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Handedness: 2
   _captureKey: 49
-  _savePath: Assets/Scenes/Hand Demo/Hand Shape
-  _saveFileName: Temp Move Gesture
+  _savePath: Assets/Hand Shapes
+  _saveFileName: Test Hand Shape
   _needCaptureCount: 10
   _messageText: {fileID: 1630084933}
 --- !u!4 &1705536533
