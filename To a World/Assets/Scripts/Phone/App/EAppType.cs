@@ -1,5 +1,9 @@
-public enum EAppType
+namespace Phone
 {
-    None = 0,
-    Demo = 1,
+    public enum EAppType
+    {
+        None = 0,
+        MyFiles = 1,
+        Camera = 2,
+    }
 }
