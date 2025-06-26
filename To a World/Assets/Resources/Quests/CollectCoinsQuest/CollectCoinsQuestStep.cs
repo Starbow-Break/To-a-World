@@ -5,11 +5,21 @@ public class CollectCoinsQuestStep : AQuestStep
     private int _coinsCollected = 0;
     private int _coinsToComplete = 5;
 
-    private void CoinCollected()
+    private void OnEnable()
+    {
+        GameEventsManager.CoinEvents.OnGainGold += CoinCollected;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.CoinEvents.OnGainGold -= CoinCollected;
+    }
+
+    private void CoinCollected(int amount)
     {
         if (_coinsCollected < _coinsToComplete)
         {
-            _coinsCollected++;
+            _coinsCollected += amount;
             UpdateState();
         }
         

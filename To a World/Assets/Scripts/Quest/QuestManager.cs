@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    #region Fields
+    public static QuestManager Instance;
+    
     [Header("Config")] 
     [SerializeField] private bool _loadQuestState = true;
     
     private Dictionary<string, Quest> _questMap;
-
+    #endregion
+    
+    #region Unity Lifecycles
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+        
         _questMap = CreateQuestMap();
     }
 
@@ -36,11 +47,12 @@ public class QuestManager : MonoBehaviour
     {
         foreach (var quest in _questMap.Values)
         {
+            GameEventsManager.QuestEvents.QuestStateChange(quest);
+            
             if (quest.State == QuestState.IN_PROGRESS)
             { 
                 quest.InstantiateCurrentQuestStep(transform);    
             }
-            GameEventsManager.QuestEvents.QuestStateChange(quest);
         }
     }
 
@@ -54,10 +66,22 @@ public class QuestManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Methods
     private bool CheckRequirementsMet(Quest quest)
     {
-        return true;
+        bool meetsRequirements = true;
+        
+        foreach (QuestInfoSO prerequisiteQuestInfo in quest.Info.questPrerequisites)
+        {
+            if (GetQuestById(prerequisiteQuestInfo.ID).State != QuestState.FINISHED)
+            {
+                meetsRequirements = false;
+            }
+        }
+
+        return meetsRequirements;
     }
 
     private void ChangeQuestState(string id, QuestState state)
@@ -79,7 +103,7 @@ public class QuestManager : MonoBehaviour
         var quest = GetQuestById(id);
         quest.MoveToNextStep();
 
-        if (quest.CurrentStepExists())
+        if (quest.CurrentStepExists)
         {
             quest.InstantiateCurrentQuestStep(transform);
         }
@@ -99,7 +123,6 @@ public class QuestManager : MonoBehaviour
     {
         var quest = GetQuestById(id);
         quest.StoreQuestStepState(questStepState, stepIndex);
-        ChangeQuestState(id, quest.State);
     }
 
     private Dictionary<string, Quest> CreateQuestMap()
@@ -143,7 +166,7 @@ public class QuestManager : MonoBehaviour
     {
         try
         {
-            var questData = quest.GetQuestData();
+            var questData = quest.QuestData;
             string serializedData = JsonUtility.ToJson(questData);
             PlayerPrefs.SetString(quest.Info.ID, serializedData);
         }
@@ -177,4 +200,5 @@ public class QuestManager : MonoBehaviour
 
         return quest;
     }
+    #endregion
 }

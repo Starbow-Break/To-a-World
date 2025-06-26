@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class QuestPoint : MonoBehaviour
 {
+    #region Fields
     [Header("Target Layer")]
     [SerializeField] private LayerMask _playerLayerMask;
 
@@ -14,21 +15,21 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] private bool _finishPoint = true;
     
     private bool _playerIsNear = false;
-    private string questId;
-    private QuestState currentQuestState;
+    private string _questId;
+    private QuestState _currentQuestState;
 
-    private QuestIcon _questIcon;
-
+    // private QuestIcon _questIcon;
+    #endregion
+    
+    #region Unity Lifecycle
     private void Awake()
     {
-        questId = _questInfoForPoint.ID;
-        _questIcon = GetComponentInChildren<QuestIcon>();
+        _questId = _questInfoForPoint.ID;
+        //_questIcon = GetComponentInChildren<QuestIcon>();
     }
 
     private void OnEnable()
     {
-        Debug.Log(GameEventsManager.Instance);
-        Debug.Log(GameEventsManager.QuestEvents);
         GameEventsManager.QuestEvents.OnQuestStateChange += QuestStateChange;
     }
 
@@ -36,7 +37,9 @@ public class QuestPoint : MonoBehaviour
     {
         GameEventsManager.QuestEvents.OnQuestStateChange -= QuestStateChange;
     }
-
+    #endregion
+    
+    #region Methods
     public void SubmitPressed()
     {
         /*if (!_playerIsNear)
@@ -44,22 +47,22 @@ public class QuestPoint : MonoBehaviour
             return;
         }*/
 
-        if (currentQuestState.Equals(QuestState.CAN_START) && _startPoint)
+        if (_currentQuestState.Equals(QuestState.CAN_START) && _startPoint)
         {
-            GameEventsManager.QuestEvents.StartQuest(questId);
+            GameEventsManager.QuestEvents.StartQuest(_questId);
         }
-        if (currentQuestState.Equals(QuestState.CAN_FINISH) && _finishPoint)
+        if (_currentQuestState.Equals(QuestState.CAN_FINISH) && _finishPoint)
         {
-            GameEventsManager.QuestEvents.FinishQuest(questId);
+            GameEventsManager.QuestEvents.FinishQuest(_questId);
         }
     }
 
     private void QuestStateChange(Quest quest)
     {
-        if (quest.Info.ID.Equals(questId))
+        if (quest.Info.ID.Equals(_questId))
         {
-            currentQuestState = quest.State;
-            _questIcon.SetState(currentQuestState, _startPoint, _finishPoint);
+            _currentQuestState = quest.State;
+            //_questIcon.SetState(_currentQuestState, _startPoint, _finishPoint);
         }
     }
 
@@ -80,4 +83,5 @@ public class QuestPoint : MonoBehaviour
             _playerIsNear = false;
         }
     }*/
+    #endregion
 }

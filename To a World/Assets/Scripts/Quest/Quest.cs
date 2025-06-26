@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class Quest
 {
+    #region Fields
     public QuestInfoSO Info;
-
     public QuestState State;
+    
     private int _currentQuestStepIndex;
     private QuestStepState[] _questStepStates;
-
+    
+    public bool CurrentStepExists => _currentQuestStepIndex < _questStepStates.Length;
+    public QuestData QuestData => new(State, _currentQuestStepIndex, _questStepStates);
+    #endregion
+    
+    #region Constructors
     public Quest(QuestInfoSO questInfo)
     {
         Info = questInfo;
@@ -21,7 +27,11 @@ public class Quest
         }
     }
     
-    public Quest(QuestInfoSO questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
+    public Quest(
+        QuestInfoSO questInfo, 
+        QuestState questState, 
+        int currentQuestStepIndex, 
+        QuestStepState[] questStepStates)
     {
         Info = questInfo;
         State = questState;
@@ -33,15 +43,12 @@ public class Quest
             Debug.LogWarning("Length of questStepStates and length of questStepPrefabs are different.");
         }
     }
+    #endregion
 
+    #region Methods
     public void MoveToNextStep()
     {
         _currentQuestStepIndex++;
-    }
-
-    public bool CurrentStepExists()
-    {
-        return _currentQuestStepIndex < Info.questStepPrefabs.Length;
     }
 
     public void InstantiateCurrentQuestStep(Transform parentTransform)
@@ -58,7 +65,7 @@ public class Quest
     private GameObject GetCurrentQuestStepPrefab()
     {
         GameObject questStepPrefab = null;
-        if (CurrentStepExists())
+        if (CurrentStepExists)
         {
             questStepPrefab = Info.questStepPrefabs[_currentQuestStepIndex];
         }
@@ -81,9 +88,5 @@ public class Quest
                 + $"Quest Id = {Info.ID}, Step Index = {stepIndex}");
         }
     }
-
-    public QuestData GetQuestData()
-    {
-        return new QuestData(State, _currentQuestStepIndex, _questStepStates);
-    }
+    #endregion
 }
