@@ -47,6 +47,20 @@ namespace Phone
             }
         }
         
+        public void BackButtonPressed()
+        {
+            if (_currentAppType == EAppType.None)
+                return;
+        
+            foreach (var app in _phoneApps)
+            {
+                if (app.AppType == _currentAppType)
+                {
+                    app.Back();
+                    return;
+                }
+            }        
+        }
         
     }
 }
