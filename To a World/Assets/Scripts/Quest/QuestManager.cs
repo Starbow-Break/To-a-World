@@ -1,23 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : SceneSingleton<QuestManager>
 {
-    #region Fields
-    public static QuestManager Instance;
-    
     private Dictionary<string, AQuest> _questMap;
-    #endregion
     
     #region Unity Lifecycles
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        Instance = this;
-        
+        base.Awake();
         _questMap = CreateQuestMap();
     }
 

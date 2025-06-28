@@ -1,18 +1,11 @@
 ﻿using UnityEngine;
 
-public class QuestFactory: MonoBehaviour
+public class QuestFactory: SceneSingleton<QuestFactory>
 {
-    public static QuestFactory Instance { get; private set; }
-
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);    
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
     
     public static AQuest CreateQuest(EQuestType type, AQuestParams param, Transform parent = null)

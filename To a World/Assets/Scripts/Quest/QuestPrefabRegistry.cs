@@ -8,22 +8,15 @@ public struct QuestStepPrefabRegistryEntity
     [field: SerializeField] public GameObject Prefab { get; private set; }
 }
 
-public class QuestPrefabRegistry: MonoBehaviour, IRegistry<EQuestType, GameObject>
+public class QuestPrefabRegistry: SceneSingleton<QuestPrefabRegistry>, IRegistry<EQuestType, GameObject>
 {
-    public static QuestPrefabRegistry Instance { get; private set; }
-    
     [SerializeField] private List<QuestStepPrefabRegistryEntity> _initEntity;
     
     private Dictionary<EQuestType, GameObject> _container;
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-
-        Instance = this;
+        base.Awake();
         DontDestroyOnLoad(gameObject);
 
         _container = new();
