@@ -11,7 +11,7 @@ public class QuestListItemUpdater : MonoBehaviour
         _questTitle.text = questTitle;
     }
 
-    public void SetQuestStepDescription(string questStepDescription)
+    public void SetQuestDescription(string questStepDescription)
     {
         _questStepDescription.text = questStepDescription;
     }
