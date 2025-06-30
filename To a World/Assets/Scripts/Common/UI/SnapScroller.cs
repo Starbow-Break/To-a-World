@@ -48,7 +48,7 @@ public class SnapScroller : MonoBehaviour, IEndDragHandler
         Vector2 targetPos = GetTargetPositionForContent(element);
         Debug.Log("Click: " + targetPos);
 
-        content.anchoredPosition = targetPos;
+        content.position = targetPos;
         //content.DOAnchorPos(targetPos, snapDuration).SetEase(Ease.OutBack);
     }
     
@@ -78,10 +78,10 @@ public class SnapScroller : MonoBehaviour, IEndDragHandler
         Vector2 targetPos = GetTargetPositionForContent(nearest);
 
         Debug.Log("Drag: " + targetPos);
-        content.DOAnchorPos(targetPos, snapDuration).SetEase(Ease.Linear)
+        content.DOMove(targetPos, snapDuration).SetEase(Ease.Linear)
             .OnComplete(() =>
             {
-                content.anchoredPosition = targetPos; // 위치 보정
+                content.position = targetPos; // 위치 보정
             });;
     }
 
@@ -98,8 +98,9 @@ public class SnapScroller : MonoBehaviour, IEndDragHandler
         Vector3 deltaWorld = centerPos - element.position; 
         Vector3 targetWorld = content.position + deltaWorld;
         Vector2 targetPos = content.InverseTransformPoint(targetWorld);
-        
-        return targetPos;
+        //Vector2 anchoredTargetPos = (Vector2)content.parent.InverseTransformPoint(targetWorld);
+
+        return targetWorld;
     }
     
 }
