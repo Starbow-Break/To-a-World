@@ -7,7 +7,6 @@ public class ArrivePlaceQuest : AQuest
     [SerializeField] private string _targetPointId;
     
     private PlaceTargetPoint _targetPoint;
-    private bool _arrive = false;
 
     private void Awake()
     {
@@ -39,7 +38,6 @@ public class ArrivePlaceQuest : AQuest
     {
         if (placeId == _targetPointId)
         {
-            _arrive = true;
             CompleteQuest();
         }
     }
