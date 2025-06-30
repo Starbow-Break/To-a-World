@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,50 +15,37 @@ public class QusetListUpdater : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventsManager.QuestEvents.OnQuestStateChange += OnQuestStateChange;
-        GameEventsManager.QuestEvents.OnQuestStepStateChange += OnQuestStepStateChange;
+        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange += OnQuestStateChange;
     }
 
     private void OnDisable()
     {
-        GameEventsManager.QuestEvents.OnQuestStateChange -= OnQuestStateChange;
-        GameEventsManager.QuestEvents.OnQuestStepStateChange -= OnQuestStepStateChange;
+        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= OnQuestStateChange;
     }
 
-    private void OnQuestStateChange(Quest quest)
+    private void OnQuestStateChange(AQuest quest)
     {
         if (
-            quest.State == QuestState.IN_PROGRESS
-            || quest.State == QuestState.CAN_FINISH)
+            quest.State == EQuestState.IN_PROGRESS
+            || quest.State == EQuestState.CAN_FINISH)
         {
             TryAddQuestListItem(quest);
         }
-        if (quest.State == QuestState.FINISHED)
+        if (quest.State == EQuestState.FINISHED)
         {
             TryRemoveQuestListItem(quest.Info.ID);
         }
     }
     
-    private void OnQuestStepStateChange(string questId, int stepIndex, QuestStepState questStepState)
-    {
-        if (_itemUpdaters.TryGetValue(questId, out QuestListItemUpdater questItemUpdater))
-        {
-            questItemUpdater.SetQuestStepDescription("questStepState");
-        }
-        else
-        {
-            Debug.LogError($"Quest Item of ID : {questId} does not exist.");
-        }
-    }
-    
-    private void TryAddQuestListItem(Quest quest)
+    private void TryAddQuestListItem(AQuest quest)
     {
         if (!_itemUpdaters.ContainsKey(quest.Info.ID))
         {
             var itemObj = Instantiate(_itemPrefab, _parentTransform);
             var updater = itemObj.GetComponent<QuestListItemUpdater>();
             _itemUpdaters.Add(quest.Info.ID, updater);
-            updater.SetQuestTitle(quest.Info.DisplayName);
+            updater.SetQuestTitle(quest.Info.Name);
+            updater.SetQuestDescription(quest.Info.Description);
         }
     }
     

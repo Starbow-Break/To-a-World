@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum QuestState
+public enum EQuestState
 {
     REQUIREMENTS_NOT_MET,
     CAN_START,

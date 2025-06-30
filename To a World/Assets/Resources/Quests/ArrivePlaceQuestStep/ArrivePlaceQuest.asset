@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
-  m_Name: CollectCoinsQuest
+  m_Name: ArrivePlaceQuest
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: CollectCoinsQuest
-  <Type>k__BackingField: 0
-  <Param>k__BackingField: {fileID: 11400000, guid: 391891fa9bb8f2047ad138502b3beb03, type: 2}
-  <Name>k__BackingField: "\uCF54\uC778\uC744 \uBAA8\uC73C\uC138\uC694!"
-  <Description>k__BackingField: "\uCF54\uC778\uC744 5\uAC1C \uBAA8\uC73C\uC138\uC694"
+  <ID>k__BackingField: ArrivePlaceQuest
+  <Type>k__BackingField: 1
+  <Param>k__BackingField: {fileID: 11400000, guid: 00268cc6a94ecb145976366364ed0b2a, type: 2}
+  <Name>k__BackingField: asdasd
+  <Description>k__BackingField: asdasda
   <questPrerequisites>k__BackingField: []

@@ -1,16 +1,28 @@
 using System;
+using UnityEngine;
 
-[Serializable]
-public class QuestData
+[CreateAssetMenu(fileName = "QuestInfoSO", menuName = "ScriptableObjects/QuestInfoSO", order = 1)]
+public class QuestData : ScriptableObject
 {
-    public QuestState State;
-    public int QuestStepIndex;
-    public QuestStepState[] QuestStepStates;
+    [field: SerializeField] public string ID { get; private set; }
+    [field: SerializeField] public EQuestType Type { get; private set; }
+    [field: SerializeField] public AQuestParams Param { get; private set; }
 
-    public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates)
+    [Header("General")]
+    [field: SerializeField] public string Name { get; private set; }
+    [field: SerializeField] public string Description { get; private set; }
+
+    [Header("Requirements")] 
+    [field: SerializeField] public QuestData[] questPrerequisites { get; private set; }
+    
+    private void OnValidate()
     {
-        State = state;
-        QuestStepIndex = questStepIndex;
-        QuestStepStates = questStepStates;
+        #if UNITY_EDITOR
+        if (String.IsNullOrEmpty(ID))
+        {
+            ID = this.name;
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+        #endif
     }
 }

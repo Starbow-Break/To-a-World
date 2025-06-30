@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CollectCoinsQuest 2
   m_EditorClassIdentifier: 
   <ID>k__BackingField: CollectCoinsQuest 2
-  DisplayName: "\uCF54\uC778\uC744 \uBAA8\uC73C\uC138\uC694! (2)"
-  questPrerequisites:
+  <Type>k__BackingField: 0
+  <Param>k__BackingField: {fileID: 11400000, guid: 5637e4780c6f0594db9719251bc535c0, type: 2}
+  <Name>k__BackingField: "\uCF54\uC778\uC744 \uBAA8\uC73C\uC138\uC694! (2)"
+  <Description>k__BackingField: "\uCF54\uC778\uC744 10\uAC1C \uBAA8\uC73C\uC138\uC694"
+  <questPrerequisites>k__BackingField:
   - {fileID: 11400000, guid: 5e85496af3776414faff922be566a200, type: 2}
-  questStepPrefabs:
-  - {fileID: 7276393743045722489, guid: d2b40d573d80442458d21e6e88942d97, type: 3}
-  - {fileID: 7276393743045722489, guid: d2b40d573d80442458d21e6e88942d97, type: 3}
