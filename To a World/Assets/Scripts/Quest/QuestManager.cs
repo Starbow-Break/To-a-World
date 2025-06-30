@@ -6,7 +6,7 @@ public class QuestManager : SceneSingleton<QuestManager>
     private Dictionary<string, AQuest> _questMap;
     
     #region Unity Lifecycles
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         _questMap = CreateQuestMap();

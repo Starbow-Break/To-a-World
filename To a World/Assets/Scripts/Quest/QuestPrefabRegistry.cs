@@ -14,7 +14,7 @@ public class QuestPrefabRegistry: SceneSingleton<QuestPrefabRegistry>, IRegistry
     
     private Dictionary<EQuestType, GameObject> _container;
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);

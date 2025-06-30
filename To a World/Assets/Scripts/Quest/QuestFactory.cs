@@ -2,7 +2,7 @@
 
 public class QuestFactory: SceneSingleton<QuestFactory>
 {
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
