@@ -6,6 +6,8 @@ public class HandGestureJoystickVisualizer : MonoBehaviour, IVisualizer<HandGest
 {
     [SerializeField] private HandGestureJoystick _joystick;
     
+    [Header("Render")]
+    [SerializeField] private List<Renderer> _renderers;
     [SerializeField] private LineRenderer _line;
     
     private void OnEnable()
@@ -20,6 +22,11 @@ public class HandGestureJoystickVisualizer : MonoBehaviour, IVisualizer<HandGest
         _joystick.OnStopInput -= Hide;
     }
 
+    private void Start()
+    {
+        SetEnableAllRenderers(_joystick.isActiveAndEnabled);
+    }
+
     private void Update()
     {
         if (isActiveAndEnabled)
@@ -28,8 +35,16 @@ public class HandGestureJoystickVisualizer : MonoBehaviour, IVisualizer<HandGest
         }
     }
 
-    private void Show() => gameObject.SetActive(true);
-    private void Hide() => gameObject.SetActive(false);
+    private void Show() => SetEnableAllRenderers(true);
+    private void Hide() => SetEnableAllRenderers(false);
+
+    private void SetEnableAllRenderers(bool enable)
+    {
+        foreach (var renderer in _renderers)
+        {
+            renderer.enabled = enable;
+        }
+    }
 
     public void UpdateVisual()
     {
@@ -47,7 +62,7 @@ public class HandGestureJoystickVisualizer : MonoBehaviour, IVisualizer<HandGest
         float valueMagnitude = _joystick.Value.magnitude;
         if (!Mathf.Approximately(valueMagnitude, 0f))
         {
-            _line.textureScale = new Vector3(- _line.startWidth / valueMagnitude, 1f, 1f);
+            _line.textureScale = new Vector3(-valueMagnitude / _line.startWidth, 1f, 1f);
         }
     }        
 }
