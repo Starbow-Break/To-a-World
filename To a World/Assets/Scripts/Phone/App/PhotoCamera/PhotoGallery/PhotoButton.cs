@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Phone
 {
-    public class PhotoButton : MonoBehaviour
+    public class PhotoButton : MonoBehaviour, IScrollingSelectable
     {
         [SerializeField] private RawImage photo;
         [SerializeField] private Button button;
@@ -47,6 +47,11 @@ namespace Phone
         private void OnDisable()
         {
             button.onClick.RemoveListener(() => OnButtonClick?.Invoke(this));
+        }
+
+        public void Select()
+        {
+            OnButtonClick?.Invoke(this);
         }
     }
 }

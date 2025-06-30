@@ -12,15 +12,16 @@ public class SnapScroller : MonoBehaviour, IEndDragHandler
     
     [SerializeField] private float snapDuration = 0.25f;
     
-    public List<RectTransform> elements = new List<RectTransform>();
+    [SerializeField] private List<RectTransform> elements = new List<RectTransform>();
 
+    
     public void AddElement(RectTransform element)
     {
         elements.Add(element);
         
         if (element.gameObject.TryGetComponent(out Button button))
         {
-            button.onClick.AddListener(SnapToNearest);
+            button.onClick.AddListener(()=>SetToSnapPoint(element));
         }
     }
 
@@ -30,14 +31,30 @@ public class SnapScroller : MonoBehaviour, IEndDragHandler
         
         if (element.gameObject.TryGetComponent(out Button button))
         {
-            button.onClick.RemoveListener(SnapToNearest);
+            button.onClick.RemoveListener(()=>SetToSnapPoint(element));
         }
     }
+
+    public void SetToSnapPoint(RectTransform element)
+    {
+        // RectTransform rect = elements.Find(x => x == element);
+        //
+        // if (rect == null)
+        // {
+        //     Debug.LogError("Element not found");
+        //     return;
+        // }
+        
+        Vector2 targetPos = GetTargetPositionForContent(element);
+        Debug.Log("Click: " + targetPos);
+
+        content.anchoredPosition = targetPos;
+        //content.DOAnchorPos(targetPos, snapDuration).SetEase(Ease.OutBack);
+    }
     
-    public void SnapToNearest()
+    private void SnapToNearest()
     {
         Vector3 centerPos = snapPoint.TransformPoint(snapPoint.rect.center);
-
         float minDistance = float.MaxValue;
         RectTransform nearest = null;
         
@@ -53,15 +70,36 @@ public class SnapScroller : MonoBehaviour, IEndDragHandler
         }
         
         if (nearest == null) return;
+        if (nearest.gameObject.TryGetComponent(out IScrollingSelectable selectable))
+        {
+            selectable.Select();
+        }
         
-        float targetX = -nearest.anchoredPosition.x; 
-        Vector2 targetPos = new Vector2(targetX, content.anchoredPosition.y);
-        
-        content.DOAnchorPos(targetPos, snapDuration).SetEase(Ease.OutBack);
+        Vector2 targetPos = GetTargetPositionForContent(nearest);
+
+        Debug.Log("Drag: " + targetPos);
+        content.DOAnchorPos(targetPos, snapDuration).SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                content.anchoredPosition = targetPos; // 위치 보정
+            });;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         SnapToNearest();
     }
+
+    private Vector2 GetTargetPositionForContent(RectTransform element)
+    {
+        Vector3 centerPos = snapPoint.position;
+        centerPos.y = content.position.y;
+        
+        Vector3 deltaWorld = centerPos - element.position; 
+        Vector3 targetWorld = content.position + deltaWorld;
+        Vector2 targetPos = content.InverseTransformPoint(targetWorld);
+        
+        return targetPos;
+    }
+    
 }

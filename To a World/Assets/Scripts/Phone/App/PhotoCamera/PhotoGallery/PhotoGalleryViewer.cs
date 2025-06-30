@@ -37,6 +37,7 @@ namespace Phone
             newPhotoButton.SetImage(photo);
             newPhotoButton.gameObject.transform.SetAsFirstSibling();
             newPhotoButton.OnButtonClick += SelectPhoto;
+            //newPhotoButton.OnButtonClick += MovePhoto;
             
             _photoButtons.Add(newPhotoButton);
             snapScroller.AddElement(newPhotoButton.gameObject.GetComponent<RectTransform>());
@@ -57,6 +58,14 @@ namespace Phone
         private void ShowPhoto(Texture2D photo)
         {
             updater.PhotoPreview.texture = photo;
+        }
+
+        private void MovePhoto(PhotoButton photoButton)
+        {
+            if (photoButton.TryGetComponent<RectTransform>(out var rectTransform))
+            {
+                snapScroller.SetToSnapPoint(rectTransform);
+            }
         }
     }
 }
