@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class HandGestureJoystick : ABaseInput<Vector2>
+public class HandGestureMovement : ABaseInput<Vector2>
 {
     #region Fields
     [field: SerializeField] public Transform Base { get; private set; }
     
+    [Header("Movement")]
     [SerializeField] private Transform _target;
     [SerializeField] private float _sensitivity = 4f;
 
-    [SerializeField] private bool _updateBasePositionOnStartInput = true; 
-    
     private Vector3 _startPosition;
     #endregion
     
@@ -20,7 +19,7 @@ public class HandGestureJoystick : ABaseInput<Vector2>
         TestAssertion();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_isActive)
         {
@@ -34,11 +33,7 @@ public class HandGestureJoystick : ABaseInput<Vector2>
     #region Methods
     public override void StartInput()
     {
-        if (_updateBasePositionOnStartInput)
-        {
-            Base.position = _target.position;
-        }
-        
+        Base.position = _target.position;
         base.StartInput();
     }
     

@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fb3781030442f2bcc893f0dbffabc5, type: 3}
+  m_Name: Test Hand Shape
+  m_EditorClassIdentifier: 
+  m_FingerShapeConditions:
+  - m_FingerID: 0
+    m_Targets:
+    - m_ShapeType: 0
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 1
+      m_UpperTolerance: 0.009710395
+      m_LowerTolerance: 0.009710395
+      m_Tolerance: 0
+      m_Desired: 0.84623706
+    - m_ShapeType: 2
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 3
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 4
+      m_UpperTolerance: 0.024716947
+      m_LowerTolerance: 0.024716947
+      m_Tolerance: 0
+      m_Desired: 0.4653877
+  - m_FingerID: 1
+    m_Targets:
+    - m_ShapeType: 0
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 1
+    - m_ShapeType: 1
+      m_UpperTolerance: 0.0022074445
+      m_LowerTolerance: 0.0022074445
+      m_Tolerance: 0
+      m_Desired: 0.86351514
+    - m_ShapeType: 2
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 1
+    - m_ShapeType: 3
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 4
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+  - m_FingerID: 2
+    m_Targets:
+    - m_ShapeType: 0
+      m_UpperTolerance: 0.00041112502
+      m_LowerTolerance: 0.00041112502
+      m_Tolerance: 0
+      m_Desired: 0.9810745
+    - m_ShapeType: 1
+      m_UpperTolerance: 0.0013314167
+      m_LowerTolerance: 0.0013314167
+      m_Tolerance: 0
+      m_Desired: 0.9285913
+    - m_ShapeType: 2
+      m_UpperTolerance: 0.0004069325
+      m_LowerTolerance: 0.0004069325
+      m_Tolerance: 0
+      m_Desired: 0.99124384
+    - m_ShapeType: 3
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 4
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+  - m_FingerID: 3
+    m_Targets:
+    - m_ShapeType: 0
+      m_UpperTolerance: 0.00170656
+      m_LowerTolerance: 0.00170656
+      m_Tolerance: 0
+      m_Desired: 0.94586086
+    - m_ShapeType: 1
+      m_UpperTolerance: 0.0011041992
+      m_LowerTolerance: 0.0011041992
+      m_Tolerance: 0
+      m_Desired: 0.9465831
+    - m_ShapeType: 2
+      m_UpperTolerance: 0.0011837359
+      m_LowerTolerance: 0.0011837359
+      m_Tolerance: 0
+      m_Desired: 0.9561187
+    - m_ShapeType: 3
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 4
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+  - m_FingerID: 4
+    m_Targets:
+    - m_ShapeType: 0
+      m_UpperTolerance: 0.002715864
+      m_LowerTolerance: 0.002715864
+      m_Tolerance: 0
+      m_Desired: 0.9108337
+    - m_ShapeType: 1
+      m_UpperTolerance: 0.00874827
+      m_LowerTolerance: 0.00874827
+      m_Tolerance: 0
+      m_Desired: 0.8854989
+    - m_ShapeType: 2
+      m_UpperTolerance: 0.0011751935
+      m_LowerTolerance: 0.0011751935
+      m_Tolerance: 0
+      m_Desired: 0.9295469
+    - m_ShapeType: 3
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0
+    - m_ShapeType: 4
+      m_UpperTolerance: 0
+      m_LowerTolerance: 0
+      m_Tolerance: 0
+      m_Desired: 0

@@ -13,9 +13,10 @@ public class HandMoveProvider : MonoBehaviour
         
         if (_moveHandInput?.isActiveAndEnabled == true)
         {
-            Vector2 inputValue = _moveHandInput.Value;
-            Vector3 weightDirection = new(inputValue.x, 0f, inputValue.y);
-            _characterController.Move(_maxSpeed * Time.deltaTime * weightDirection);
+            Vector2 value = _moveHandInput.Value;
+            Transform charaTransform = _characterController.transform;
+            Vector3 velocity = _maxSpeed * (value.x * charaTransform.right + value.y * charaTransform.forward);
+            _characterController.Move(Time.deltaTime * velocity);
         }
     }
 }
