@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5fb3781030442f2bcc893f0dbffabc5, type: 3}
-  m_Name: Move Hand Shape
+  m_Name: Switch Hand Shape
   m_EditorClassIdentifier: 
   m_FingerShapeConditions:
   - m_FingerID: 0
     m_Targets:
     - m_ShapeType: 0
-      m_UpperTolerance: 0.1
-      m_LowerTolerance: 0.1
+      m_UpperTolerance: 0.2
+      m_LowerTolerance: 0.2
+      m_Tolerance: 0
+      m_Desired: 0.26
+    - m_ShapeType: 4
+      m_UpperTolerance: 0.05
+      m_LowerTolerance: 0.05
       m_Tolerance: 0
       m_Desired: 0
-    - m_ShapeType: 4
-      m_UpperTolerance: 0.3
-      m_LowerTolerance: 0.3
-      m_Tolerance: 0
-      m_Desired: 0.7
   - m_FingerID: 1
     m_Targets:
     - m_ShapeType: 0
