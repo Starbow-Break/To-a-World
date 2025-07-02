@@ -8,11 +8,10 @@ public class HandGestureRotationVisualizer : MonoBehaviour, IVisualizer<HandGest
     
     [Header("Render")]
     [SerializeField] private List<Renderer> _renderers;
+    [SerializeField] private Transform _target;
 
-    [SerializeField] private Renderer _left;
-    [SerializeField] private Renderer _right;
-
-    private Tween colorTween;
+    [SerializeField] private ATweenAnimator _leftArrowAnim;
+    [SerializeField] private ATweenAnimator _rightArrowAnim;
     
     private void OnEnable()
     {
@@ -36,8 +35,16 @@ public class HandGestureRotationVisualizer : MonoBehaviour, IVisualizer<HandGest
         UpdateVisual();
     }
 
-    private void Show() => SetEnableAllRenderers(true);
-    private void Hide() => SetEnableAllRenderers(false);
+    private void Show()
+    {
+        SetEnableAllRenderers(true);
+        transform.position = _target.position;
+    }
+
+    private void Hide()
+    {
+        SetEnableAllRenderers(false);
+    }
 
     private void SetEnableAllRenderers(bool enable)
     {
@@ -49,36 +56,18 @@ public class HandGestureRotationVisualizer : MonoBehaviour, IVisualizer<HandGest
     
     public void UpdateVisual()
     {
-        transform.position = _rotation.Base.position;
-        transform.rotation = _rotation.Base.rotation;
-        
         var value = _rotation.Value;
-
-        Color from = Color.white;
-        Color to = new Color(1f, 1f, 1f, 0f);
 
         switch (value)
         {
             case ERotationDirection.LEFT:
-                TweenColor(_left.material, from, to, 0.5f);
+                _leftArrowAnim.Play();
                 break;
             case ERotationDirection.RIGHT:
-                TweenColor(_right.material, from, to, 0.5f);
+                _rightArrowAnim.Play();
                 break;
             default:
                 break;
         }
-    }
-    
-    private void TweenColor(Material material, Color from, Color to, float duration)
-    {
-        if (colorTween != null)
-        {
-            colorTween.Complete();
-            colorTween = null;
-        }
-        
-        material.color = from;
-        colorTween = material.DOColor(to, duration);
     }
 }

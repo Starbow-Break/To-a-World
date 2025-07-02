@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum ERotationDirection
 {
@@ -17,7 +16,7 @@ public class HandGestureRotation: ABaseInput<ERotationDirection>
     [SerializeField] private float _unhandleBorder = 30f;
     [SerializeField] private float _handleBorder = 60f;
     
-    private bool _handleRotation = true;
+    private bool _handleRotation = false;
 
     private void FixedUpdate()
     {
@@ -26,14 +25,13 @@ public class HandGestureRotation: ABaseInput<ERotationDirection>
             Value = ERotationDirection.NONE;
             return;
         }
-        
-        var thumbDirection = Vector3.ProjectOnPlane(_target.forward, Base.forward);
-        thumbDirection = Quaternion.Inverse(Base.rotation) * thumbDirection;
-        var angle = Vector3.Angle(thumbDirection, Vector3.up);
+
+        float dotBT = Vector3.Dot(Base.up, _target.up);
+        var angle = 90f - Mathf.Acos(dotBT) * Mathf.Rad2Deg;
         if (_handleRotation && Mathf.Abs(angle) >= _handleBorder)
         {
             _handleRotation = false;
-            Value = thumbDirection.x > 0f ? ERotationDirection.RIGHT : ERotationDirection.LEFT;
+            Value = _target.up.y > 0f ? ERotationDirection.LEFT : ERotationDirection.RIGHT;
         }
         else if (!_handleRotation && Mathf.Abs(angle) <= _unhandleBorder)
         {

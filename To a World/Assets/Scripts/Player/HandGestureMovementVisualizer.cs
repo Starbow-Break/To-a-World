@@ -9,6 +9,7 @@ public class HandGestureMovementVisualizer : MonoBehaviour, IVisualizer<HandGest
     [Header("Render")]
     [SerializeField] private List<Renderer> _renderers;
     [SerializeField] private LineRenderer _line;
+    [SerializeField] private Transform _target; 
     
     private void OnEnable()
     {
@@ -35,8 +36,16 @@ public class HandGestureMovementVisualizer : MonoBehaviour, IVisualizer<HandGest
         }
     }
 
-    private void Show() => SetEnableAllRenderers(true);
-    private void Hide() => SetEnableAllRenderers(false);
+    private void Show()
+    {
+        SetEnableAllRenderers(true);
+        transform.position = _target.position;
+    }
+
+    private void Hide()
+    {
+        SetEnableAllRenderers(false);
+    }
 
     private void SetEnableAllRenderers(bool enable)
     {
@@ -48,9 +57,6 @@ public class HandGestureMovementVisualizer : MonoBehaviour, IVisualizer<HandGest
 
     public void UpdateVisual()
     {
-        transform.position = _movement.Base.position;
-        transform.rotation = _movement.Base.rotation;
-        
         Vector2 inputValue = _movement.Value;
         Quaternion invLineLocalRot = Quaternion.Inverse(_line.transform.localRotation);
         _line.SetPositions(new Vector3[]
