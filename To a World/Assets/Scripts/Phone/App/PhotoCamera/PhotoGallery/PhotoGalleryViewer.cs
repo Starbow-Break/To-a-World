@@ -14,14 +14,22 @@ namespace Phone
         private PhotoButton _currentPhotoButton = null;
         
         public bool IsOpened => updater.gameObject.activeSelf;
-        
+
         public void OpenGallery()
         {
             updater.Open();
 
             if (_photoButtons.Count == 0)
                 return;
-            
+
+            for (int i = 0; i < _photoButtons.Count; i++)
+            {
+                if (i == _photoButtons.Count - 1)
+                    _photoButtons[i].SetSelected();
+                else
+                    _photoButtons[i].SetUnselected();
+            }
+
             SelectPhoto(_photoButtons[_photoButtons.Count - 1]);
         }
 
@@ -34,9 +42,18 @@ namespace Phone
         public void AddPhoto(Texture2D photo)
         {
             PhotoButton newPhotoButton = Instantiate(photoButtonPrefab, updater.ContentTransform);
+
+            // float newX = 0f;
+            // if (_photoButtons.Count > 0)
+            // {
+            //     RectTransform rt = _photoButtons[^1].RectTransform;
+            //     newX = rt.anchoredPosition.x + rt.sizeDelta.x + 10f;
+            // }
+            // newPhotoButton.RectTransform.anchoredPosition = new Vector2(newX, 0f);
             newPhotoButton.SetImage(photo);
             newPhotoButton.gameObject.transform.SetAsFirstSibling();
             newPhotoButton.OnButtonClick += SelectPhoto;
+            //newPhotoButton.OnButtonClick += MovePhoto;
             
             _photoButtons.Add(newPhotoButton);
             snapScroller.AddElement(newPhotoButton.gameObject.GetComponent<RectTransform>());
@@ -57,6 +74,14 @@ namespace Phone
         private void ShowPhoto(Texture2D photo)
         {
             updater.PhotoPreview.texture = photo;
+        }
+
+        private void MovePhoto(PhotoButton photoButton)
+        {
+            if (photoButton.TryGetComponent<RectTransform>(out var rectTransform))
+            {
+                snapScroller.SetToSnapPoint(rectTransform);
+            }
         }
     }
 }

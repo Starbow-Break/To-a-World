@@ -4,17 +4,19 @@ using UnityEngine.UI;
 
 namespace Phone
 {
-    public class PhotoButton : MonoBehaviour
+    public class PhotoButton : MonoBehaviour, IScrollingSelectable
     {
+        [SerializeField] private RectTransform _rectTransform;
+        
         [SerializeField] private RawImage photo;
         [SerializeField] private Button button;
         [SerializeField] private float sizeDelta = 1.3f;
-        
         private Texture2D _texture = null;
         private float _originalWidth = 0f;
         private float _originalHeight = 0f;
         
         public Texture2D Texture => _texture;
+        public RectTransform RectTransform => _rectTransform;
         public event Action<PhotoButton> OnButtonClick;
 
         public void SetImage(Texture2D texture)
@@ -47,6 +49,11 @@ namespace Phone
         private void OnDisable()
         {
             button.onClick.RemoveListener(() => OnButtonClick?.Invoke(this));
+        }
+
+        public void Select()
+        {
+            OnButtonClick?.Invoke(this);
         }
     }
 }
