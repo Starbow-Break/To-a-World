@@ -402,17 +402,6 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
---- !u!114 &129717952 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6975430451297176063, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
-  m_PrefabInstance: {fileID: 1882438414}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e6c9668d094f8fa5d33bd013e44457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &150030693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3878,74 +3867,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1970871072
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1970871073}
-  - component: {fileID: 1970871074}
-  m_Layer: 0
-  m_Name: Switch Gesture
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1970871073
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970871072}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6881106691137873080}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1970871074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970871072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c57b3ca8d5db34eb6fcf77629f3875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GesturePerformed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1882438416}
-        m_TargetAssemblyTypeName: SequentialSwitcher`1[[UnityEngine.MonoBehaviour,
-          UnityEngine
-        m_MethodName: Switch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  GestureEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  _handTrackingEvents: {fileID: 6881106691137873081}
-  _handShapeOrPose: {fileID: 11400000, guid: 4bc0de19c08e2f84584ba50512b8ed94, type: 2}
-  _targetTransform: {fileID: 0}
-  _minimumHoldTime: 0.1
-  _gestureDetectionInterval: 0.1
 --- !u!1 &1981266808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4683,169 +4604,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1882438416}
     - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 129717952}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InactiveSwitcher
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StopInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1882438416}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 129717952}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ActiveSwitcher
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StartInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SequentialSwitcher`1[[UnityEngine.MonoBehaviour, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ABaseInput`1[[ERotationDirection, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SequentialSwitcher`1[[UnityEngine.MonoBehaviour, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ABaseInput`1[[ERotationDirection, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 180637824}
     - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 180637824}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285369931495191435, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5904046915814626933, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4894,34 +4667,19 @@ PrefabInstance:
       propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 298435784}
+    - target: {fileID: 7129383489033121805, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
+      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1882438416}
     - target: {fileID: 7984213110039429167, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: m_Name
       value: Hand Gestures
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2248918728719616330, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1970871073}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
---- !u!4 &6881106691137873080 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2248918728719616330, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-  m_PrefabInstance: {fileID: 6881106691137873079}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6881106691137873081 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7153177409695570891, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
-  m_PrefabInstance: {fileID: 6881106691137873079}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5b9cf54c47f40ee9c3eb30ea8eb89b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
