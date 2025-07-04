@@ -33,6 +33,7 @@ public class UnityRealtimeTTSClient : MonoBehaviour
     private bool isPlayingSequentially = false;
     
     // 이벤트
+    public event Action<string> OnStart;
     public event Action<string> OnTextGenerated;
     public event Action<int, string> OnSentenceCompleted;
     public event Action<int> OnAllCompleted;
@@ -61,17 +62,6 @@ public class UnityRealtimeTTSClient : MonoBehaviour
         DebugLog($"{maxConcurrentAudio}개의 AudioSource 초기화 완료");
     }
     
-    public void StartRealtimeTTS(string text, string characterName = null, string language = null)
-    {
-        // 이전 상태 초기화
-        audioBuffers.Clear();
-        nextSentenceToPlay = 1;
-        isPlayingSequentially = false;
-        StopAllAudio();
-        
-        StartCoroutine(RealtimeTTSCoroutine(text, characterName, language));
-    }
-    
     public void StartRealtimeTTSWithAudio(byte[] audioData, string characterName = null, string language = null)
     {
         // 이전 상태 초기화
@@ -81,45 +71,6 @@ public class UnityRealtimeTTSClient : MonoBehaviour
         StopAllAudio();
         
         StartCoroutine(RealtimeTTSWithAudioCoroutine(audioData, characterName, language));
-    }
-    
-    private IEnumerator RealtimeTTSCoroutine(string text, string characterName, string language)
-    {
-        string url = $"{serverUrl}/generate_speech_realtime";
-        
-        // 요청 데이터 구성
-        TTSRealtimeRequest request = new TTSRealtimeRequest
-        {
-            text = text,
-            language = language ?? defaultLanguage,
-            character_name = characterName ?? defaultCharacter,
-            use_thinking = true
-        };
-        
-        string jsonData = JsonConvert.SerializeObject(request);
-        DebugLog($"실시간 TTS 요청: {text.Substring(0, Mathf.Min(50, text.Length))}...");
-        
-        using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
-        {
-            byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
-            webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            webRequest.downloadHandler = new StreamingDownloadHandler(this);
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-            webRequest.SetRequestHeader("Accept", "text/event-stream");
-            
-            // 스트리밍 시작 - 실시간으로 데이터가 들어올 때마다 처리됨
-            yield return webRequest.SendWebRequest();
-            
-            if (webRequest.result != UnityWebRequest.Result.Success)
-            {
-                string errorMsg = $"요청 실패: {webRequest.error}";
-                DebugLog(errorMsg);
-                OnError?.Invoke(errorMsg);
-                yield break;
-            }
-            
-            DebugLog("스트리밍 완료");
-        }
     }
     
     private IEnumerator RealtimeTTSWithAudioCoroutine(byte[] audioData, string characterName, string language)
