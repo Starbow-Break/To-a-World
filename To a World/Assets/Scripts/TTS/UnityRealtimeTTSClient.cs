@@ -611,7 +611,7 @@ namespace TTSSystem
                 isProcessingRequest = true;
                 UnityMainThreadDispatcher.Instance().Enqueue(() => OnRequestStarted?.Invoke());
                 
-                string url = $"{serverUrl}/chat_realtime_audio";
+                string url = $"{serverUrl}/generate_speech_realtime";
                 
                 // 오디오 데이터를 Base64로 인코딩
                 string audioBase64 = System.Convert.ToBase64String(audioData);
@@ -803,7 +803,7 @@ namespace TTSSystem
                 case "audio":
                     if (!string.IsNullOrEmpty(data.audio_data))
                     {
-                        yield return StartCoroutine(ProcessAudioDataSequentially(data));
+                        yield return StartCoroutine(ProcessAudioDataSequentiallyAsync(data));
                     }
                     break;
                     
@@ -873,14 +873,6 @@ namespace TTSSystem
             }
             
             yield return null;
-        }
-        
-        /// <summary>
-        /// 다음 순차 오디오 재생을 시도합니다
-        /// </summary>
-        private IEnumerator TryPlayNextSequentialAudio()
-        {
-            yield return StartCoroutine(TryPlayNextSequentialAudioAsync());
         }
         
         /// <summary>
