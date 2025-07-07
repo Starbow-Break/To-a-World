@@ -465,12 +465,12 @@ namespace TTSSystem
         }
         
         /// <summary>
-        /// WAV 데이터를 AudioClip으로 변환합니다.
+        /// WAV 데이터를 파싱하여 AudioClipData로 변환합니다 (메인 스레드 호출 불필요)
         /// </summary>
         /// <param name="wavData">WAV 데이터</param>
         /// <param name="clipName">AudioClip 이름</param>
-        /// <returns>변환된 AudioClip 또는 null</returns>
-        private AudioClip WAVToAudioClip(byte[] wavData, string clipName)
+        /// <returns>파싱된 AudioClipData 또는 null</returns>
+        private AudioClipData ParseWAVData(byte[] wavData, string clipName)
         {
             try
             {
@@ -490,17 +490,55 @@ namespace TTSSystem
                     samples[i] = sample / 32768.0f; // 16비트를 float으로 정규화
                 }
                 
-                // AudioClip 생성
-                AudioClip audioClip = AudioClip.Create(clipName, sampleCount, channels, sampleRate, false);
-                audioClip.SetData(samples, 0);
+                return new AudioClipData
+                {
+                    clipName = clipName,
+                    samples = samples,
+                    sampleCount = sampleCount,
+                    channels = channels,
+                    sampleRate = sampleRate
+                };
+            }
+            catch (Exception e)
+            {
+                DebugLog($"WAV 파싱 오류: {e.Message}");
+                return null;
+            }
+        }
+        
+        /// <summary>
+        /// AudioClipData에서 AudioClip을 생성합니다 (메인 스레드에서만 호출)
+        /// </summary>
+        /// <param name="clipData">파싱된 오디오 데이터</param>
+        /// <returns>생성된 AudioClip 또는 null</returns>
+        private AudioClip CreateAudioClipFromData(AudioClipData clipData)
+        {
+            try
+            {
+                // AudioClip 생성 (메인 스레드에서만 가능)
+                AudioClip audioClip = AudioClip.Create(clipData.clipName, clipData.sampleCount, clipData.channels, clipData.sampleRate, false);
+                audioClip.SetData(clipData.samples, 0);
                 
                 return audioClip;
             }
             catch (Exception e)
             {
-                DebugLog($"WAV 변환 오류: {e.Message}");
+                DebugLog($"AudioClip 생성 오류: {e.Message}");
                 return null;
             }
+        }
+        
+        /// <summary>
+        /// WAV 데이터를 AudioClip으로 변환합니다 (호환성용 - 직접 사용 권장하지 않음)
+        /// </summary>
+        /// <param name="wavData">WAV 데이터</param>
+        /// <param name="clipName">AudioClip 이름</param>
+        /// <returns>변환된 AudioClip 또는 null</returns>
+        private AudioClip WAVToAudioClip(byte[] wavData, string clipName)
+        {
+            // 메인 스레드에서만 사용 가능 - 새로운 방식 사용 권장
+            AudioClipData clipData = ParseWAVData(wavData, clipName);
+            return clipData != null ? CreateAudioClipFromData(clipData) : null;
         }
         
         /// <summary>
@@ -803,16 +841,16 @@ namespace TTSSystem
         /// <param name="data">스트리밍 응답 데이터</param>
         private IEnumerator ProcessAudioDataSequentiallyAsync(StreamingResponseData data)
         {
-            // 백그라운드에서 오디오 처리
-            Task<AudioClip> audioTask = Task.Run(() =>
+            // 백그라운드에서 WAV 데이터 파싱 (AudioClip 생성 제외)
+            Task<AudioClipData> audioTask = Task.Run(() =>
             {
                 try
                 {
                     // Base64 디코딩
                     byte[] audioBytes = Convert.FromBase64String(data.audio_data);
                     
-                    // WAV 바이트를 AudioClip으로 변환
-                    return WAVToAudioClip(audioBytes, $"Sentence_{data.sentence_id}");
+                    // WAV 데이터를 파싱 (AudioClip 생성은 메인 스레드에서)
+                    return ParseWAVData(audioBytes, $"Sentence_{data.sentence_id}");
                 }
                 catch (Exception e)
                 {
@@ -827,16 +865,22 @@ namespace TTSSystem
                 yield return null;
             }
             
-            AudioClip audioClip = audioTask.Result;
+            AudioClipData clipData = audioTask.Result;
             
-            if (audioClip != null)
+            if (clipData != null)
             {
-                // 순차 재생을 위해 버퍼에 저장
-                audioBuffers[data.sentence_id] = audioClip;
-                DebugLog($"[문장 {data.sentence_id}] 오디오 버퍼에 저장됨");
+                // 메인 스레드에서 AudioClip 생성
+                AudioClip audioClip = CreateAudioClipFromData(clipData);
                 
-                // 순차적으로 재생 가능한지 확인하고 재생
-                yield return StartCoroutine(TryPlayNextSequentialAudioAsync());
+                if (audioClip != null)
+                {
+                    // 순차 재생을 위해 버퍼에 저장
+                    audioBuffers[data.sentence_id] = audioClip;
+                    DebugLog($"[문장 {data.sentence_id}] 오디오 버퍼에 저장됨");
+                    
+                    // 순차적으로 재생 가능한지 확인하고 재생
+                    yield return StartCoroutine(TryPlayNextSequentialAudioAsync());
+                }
             }
             
             yield return null;
@@ -921,5 +965,27 @@ namespace TTSSystem
         }
         
         #endregion
+    }
+    
+    /// <summary>
+    /// 파싱된 오디오 데이터를 담는 클래스
+    /// AudioClip 생성을 메인 스레드에서 하기 위해 중간 데이터 저장용
+    /// </summary>
+    public class AudioClipData
+    {
+        /// <summary>AudioClip 이름</summary>
+        public string clipName;
+        
+        /// <summary>오디오 샘플 데이터</summary>
+        public float[] samples;
+        
+        /// <summary>샘플 수</summary>
+        public int sampleCount;
+        
+        /// <summary>채널 수</summary>
+        public int channels;
+        
+        /// <summary>샘플링 레이트</summary>
+        public int sampleRate;
     }
 } 
