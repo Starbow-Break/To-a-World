@@ -611,7 +611,7 @@ namespace TTSSystem
                 isProcessingRequest = true;
                 UnityMainThreadDispatcher.Instance().Enqueue(() => OnRequestStarted?.Invoke());
                 
-                string url = $"{serverUrl}/generate_speech_realtime";
+                string url = $"{serverUrl}/generate_speech_realtime_audio";
                 
                 // 오디오 데이터를 Base64로 인코딩
                 string audioBase64 = System.Convert.ToBase64String(audioData);
