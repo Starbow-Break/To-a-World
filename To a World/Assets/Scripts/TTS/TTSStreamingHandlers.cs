@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Text;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using TTSSystem;
@@ -229,7 +229,7 @@ namespace TTSSystem
     /// 비동기 스트리밍 처리를 위한 개선된 DownloadHandler
     /// 
     /// 특징:
-    /// - Task 기반 비동기 처리
+    /// - UniTask 기반 비동기 처리
     /// - 게임 성능에 미치는 영향 최소화
     /// - 백그라운드에서 데이터 처리
     /// - 메인 스레드 디스패처를 통한 Unity API 호출
@@ -305,9 +305,9 @@ namespace TTSSystem
             // 아직 처리 중이 아니면 비동기 처리 시작
             if (!isProcessing)
             {
-                // Task.Run을 사용해 백그라운드에서 처리
+                // UniTask.Run을 사용해 백그라운드에서 처리
                 // await를 사용하지 않고 Fire-and-Forget 방식으로 실행
-                _ = Task.Run(async () => await ProcessBufferedDataAsync());
+                ProcessBufferedDataAsync().Forget();
             }
             
             return true;
@@ -332,7 +332,7 @@ namespace TTSSystem
         /// 4. 최소한의 지연으로 CPU 사용량 최적화
         /// </summary>
         /// <returns>비동기 작업</returns>
-        private async Task ProcessBufferedDataAsync()
+        private async UniTask ProcessBufferedDataAsync()
         {
             isProcessing = true;
             
@@ -375,7 +375,7 @@ namespace TTSSystem
                 
                 // 1ms 대기로 CPU 사용량 최소화
                 // 너무 빠른 처리로 인한 CPU 과부하 방지
-                await Task.Delay(1);
+                await UniTask.Delay(1);
             }
             
             isProcessing = false;
@@ -436,7 +436,7 @@ namespace TTSSystem
             if (buffer.Length > 0 && !isProcessing)
             {
                 // 비동기로 마지막 처리 실행
-                _ = Task.Run(async () => await ProcessBufferedDataAsync());
+                ProcessBufferedDataAsync().Forget();
             }
         }
         

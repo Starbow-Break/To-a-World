@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using System.IO;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using System.Threading;
 using TTSSystem;
 
@@ -18,7 +18,7 @@ namespace TTSSystem
     /// 주요 기능:
     /// 1. 실시간 텍스트 음성 변환 (스트리밍)
     /// 2. 음성 입력을 통한 대화형 TTS
-    /// 3. 비동기 처리로 게임 성능 최적화
+    /// 3. UniTask 기반 비동기 처리로 게임 성능 최적화
     /// 4. 다중 오디오 소스를 통한 순차 재생
     /// 5. 요청 취소 및 상태 관리
     /// 
@@ -139,7 +139,7 @@ namespace TTSSystem
         /// 백그라운드 작업 대기열
         /// 메인 스레드에서 처리할 작업들을 저장
         /// </summary>
-        private Queue<Task> backgroundTasks = new Queue<Task>();
+        private Queue<UniTask> backgroundTasks = new Queue<UniTask>();
         
         #endregion
         
@@ -322,10 +322,7 @@ namespace TTSSystem
             StopAllAudio();
             
             // 비동기 처리 시작
-            Task.Run(async () =>
-            {
-                await ProcessRealtimeTTSAsync(text, characterName, language, cancellationTokenSource.Token);
-            });
+            ProcessRealtimeTTSAsync(text, characterName, language, cancellationTokenSource.Token).Forget();
         }
         
         /// <summary>
@@ -360,10 +357,7 @@ namespace TTSSystem
             StopAllAudio();
             
             // 비동기 처리 시작
-            Task.Run(async () =>
-            {
-                await ProcessRealtimeTTSWithAudioAsync(audioData, characterName, language, cancellationTokenSource.Token);
-            });
+            ProcessRealtimeTTSWithAudioAsync(audioData, characterName, language, cancellationTokenSource.Token).Forget();
         }
         
         /// <summary>
@@ -564,7 +558,7 @@ namespace TTSSystem
         /// <param name="characterName">캐릭터 이름</param>
         /// <param name="language">언어</param>
         /// <param name="cancellationToken">취소 토큰</param>
-        private async Task ProcessRealtimeTTSAsync(string text, string characterName, string language, CancellationToken cancellationToken)
+        private async UniTask ProcessRealtimeTTSAsync(string text, string characterName, string language, CancellationToken cancellationToken)
         {
             try
             {
@@ -610,7 +604,7 @@ namespace TTSSystem
         /// <param name="characterName">캐릭터 이름</param>
         /// <param name="language">언어</param>
         /// <param name="cancellationToken">취소 토큰</param>
-        private async Task ProcessRealtimeTTSWithAudioAsync(byte[] audioData, string characterName, string language, CancellationToken cancellationToken)
+        private async UniTask ProcessRealtimeTTSWithAudioAsync(byte[] audioData, string characterName, string language, CancellationToken cancellationToken)
         {
             try
             {
@@ -659,7 +653,7 @@ namespace TTSSystem
         /// <param name="url">요청 URL</param>
         /// <param name="jsonData">요청 데이터</param>
         /// <param name="cancellationToken">취소 토큰</param>
-        private async Task ProcessStreamingRequestAsync(string url, string jsonData, CancellationToken cancellationToken)
+        private async UniTask ProcessStreamingRequestAsync(string url, string jsonData, CancellationToken cancellationToken)
         {
             using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
             {
@@ -681,7 +675,7 @@ namespace TTSSystem
                         throw new OperationCanceledException();
                     }
                     
-                    await Task.Delay(50, cancellationToken); // 50ms 대기
+                    await UniTask.Delay(50, cancellationToken: cancellationToken); // 50ms 대기
                 }
                 
                 if (webRequest.result != UnityWebRequest.Result.Success)
@@ -706,7 +700,7 @@ namespace TTSSystem
                 while (backgroundTasks.Count > 0)
                 {
                     var task = backgroundTasks.Dequeue();
-                    if (task != null && !task.IsCompleted)
+                    if (task.Status != UniTaskStatus.Succeeded)
                     {
                         // 태스크가 완료될 때까지 대기하지 않고 다음 프레임으로 넘어감
                         yield return new WaitForEndOfFrame();
@@ -714,11 +708,15 @@ namespace TTSSystem
                     else
                     {
                         // 완료된 태스크 정리
-                        if (task != null && task.IsCompleted)
+                        if (task.Status == UniTaskStatus.Faulted)
                         {
-                            if (task.Exception != null)
+                            try
                             {
-                                DebugLog($"백그라운드 태스크 오류: {task.Exception.Message}");
+                                task.GetAwaiter().GetResult();
+                            }
+                            catch (System.Exception ex)
+                            {
+                                DebugLog($"백그라운드 태스크 오류: {ex.Message}");
                             }
                         }
                     }
@@ -830,19 +828,10 @@ namespace TTSSystem
         /// 오디오 데이터를 순차적으로 처리합니다
         /// </summary>
         /// <param name="data">스트리밍 응답 데이터</param>
-        private IEnumerator ProcessAudioDataSequentially(StreamingResponseData data)
-        {
-            yield return StartCoroutine(ProcessAudioDataSequentiallyAsync(data));
-        }
-        
-        /// <summary>
-        /// 오디오 데이터를 비동기로 순차 처리합니다
-        /// </summary>
-        /// <param name="data">스트리밍 응답 데이터</param>
         private IEnumerator ProcessAudioDataSequentiallyAsync(StreamingResponseData data)
         {
             // 백그라운드에서 WAV 데이터 파싱 (AudioClip 생성 제외)
-            Task<AudioClipData> audioTask = Task.Run(() =>
+            UniTask<AudioClipData> audioTask = UniTask.Run(() =>
             {
                 try
                 {
@@ -860,12 +849,12 @@ namespace TTSSystem
             });
             
             // 태스크 완료 대기 (비동기)
-            while (!audioTask.IsCompleted)
+            while (audioTask.Status == UniTaskStatus.Pending)
             {
                 yield return null;
             }
             
-            AudioClipData clipData = audioTask.Result;
+            AudioClipData clipData = audioTask.GetAwaiter().GetResult();
             
             if (clipData != null)
             {
