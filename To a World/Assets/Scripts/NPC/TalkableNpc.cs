@@ -1,10 +1,10 @@
-using System;
+using TTSSystem;
 using UnityEngine;
 
 public class TalkableNpc : MonoBehaviour, INpc
 {
     [field: SerializeField] 
-    public UnityRealtimeTTSClient Client { get; private set; }
+    public UnityRealtimeTTSClient TTSResultPlayer { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
