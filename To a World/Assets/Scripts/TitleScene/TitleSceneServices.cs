@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public class TitleSceneServices : SceneSingleton<TitleSceneServices>
+namespace TitleScene
 {
+    public class TitleSceneServices : SceneSingleton<TitleSceneServices>
+    {
     
+    }
 }
