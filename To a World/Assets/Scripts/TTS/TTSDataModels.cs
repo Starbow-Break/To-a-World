@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// TTS(Text-to-Speech) 시스템에서 사용하는 데이터 모델들을 정의합니다.
@@ -158,6 +159,17 @@ namespace TTSSystem
             public const string Spanish = "es";
             public const string French = "fr";
             public const string German = "de";
+            
+            public static List<string> GetValues() => new List<string>
+            {
+                English,
+                Korean,
+                Japanese,
+                Chinese,
+                Spanish,
+                French,
+                German
+            };
         }
 
         /// <summary>
@@ -170,6 +182,15 @@ namespace TTSSystem
             public const string CasualFriend = "casual_friend";
             public const string WiseTeacher = "wise_teacher";
             public const string EnergeticHost = "energetic_host";
+
+            public static List<string> GetValues() => new List<string>
+            {
+                FriendlyAssistant,
+                ProfessionalGuide,
+                CasualFriend,
+                WiseTeacher,
+                EnergeticHost
+            };
         }
 
         /// <summary>

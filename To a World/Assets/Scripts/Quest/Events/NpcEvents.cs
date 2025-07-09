@@ -2,9 +2,9 @@
 
 public class NpcEvents : IEvents
 {
-    public event Action<INpc> OnEnteredNpc;
-    public void EnteredNpc(INpc npc) => OnEnteredNpc?.Invoke(npc);
+    public event Action<Npc> OnEnteredNpc;
+    public void EnteredNpc(Npc npc) => OnEnteredNpc?.Invoke(npc);
     
-    public event Action<INpc> OnExitedNpc;
-    public void ExitedNpc(INpc npc) => OnExitedNpc?.Invoke(npc);
+    public event Action<Npc> OnExitedNpc;
+    public void ExitedNpc(Npc npc) => OnExitedNpc?.Invoke(npc);
 }
