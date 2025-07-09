@@ -5,7 +5,8 @@ namespace ManagerScene
         None = -1,
         ManagerScene = 0,
         AirportScene = 1,
-        DevAirportScene = 2,
-        DevPhoneScene = 3,
+        AirplaneScene = 2,
+        HotelScene = 3,
+        StatueOfLibertyScene = 4,
     }
 }
