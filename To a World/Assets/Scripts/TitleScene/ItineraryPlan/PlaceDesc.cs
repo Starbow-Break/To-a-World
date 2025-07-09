@@ -8,5 +8,6 @@ namespace TitleScene.ItineraryPlan
         public string id;
         public string placeName;
         public Sprite sprite;
+        public string sceneName;
     }
 }
