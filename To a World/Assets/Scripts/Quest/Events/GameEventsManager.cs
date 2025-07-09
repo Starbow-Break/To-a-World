@@ -8,7 +8,7 @@ public class GameEventsManager : MonoBehaviour
 
     private List<IEvents> _eventsList = new();
     
-    public static T GetEvents<T>() where T : IEvents 
+    public static T GetEvents<T>() where T : IEvents
         => Instance.GetEventsInternal<T>();
 
     private void Awake()
@@ -22,6 +22,8 @@ public class GameEventsManager : MonoBehaviour
         _eventsList.Add(new QuestEvents());
         _eventsList.Add(new CoinEvents());
         _eventsList.Add(new PlaceEvents());
+        _eventsList.Add(new NpcEvents());
+        _eventsList.Add(new SeatBeltEvents());
     }
     
     private T GetEventsInternal<T>() where T : IEvents
