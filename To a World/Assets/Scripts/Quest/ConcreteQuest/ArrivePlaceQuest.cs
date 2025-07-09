@@ -4,25 +4,28 @@ using UnityEngine;
 public class ArrivePlaceQuest : AQuest
 {
     [SerializeField] private PlaceTargetPointRegistry placeTargetPointRegistry;
-    [SerializeField] private string _targetPointId;
     
+    private string _targetPointId;
     private PlaceTargetPoint _targetPoint;
-
-    private void Awake()
-    {
-        _targetPoint = placeTargetPointRegistry.Get(_targetPointId);
-    }
     
     private void OnEnable()
     {
         GameEventsManager.GetEvents<PlaceEvents>().OnArrive += OnArrive;
-        _targetPoint.gameObject.SetActive(true);
+
+        if (_targetPoint != null)
+        {
+            _targetPoint.gameObject.SetActive(true); 
+        }
     }
 
     private void OnDisable()
     {
         GameEventsManager.GetEvents<PlaceEvents>().OnArrive -= OnArrive;
-        _targetPoint.gameObject.SetActive(false);
+        
+        if (_targetPoint != null)
+        {
+            _targetPoint.gameObject.SetActive(false); 
+        }
     }
     
     public override void Initialize(AQuestParams questParams)
@@ -31,6 +34,7 @@ public class ArrivePlaceQuest : AQuest
         if (param != null)
         {
             _targetPointId = param.TargetPlaceID;
+            _targetPoint = placeTargetPointRegistry.Get(_targetPointId);
         }
     }
 
