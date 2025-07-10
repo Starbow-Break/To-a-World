@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5861086722162214817}
   - component: {fileID: 8475832422018351560}
   m_Layer: 0
-  m_Name: QuestStepPrefabRegistry
+  m_Name: QuestPrefabRegistry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,6 +49,10 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 5684772968950960958, guid: d2b40d573d80442458d21e6e88942d97, type: 3}
   - <Type>k__BackingField: 1
     <Prefab>k__BackingField: {fileID: 2879045777018723807, guid: 79c9624311350ee47bdd78092b294fb4, type: 3}
+  - <Type>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 2879045777018723807, guid: ec5adb89c3e4f3a4cb58b4b944878708, type: 3}
+  - <Type>k__BackingField: 3
+    <Prefab>k__BackingField: {fileID: 3899223640598964296, guid: 5d1734218c58cec418588b8c42455f9b, type: 3}
 --- !u!1 &8813454404056177701
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +78,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8813454404056177701}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
