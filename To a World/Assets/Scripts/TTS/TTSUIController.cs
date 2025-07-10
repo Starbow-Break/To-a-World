@@ -28,7 +28,7 @@ using TTSSystem;
 /// 
 /// // 언어 및 캐릭터 설정
 /// uiController.SetLanguage(TTSConstants.Languages.Korean);
-/// uiController.SetCharacter(TTSConstants.Characters.FriendlyAssistant);
+/// uiController.SetCharacter(TTSConstants.Character.FriendlyAssistant);
 /// ```
 /// </summary>
 public class TTSUIController : MonoBehaviour
@@ -181,6 +181,8 @@ public class TTSUIController : MonoBehaviour
     /// <summary>녹음 시작 오류 메시지</summary>
     private string recordingStartError = "";
 
+    private NpcInfo currentNpc = null;
+
     #endregion
     
     #region Unity Lifecycle
@@ -194,6 +196,18 @@ public class TTSUIController : MonoBehaviour
         InitializeUI();
         SetupEventListeners();
         ValidateReferences();
+    }
+
+    private void OnEnable()
+    {
+        GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc += OnEnteredNpc;
+        GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc += OnExitedNpc;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= OnEnteredNpc;
+        GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= OnExitedNpc;
     }
     
     /// <summary>
@@ -415,7 +429,8 @@ public class TTSUIController : MonoBehaviour
             UpdateStatusText("이미 처리 중입니다", Color.yellow);
             return;
         }
-        
+
+        if (currentNpc == null) return;
         StartRecording();
     }
     
@@ -542,6 +557,26 @@ public class TTSUIController : MonoBehaviour
         ResetUIState();
         
         Debug.LogError($"[TTSUIController] TTS 오류: {errorMessage}");
+    }
+    
+    #endregion
+    
+    #region Npc Handlers
+
+    private void OnEnteredNpc(Npc npc)
+    {
+        if (currentNpc == null || npc.Info != currentNpc)
+        {
+            currentNpc = npc.Info;
+        }
+    }
+
+    private void OnExitedNpc(Npc npc)
+    {
+        if (npc.Info == currentNpc)
+        {
+            currentNpc = null;
+        }
     }
     
     #endregion
@@ -761,6 +796,7 @@ private void StartRecording()
     
     // 비동기로 녹음 시작하여 렉 방지
     StartCoroutine(StartRecordingCoroutine());
+    OnStartRecording?.Invoke();
 }
 
 /// <summary>
@@ -926,6 +962,7 @@ private void StopRecording()
         return;
         
     StartCoroutine(StopRecordingCoroutine());
+    OnStopRecording?.Invoke();
 }
 
 /// <summary>
@@ -1012,8 +1049,8 @@ private IEnumerator StopRecordingCoroutine()
         if (wavData != null && wavData.Length > 0)
         {
             // 선택된 캐릭터와 언어 가져오기
-            string selectedCharacter = GetSelectedCharacter();
-            string selectedLanguage = GetSelectedLanguage();
+            string selectedCharacter = currentNpc.Character;
+            string selectedLanguage = currentNpc.Language;
             
             // TTS 클라이언트로 음성 데이터 전송
             if (ttsClient != null)
