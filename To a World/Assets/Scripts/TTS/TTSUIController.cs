@@ -686,7 +686,19 @@ private void InitializeMicrophone()
 {
     if (Microphone.devices.Length > 0)
     {
+#if UNITY_EDITOR
+        foreach (var microphone in Microphone.devices)
+        {
+            if (microphone.Contains("Oculus") || microphone.Contains("Quest"))
+            {
+                microphoneDevice = microphone;
+                break;
+            }
+        }
+#else
         microphoneDevice = Microphone.devices[0];
+#endif
+        
         UpdateStatusText($"마이크 준비됨: {microphoneDevice}", Color.white);
         Debug.Log($"[TTSUIController] 마이크 장치 초기화: {microphoneDevice}");
         
