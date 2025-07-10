@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: SeatBeltQuest
   <Type>k__BackingField: 2
-  <Param>k__BackingField: {fileID: 0}
+  <Param>k__BackingField: {fileID: 11400000, guid: 14946af1d382f6342a8029ebf85b40b1, type: 2}
   <Name>k__BackingField: asdasd
   <Description>k__BackingField: asdasda
   <questPrerequisites>k__BackingField: []

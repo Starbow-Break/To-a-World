@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-1000)]
 public class PlaceTargetPointRegistry : MonoBehaviour, IRegistry<string, PlaceTargetPoint>
 {
     [SerializeField] private List<PlaceTargetPoint> _initTargetPoints = new();
     
-    private Dictionary<string, PlaceTargetPoint> _container;
+    private Dictionary<string, PlaceTargetPoint> _container = new();
 
     private void Awake()
     {
-        _container = new();
-        
         foreach (var targetPoint in _initTargetPoints)
         {
             Register(targetPoint.ID, targetPoint);
@@ -35,6 +34,10 @@ public class PlaceTargetPointRegistry : MonoBehaviour, IRegistry<string, PlaceTa
 
     public PlaceTargetPoint Get(string placeId)
     {
-        return _container[placeId];
+        if (_container.TryGetValue(placeId, out var placeTargetPoint))
+        {
+            return placeTargetPoint;
+        }
+        return null;
     }
 }

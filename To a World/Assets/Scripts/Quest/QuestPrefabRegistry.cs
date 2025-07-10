@@ -2,15 +2,16 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct QuestStepPrefabRegistryEntity
+public struct QuestPrefabRegistryEntity
 {
     [field: SerializeField] public EQuestType Type { get; private set; }
     [field: SerializeField] public GameObject Prefab { get; private set; }
 }
 
+[DefaultExecutionOrder(-1000)]
 public class QuestPrefabRegistry: SceneSingleton<QuestPrefabRegistry>, IRegistry<EQuestType, GameObject>
 {
-    [SerializeField] private List<QuestStepPrefabRegistryEntity> _initEntity;
+    [SerializeField] private List<QuestPrefabRegistryEntity> _initEntity;
     
     private Dictionary<EQuestType, GameObject> _container;
 
