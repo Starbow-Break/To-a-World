@@ -7,6 +7,8 @@ namespace ManagerScene
 {
     public class SceneController : MonoBehaviour
     {
+        [SerializeField] private GameObject _fadeCanvas;
+        
         private ESceneIndex _currentScene = ESceneIndex.None;
         private readonly List<AsyncOperation> _loadingOperations = new List<AsyncOperation>();
 
@@ -19,6 +21,7 @@ namespace ManagerScene
         
             _loadingOperations.Add(SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive));
             StartCoroutine(GetSceneLoading(scene));
+            //_fadeCanvas.SetActive(true);
         }
 
         private IEnumerator GetSceneLoading(ESceneIndex scene)
@@ -31,6 +34,7 @@ namespace ManagerScene
                 }
             }
         
+            //_fadeCanvas.SetActive(false);
             yield return new WaitForSeconds(FadeDuration);
             _currentScene = scene;
         }
