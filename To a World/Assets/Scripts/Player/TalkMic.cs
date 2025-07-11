@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Hands.Gestures;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GestureMic : MonoBehaviour
 {
+    public bool IsActive { get; private set; }
+    
     [SerializeField] private StaticHandGesture _handGesture;
     [SerializeField] private TTSUIController _ttsSender;
 
@@ -12,7 +15,11 @@ public class GestureMic : MonoBehaviour
     
     private bool _gestureFlag = false;
     private bool _recordingFlag = false;
-    private bool _latestValue = false;
+
+    private void Start()
+    {
+        SetActiveMic(false);
+    }
 
     private void OnEnable()
     {
@@ -35,15 +42,18 @@ public class GestureMic : MonoBehaviour
     private void Update()
     {
         bool value = _gestureFlag || _recordingFlag;
-        if (_latestValue != value)
+        if (IsActive != value)
         {
-            Debug.Log($"{_gestureFlag} {_recordingFlag}");
-            
-            _latestValue = value;
-            foreach (GameObject obj in _objects)
-            {
-                obj.SetActive(value);
-            }
+            SetActiveMic(value);
+        }
+    }
+
+    private void SetActiveMic(bool active)
+    {
+        IsActive = active;
+        foreach (GameObject obj in _objects)
+        { 
+            obj.SetActive(IsActive);
         }
     }
     
