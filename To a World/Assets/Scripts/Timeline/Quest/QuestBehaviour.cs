@@ -19,7 +19,7 @@ public class QuestBehaviour : PlayableBehaviour
     {
         GameEventsManager.GetEvents<QuestEvents>().StartQuest(questId);
 
-        if (waitForCompletion && isSubscribed)
+        if (waitForCompletion && !isSubscribed)
         {
             GameEventsManager.GetEvents<QuestEvents>().OnFinishQuest += OnFinishQuest;
             director.Pause();

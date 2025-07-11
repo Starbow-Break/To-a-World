@@ -1,3 +1,4 @@
+using ManagerScene;
 using UnityEngine;
 
 namespace TitleScene
@@ -17,6 +18,16 @@ namespace TitleScene
                 ui.ActOnClose += ShowNextUI;
             }
         }
+       
+        private void OnEnable()
+        {
+            TitleSceneServices.Instance.LoadingScreen.ActOnFadeOutEnd += LoadNextScene;
+        }
+
+        private void OnDisable()
+        {
+            TitleSceneServices.Instance.LoadingScreen.ActOnFadeOutEnd -= LoadNextScene;
+        }
     
         private void Start()
         {
@@ -29,11 +40,16 @@ namespace TitleScene
 
             if (_currentIndex >= _showableUIs.Length)
             {
-                //끝
+                TitleSceneServices.Instance.LoadingScreen.FadeOut();
                 return;
             }
         
             _showableUIs[_currentIndex].Show();
+        }
+        
+        private void LoadNextScene()
+        {
+            ManagerSceneServices.SceneController.LoadScene(ESceneIndex.DevAirplaneScene);
         }
     }
 }
