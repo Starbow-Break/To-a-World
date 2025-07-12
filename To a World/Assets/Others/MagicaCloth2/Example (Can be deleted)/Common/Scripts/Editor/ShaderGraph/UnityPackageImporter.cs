@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-namespace MagicaCloth2UPMImporterShaderGraph
+namespace MagicaCloth2UPMImporterShader
 {
     /// <summary>
     /// 必要なUnityPackageの自動インストール

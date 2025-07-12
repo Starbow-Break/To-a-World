@@ -2,15 +2,7 @@
 
 public class Npc : MonoBehaviour
 {
-    public NpcInfo Info { get; private set; }
-
-    [SerializeField] private string _language;
-    [SerializeField] private string _characters;
-    
-    protected void Awake()
-    {
-        Info = new NpcInfo(_language, _characters);
-    }
+    [field: SerializeField] public NpcInfo Info { get; private set; }
     
     protected void OnTriggerEnter(Collider other)
     {
