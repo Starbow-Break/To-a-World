@@ -1,36 +1,44 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class BeltBuckle : MonoBehaviour
 {
-    [SerializeField] private Transform _tabJointPoint;
-    
-    private Rigidbody _rb;
-    private XRGrabInteractable _grabInteractable;
-    private FixedJoint _joint;
+    [SerializeField] private XRSocketInteractor _socketInteractor;
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
-        _grabInteractable = GetComponent<XRGrabInteractable>();
-        _joint = GetComponent<FixedJoint>();
+        if (_socketInteractor == null)
+        {
+            _socketInteractor = GetComponentInChildren<XRSocketInteractor>();
+
+            if (_socketInteractor == null)
+            {
+                Debug.LogError("BeltBuckle needs a XRSocketInteractor");
+            }
+        }
     }
 
-    public void ConnectTab(BeltTab tab)
+    public void AddListenerOnSelectEntered(UnityAction<SelectEnterEventArgs> action)
     {
-        var tabRigidBody = tab.GetComponent<Rigidbody>();
-        var tabGrabInteractable = tab.GetComponent<XRGrabInteractable>();
-
-        _rb.isKinematic = false;
-        tabRigidBody.isKinematic = false;
-        
-        tab.transform.position = _tabJointPoint.position;
-        tab.transform.rotation = _tabJointPoint.rotation;
-        
-        _joint.connectedBody = tabRigidBody;
-
-        _grabInteractable.enabled = false;
-        tabGrabInteractable.enabled = false;
+        _socketInteractor.selectEntered.AddListener(action);
+    }
+    
+    public void AddListenerOnSelectExited(UnityAction<SelectExitEventArgs> action)
+    {
+        _socketInteractor.selectExited.AddListener(action);
+    }
+    
+    public void RemoveAllListenersOnSelectEntered()
+    {
+        _socketInteractor.selectEntered.RemoveAllListeners();
+    }
+    
+    public void RemoveAllListenersOnSelectExited()
+    {
+        _socketInteractor.selectExited.RemoveAllListeners();
     }
 }

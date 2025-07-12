@@ -877,8 +877,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
+  seriTryStartRecordingnent:
   - component: {fileID: 692741614}
   - component: {fileID: 692741619}
   - component: {fileID: 692741618}
@@ -895,8 +894,7 @@ GameObject:
 --- !u!4 &692741614
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID:TryStopRecordingfileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692741613}
   serializedVersion: 2
