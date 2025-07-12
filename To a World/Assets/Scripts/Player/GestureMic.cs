@@ -13,8 +13,11 @@ public class GestureMic : MonoBehaviour
 
     [SerializeField] private List<GameObject> _objects;
     
+    private bool _wakeUpFlag = true;
     private bool _gestureFlag = false;
     private bool _recordingFlag = false;
+    
+    private bool _nextAcviveValue => _wakeUpFlag && (_gestureFlag || _recordingFlag);
 
     private void Start()
     {
@@ -41,12 +44,14 @@ public class GestureMic : MonoBehaviour
 
     private void Update()
     {
-        bool value = _gestureFlag || _recordingFlag;
-        if (IsActive != value)
+        if (IsActive != _nextAcviveValue)
         {
-            SetActiveMic(value);
+            SetActiveMic(_nextAcviveValue);
         }
     }
+
+    public void Sleep() => _wakeUpFlag = false;
+    public void WakeUp() => _wakeUpFlag = true;
 
     private void SetActiveMic(bool active)
     {
