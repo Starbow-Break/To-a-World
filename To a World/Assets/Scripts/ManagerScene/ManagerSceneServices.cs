@@ -5,10 +5,13 @@ namespace ManagerScene
 {
     public class ManagerSceneServices : SceneSingleton<ManagerSceneServices>
     {
-        [SerializeField] SceneController _sceneController;
-        public static SceneController SceneController => Instance._sceneController;
+        [SerializeField] SceneController sceneController;
+        public static SceneController SceneController => Instance.sceneController;
         
-        [SerializeField] private DataManager _dataManager;
-        public static DataManager DataManager => Instance._dataManager;
+        [SerializeField] private DataManager dataManager;
+        public static DataManager DataManager => Instance.dataManager;
+        
+        [SerializeField] private GameObject loadingScreen;
+        public static GameObject LoadingScreen => Instance.loadingScreen;
     }
 }

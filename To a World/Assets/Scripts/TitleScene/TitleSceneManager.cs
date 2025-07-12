@@ -21,12 +21,12 @@ namespace TitleScene
        
         private void OnEnable()
         {
-            TitleSceneServices.Instance.LoadingScreen.ActOnFadeOutEnd += LoadNextScene;
+            TitleSceneServices.LoadingScreen.ActOnFadeOutEnd += LoadNextScene;
         }
 
         private void OnDisable()
         {
-            TitleSceneServices.Instance.LoadingScreen.ActOnFadeOutEnd -= LoadNextScene;
+            TitleSceneServices.LoadingScreen.ActOnFadeOutEnd -= LoadNextScene;
         }
     
         private void Start()
@@ -40,7 +40,7 @@ namespace TitleScene
 
             if (_currentIndex >= _showableUIs.Length)
             {
-                TitleSceneServices.Instance.LoadingScreen.FadeOut();
+                TitleSceneServices.LoadingScreen.FadeOut();
                 return;
             }
         

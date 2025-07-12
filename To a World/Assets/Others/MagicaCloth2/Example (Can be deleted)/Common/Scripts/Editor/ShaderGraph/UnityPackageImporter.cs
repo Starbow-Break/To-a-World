@@ -20,7 +20,7 @@ namespace MagicaCloth2UPMImporterShader
 
         public static bool Install(string id)
         {
-            Debug.Log($"Install...{id}");
+            //Debug.Log($"Install...{id}");
             var request = Client.Add(id);
             while (!request.IsCompleted) { };
             if (request.Error != null) Debug.LogError(request.Error.message);
