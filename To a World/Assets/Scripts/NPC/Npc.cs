@@ -13,7 +13,7 @@ public class Npc : MonoBehaviour
 
             if (_interactionCollider == null)
             {
-                Debug.LogError("No Collider attached to Npc. Npc can't interact player.");
+                Debug.LogWarning("No Collider attached to Npc. Npc can't interact player.");
             }
         }
     }
@@ -26,6 +26,11 @@ public class Npc : MonoBehaviour
     public void WakeUp()
     {
         _interactionCollider.enabled = true;
+    }
+
+    public void SpeakText(string text)
+    {
+        //  TODO : 인자로 받은 문자열 그대로 말해주는 로직 구성
     }
     
     protected void OnTriggerEnter(Collider other)
