@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class TimelineSequencer : MonoBehaviour
 {
     [SerializeField] private PlayableDirector[] directors;
-    [SerializeField] private float delay = 0.0f;
+    public event Action OnSequenceFinished;
     
     private int _currentIndex = 0;
     
@@ -38,7 +38,8 @@ public class TimelineSequencer : MonoBehaviour
         }
         else
         {
-            Debug.Log("모든 타임라인 재생 완료");
+            //모든타임라인 재생완료
+            OnSequenceFinished?.Invoke();
         }
     }
 }

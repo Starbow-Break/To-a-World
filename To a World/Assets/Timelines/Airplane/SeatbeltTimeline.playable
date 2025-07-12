@@ -34,7 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155c48a949cd7c8469df2dbde392ffa0, type: 3}
   m_Name: QuestClip
   m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: 5e85496af3776414faff922be566a200, type: 2}
+  quest: {fileID: 11400000, guid: 867f88059ae595b4fa45f14913006e04, type: 2}
   waitForCompletion: 1
 --- !u!114 &-4228100433060605852
 MonoBehaviour:
