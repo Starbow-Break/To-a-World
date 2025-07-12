@@ -137,6 +137,10 @@ public class TTSUIController : MonoBehaviour
     [Tooltip("최대 녹음 시간 (초)")]
     public int maxRecordingTime = 30;
     
+    [SerializeField, Min(0.1f)] 
+    [Tooltip("다음 녹화 쿨타임")]
+    public float cooldown;
+    
     #endregion
     
     #region Private Fields
@@ -182,6 +186,8 @@ public class TTSUIController : MonoBehaviour
     private string recordingStartError = "";
 
     private NpcInfo currentNpc = null;
+
+    private float lastRecordingTime = 0f;
 
     #endregion
     
@@ -337,10 +343,10 @@ public class TTSUIController : MonoBehaviour
             stopButton.onClick.AddListener(OnStopButtonClicked);
             
         if (recordStartButton != null)
-            recordStartButton.onClick.AddListener(OnRecordStartButtonClicked);
+            recordStartButton.onClick.AddListener(TryStartRecording);
             
         if (recordStopButton != null)
-            recordStopButton.onClick.AddListener(OnRecordStopButtonClicked);
+            recordStopButton.onClick.AddListener(TryStopRecording);
     }
     
     /// <summary>
@@ -422,8 +428,11 @@ public class TTSUIController : MonoBehaviour
     /// <summary>
     /// 녹음 시작 버튼 클릭 이벤트 처리
     /// </summary>
-    public void OnRecordStartButtonClicked()
+    public void TryStartRecording()
     {
+        if (Time.timeSinceLevelLoad - lastRecordingTime < cooldown) 
+            return;
+        
         if (isRecording || isGenerating)
         {
             UpdateStatusText("이미 처리 중입니다", Color.yellow);
@@ -435,14 +444,25 @@ public class TTSUIController : MonoBehaviour
     }
     
     /// <summary>
-    /// 녹음 중지 버튼 클릭 이벤트 처리
+    /// 녹음 중지 버튼 클릭 이벤트 처리 (서버에 결과 전송)
     /// </summary>
-    public void OnRecordStopButtonClicked()
+    public void TryStopRecording()
     {
         if (!isRecording)
             return;
             
         StopRecording();
+    }
+    
+    /// <summary>
+    /// 녹음 중지 버튼 클릭 이벤트 처리 (서버에 결과 전송하지 않음)
+    /// </summary>
+    public void TryStopRecordingAndDontSend()
+    {
+        if (!isRecording)
+            return;
+            
+        StopRecordingAndDontSend();
     }
     
     #endregion
@@ -966,6 +986,17 @@ private IEnumerator StartActualRecordingCoroutine()
 }
 
 /// <summary>
+/// 녹음을 중지합니다. 결과를 서버에 보내지 않습니다.
+/// </summary>
+private void StopRecordingAndDontSend()
+{
+    if (!isRecording)
+        return;
+    
+    OnStopRecording?.Invoke();
+}
+
+/// <summary>
 /// 녹음을 중지합니다 (안전한 버전)
 /// </summary>
 private void StopRecording()
@@ -975,6 +1006,7 @@ private void StopRecording()
         
     StartCoroutine(StopRecordingCoroutine());
     OnStopRecording?.Invoke();
+    lastRecordingTime = Time.timeSinceLevelLoad;
 }
 
 /// <summary>
