@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
-  m_Name: NpcQuestSO
+  m_Name: NpcQuest_OrderPizza
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: NpcQuestSO
+  <ID>k__BackingField: NpcQuest_OrderPizza
   <Type>k__BackingField: 3
   <Param>k__BackingField: {fileID: 11400000, guid: 0be1a3eb461acce4f84f5f4ad2c3037d, type: 2}
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: "\uD53C\uC790 \uC8FC\uBB38"
+  <Description>k__BackingField: "\uD53C\uC790\uB97C \uC8FC\uBB38\uD558\uC138\uC694"
   <questPrerequisites>k__BackingField: []

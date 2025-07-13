@@ -6,5 +6,6 @@
 
 public class NpcQuestParams : AQuestParams
 {
-    
+    [field: SerializeField] 
+    public string CompletionCondition { get; private set; }
 }

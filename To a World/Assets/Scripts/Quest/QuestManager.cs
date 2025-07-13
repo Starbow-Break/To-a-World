@@ -106,7 +106,7 @@ public class QuestManager : SceneSingleton<QuestManager>
         return idToQuestMap;
     }
 
-    private AQuest GetQuestById(string id)
+    public AQuest GetQuestById(string id)
     {
         var quest = _questMap[id];
         
