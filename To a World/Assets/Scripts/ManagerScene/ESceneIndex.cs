@@ -4,8 +4,9 @@ namespace ManagerScene
     {
         None = -1,
         ManagerScene = 0,
-        AirportScene = 1,
-        AirplaneScene = 2,
-        DevAirplaneScene = 3,
+        TitleScene = 1,
+        AirportScene = 2,
+        AirplaneScene = 3,
+        DevAirplaneScene = 4,
     }
 }

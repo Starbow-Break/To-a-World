@@ -7,13 +7,11 @@ namespace ManagerScene
 {
     public class SceneController : MonoBehaviour
     {
-        [SerializeField] private GameObject _fadeCanvas;
-        
         private ESceneIndex _currentScene = ESceneIndex.None;
         private readonly List<AsyncOperation> _loadingOperations = new List<AsyncOperation>();
 
         private const float FadeDuration = 0.3f;
-
+        
         public void LoadScene(ESceneIndex scene)
         {
             if(_currentScene != ESceneIndex.None)
@@ -21,9 +19,13 @@ namespace ManagerScene
         
             _loadingOperations.Add(SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive));
             StartCoroutine(GetSceneLoading(scene));
-            //_fadeCanvas.SetActive(true);
         }
 
+        public void SetCurrentScene(ESceneIndex scene)
+        {
+            _currentScene = scene;
+        }
+        
         private IEnumerator GetSceneLoading(ESceneIndex scene)
         {
             foreach (var t in _loadingOperations)
@@ -34,7 +36,6 @@ namespace ManagerScene
                 }
             }
         
-            //_fadeCanvas.SetActive(false);
             yield return new WaitForSeconds(FadeDuration);
             _currentScene = scene;
         }

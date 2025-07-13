@@ -10,8 +10,5 @@ namespace ManagerScene
         
         [SerializeField] private DataManager dataManager;
         public static DataManager DataManager => Instance.dataManager;
-        
-        [SerializeField] private GameObject loadingScreen;
-        public static GameObject LoadingScreen => Instance.loadingScreen;
     }
 }

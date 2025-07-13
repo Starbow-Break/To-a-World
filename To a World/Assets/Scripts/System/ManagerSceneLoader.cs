@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [DefaultExecutionOrder(-1000)]
 public class ManagerSceneLoader : MonoBehaviour
 {
+    [SerializeField] private ESceneIndex currentScene;
     private const ESceneIndex ManagerSceneIndex = ESceneIndex.ManagerScene;
 
     private void Awake()

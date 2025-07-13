@@ -5,8 +5,6 @@ public class Npc : MonoBehaviour
 {
     [field: SerializeField] public NpcInfo Info { get; private set; }
     [SerializeField] private Collider _interactionCollider;
-
-    private bool _playerTriggered = false;
     
     private void Awake()
     {
@@ -31,11 +29,6 @@ public class Npc : MonoBehaviour
         GameEventsManager.GetEvents<QuestEvents>().OnStartQuest -= SetChatManagerQuestData;
     }
 
-    private void Start()
-    {
-        GameEventsManager.GetEvents<QuestEvents>().StartQuest("NpcQuest_OrderPizza");
-    }
-
     public void Sleep()
     {
         _interactionCollider.enabled = false;
@@ -47,11 +40,8 @@ public class Npc : MonoBehaviour
     }
 
     public void SpeakText(string text)
-    {
-        if (_playerTriggered)
-        {
-            NPCChatSystem.NPCChatManager.SendTextToNPC(text);
-        }
+    { 
+        NPCChatSystem.NPCChatManager.SendTextToNPC(text);
     }
 
     private void SetChatManagerQuestData(string questId)
@@ -72,7 +62,6 @@ public class Npc : MonoBehaviour
     {
         if (other.CompareTag(Constants.PlayerTag))
         {
-            _playerTriggered = true;
             GameEventsManager.GetEvents<NpcEvents>().EnteredNpc(this);
         }
     }
@@ -81,7 +70,6 @@ public class Npc : MonoBehaviour
     {
         if (other.CompareTag(Constants.PlayerTag))
         {
-            _playerTriggered = false;
             GameEventsManager.GetEvents<NpcEvents>().ExitedNpc(this);
         }
     }
