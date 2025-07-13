@@ -5,6 +5,8 @@ public class Npc : MonoBehaviour
 {
     [field: SerializeField] public NpcInfo Info { get; private set; }
     [SerializeField] private Collider _interactionCollider;
+
+    private bool _playerTriggered = false;
     
     private void Awake()
     {
@@ -46,7 +48,10 @@ public class Npc : MonoBehaviour
 
     public void SpeakText(string text)
     {
-        //  TODO : 인자로 받은 문자열 그대로 말해주는 로직 구성
+        if (_playerTriggered)
+        {
+            NPCChatSystem.NPCChatManager.SendTextToNPC(text);
+        }
     }
 
     private void SetChatManagerQuestData(string questId)
@@ -67,6 +72,7 @@ public class Npc : MonoBehaviour
     {
         if (other.CompareTag(Constants.PlayerTag))
         {
+            _playerTriggered = true;
             GameEventsManager.GetEvents<NpcEvents>().EnteredNpc(this);
         }
     }
@@ -75,6 +81,7 @@ public class Npc : MonoBehaviour
     {
         if (other.CompareTag(Constants.PlayerTag))
         {
+            _playerTriggered = false;
             GameEventsManager.GetEvents<NpcEvents>().ExitedNpc(this);
         }
     }
