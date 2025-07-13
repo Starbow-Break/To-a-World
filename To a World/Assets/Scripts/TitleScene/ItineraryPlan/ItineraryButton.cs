@@ -6,17 +6,16 @@ namespace TitleScene.ItineraryPlan
 {
     public class ItineraryButton : MonoBehaviour
     {
-        [SerializeField] private TMP_Text placeNameText;
         [SerializeField] private Image placeImage;
         [SerializeField] private Button button;
         
-        public PlaceDesc? PlaceDescOrNull { get; private set; } = null;
+        public bool IsInitialized { get; private set;}
         public Button Button => button;
-        public void SetButton(PlaceDesc placeDesc)
+        public void SetButton(Sprite sprite)
         {
-            PlaceDescOrNull = placeDesc;
-            placeNameText.text = placeDesc.placeName;
-            placeImage.sprite = placeDesc.sprite;
+            placeImage.gameObject.SetActive(true);
+            placeImage.sprite = sprite;
+            IsInitialized = true;
         }
         
     }

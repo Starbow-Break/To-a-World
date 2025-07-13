@@ -11,11 +11,9 @@ namespace TitleScene.ItineraryPlan
         [SerializeField] private Image image;
         [SerializeField] private TMP_Text nameText;
     
-        public void SetButton(PlaceDesc placeDesc, Action<PlaceDesc> onClick)
+        public void SetButton(Action<Sprite> onClick)
         {
-            button.image.sprite = placeDesc.sprite;
-            nameText.text = placeDesc.placeName;
-            button.onClick.AddListener(() => onClick.Invoke(placeDesc));
+            button.onClick.AddListener(() => onClick.Invoke(image.sprite));
         }
     }
 }

@@ -9,7 +9,8 @@ namespace TitleScene
         private void Awake()
         {
             updater.SubmitButton.onClick.AddListener(Submit);
-            updater.RadioButtonGroup.OnValueChanged += ToggleSubmitButton;
+
+            //updater.RadioButtonGroup.OnValueChanged += ToggleSubmitButton;
         }
         
         private void Submit()
@@ -21,7 +22,7 @@ namespace TitleScene
         public override void Show()
         {
             updater.gameObject.SetActive(true);
-            updater.SubmitButton.gameObject.SetActive(false);
+            updater.SubmitButton.gameObject.SetActive(true);
         }
         
         private void ToggleSubmitButton(int obj)

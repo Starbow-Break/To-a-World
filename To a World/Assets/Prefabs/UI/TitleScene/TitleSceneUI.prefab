@@ -148,8 +148,12 @@ MonoBehaviour:
   submitButton: {fileID: 7169933535578972687}
   addButton: {fileID: 5478921527585380902}
   removeButton: {fileID: 1093781725846022003}
-  placeList: {fileID: 8104232036493242907}
+  itinerarySelectWindows: []
+  nextItineraryButton: {fileID: 0}
+  previousItineraryButton: {fileID: 0}
   itineraryPlanContent: {fileID: 1930005839121174069}
+  itinerarySelectWindowBackground: {fileID: 0}
+  itinerarySelectWindowTitle: {fileID: 0}
 --- !u!1 &193802229173623503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,8 +1075,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updater: {fileID: 8382706534706570688}
-  table: {fileID: 11400000, guid: 1eee6d782d327344aa6c1b8b55a6f594, type: 2}
-  placeButtonPrefab: {fileID: 684938543992418549, guid: 8f49228d83e5d3a45bdc2f6ee3eb0b3f, type: 3}
   itineraryButtonPrefab: {fileID: 2999276732221113430, guid: e3dd4798936c3254e8b65c1e4081ce83, type: 3}
 --- !u!1 &4196418545159215351
 GameObject:
@@ -3383,16 +3385,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.060900003
       objectReference: {fileID: 0}
     - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 1.1683999
       objectReference: {fileID: 0}
     - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.93
+      value: 1.5350001
       objectReference: {fileID: 0}
     - target: {fileID: 7339749990365776477, guid: 1aaf2dceef22d1147bfc70d706ddd188, type: 3}
       propertyPath: m_LocalRotation.w

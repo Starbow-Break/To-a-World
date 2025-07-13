@@ -7,28 +7,32 @@ namespace TitleScene.ItineraryPlan
     public class ItineraryPlanSetter : AShowableUI
     {
         [SerializeField] private ItineraryPlanUpdater updater;
-        [SerializeField] private PlaceTable table;
-        [SerializeField] private PlaceButton placeButtonPrefab;
         [SerializeField] private ItineraryButton itineraryButtonPrefab;
 
         [CanBeNull] private ItineraryButton _selectedItineraryButtonOrNull = null;
         
-        private List<ItineraryButton> _itineraryButtons = new List<ItineraryButton>();
-        
+        private readonly List<ItineraryButton> _itineraryButtons = new List<ItineraryButton>();
+        private int _currentItinerarySelectIndex = 0;
         private void Awake()
         {
             updater.SubmitButton.onClick.AddListener(Submit);
             updater.AddButton.onClick.AddListener(AddNewPlace);
             updater.RemoveButton.onClick.AddListener(RemovePlace);
             
-            foreach (var place in table.places)
+            updater.NextItineraryButton.onClick.AddListener(ShowNextItinerarySelectWindow);
+            updater.PreviousItineraryButton.onClick.AddListener(ShowPrevItinerarySelectWindow);
+
+            foreach (var window in updater.ItinerarySelectWindows)
             {
-                PlaceButton newButton = Instantiate(placeButtonPrefab, updater.PlaceList.transform);
-                newButton.SetButton(place, SetSelectedItinerary);
+                var buttons = window.GetComponentsInChildren<PlaceButton>();
+                foreach (var placeButton in buttons)
+                {
+                    placeButton.SetButton(SetSelectedItinerary);
+                }
             }
         }
 
-        private void SetSelectedItinerary(PlaceDesc obj)
+        private void SetSelectedItinerary(Sprite obj)
         {
             if (_selectedItineraryButtonOrNull == null)
             {
@@ -37,7 +41,7 @@ namespace TitleScene.ItineraryPlan
             }
             _selectedItineraryButtonOrNull.SetButton(obj);
             _selectedItineraryButtonOrNull = null;
-            updater.PlaceList.gameObject.SetActive(false);
+            updater.CloseItinerarySelectWindow();
             
             SetSubmitButtonActivity();
         }
@@ -62,7 +66,7 @@ namespace TitleScene.ItineraryPlan
         public override void Show()
         {
             updater.gameObject.SetActive(true);
-            updater.PlaceList.gameObject.SetActive(false);
+            updater.CloseItinerarySelectWindow();
             updater.SubmitButton.gameObject.SetActive(false);
         }
         
@@ -74,7 +78,8 @@ namespace TitleScene.ItineraryPlan
 
         private void SelectPlace(ItineraryButton obj)
         {
-            updater.PlaceList.gameObject.SetActive(true);
+            _currentItinerarySelectIndex = 0;
+            updater.OpenItinerarySelectWindow(_currentItinerarySelectIndex);
             _selectedItineraryButtonOrNull = obj;
             SetSubmitButtonActivity();
         }
@@ -89,7 +94,7 @@ namespace TitleScene.ItineraryPlan
 
             foreach (var button in _itineraryButtons)
             {
-                if(button.PlaceDescOrNull != null)
+                if(button.IsInitialized)
                     continue;
                 
                 updater.SubmitButton.gameObject.SetActive(false);
@@ -104,6 +109,56 @@ namespace TitleScene.ItineraryPlan
             //끝
             updater.gameObject.SetActive(false);
             base.Close();
+        }
+
+        private void ShowNextItinerarySelectWindow()
+        {
+            updater.ItinerarySelectWindows[_currentItinerarySelectIndex].gameObject.SetActive(false);
+            _currentItinerarySelectIndex++;
+
+            if (_currentItinerarySelectIndex >= updater.ItinerarySelectWindows.Length)
+            {
+                _currentItinerarySelectIndex = 0;
+            }
+            
+            updater.ItinerarySelectWindows[_currentItinerarySelectIndex].gameObject.SetActive(true);
+            
+            SetTitle();
+        }
+
+        private void ShowPrevItinerarySelectWindow()
+        {
+            updater.ItinerarySelectWindows[_currentItinerarySelectIndex].gameObject.SetActive(false);
+            _currentItinerarySelectIndex--;
+
+            if (_currentItinerarySelectIndex < 0)
+            {
+                _currentItinerarySelectIndex = updater.ItinerarySelectWindows.Length - 1;
+            }
+            
+            updater.ItinerarySelectWindows[_currentItinerarySelectIndex].gameObject.SetActive(true);
+
+            SetTitle();
+        }
+        
+        //임시 하드코딩
+        private void SetTitle()
+        {
+            string title = "";
+            switch (_currentItinerarySelectIndex)
+            {
+                case 0:
+                    title = "Spot";
+                    break;
+                case 1:
+                    title = "Hotel";
+                    break;
+                case 2:
+                    title = "Transport";
+                    break;
+            }
+            
+            updater.ItinerarySelectWindowTitle.text = title;
         }
     }
 }
