@@ -1,4 +1,5 @@
 using System.Collections;
+using NPCSystem;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -7,7 +8,6 @@ public class MicRecordButtonSetter : MonoBehaviour
     [SerializeField] private RecordButtonUpdater _updater;
 
     [SerializeField] private GestureMic _mic;
-    [SerializeField] private TTSUIController _ttsSender;
 
     [SerializeField] private Color _normalColor;
     [SerializeField] private Color _recordingColor;
@@ -25,7 +25,7 @@ public class MicRecordButtonSetter : MonoBehaviour
     
     private void OnFocusEnter(SelectEnterEventArgs args)
     {
-        _ttsSender.TryStartRecording();
+        NPCChatSystem.NPCChatManager.TryStartRecording();
         _updater.SetColor(_recordingColor);
     }
 
@@ -33,11 +33,11 @@ public class MicRecordButtonSetter : MonoBehaviour
     {
         if (_mic.IsActive)
         {
-            _ttsSender.TryStopRecording();
+            NPCChatSystem.NPCChatManager.TryStopRecording();
         }
         else
         {
-            _ttsSender.TryStopRecordingAndDontSend();
+            NPCChatSystem.NPCChatManager.CancelRecording();
         }
         
         _updater.SetColor(_normalColor);

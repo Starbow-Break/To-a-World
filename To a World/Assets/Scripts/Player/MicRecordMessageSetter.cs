@@ -1,20 +1,18 @@
+using NPCSystem;
 using UnityEngine;
 
 public class MicRecordMessageSetter : MonoBehaviour
 {
     [SerializeField] private RecordMessageUpdater _updater;
-    [SerializeField] private TTSUIController _ttsSender;
     
     private void OnEnable()
     {
-        _ttsSender.OnStartRecording += StartTTSRecording;
-        _ttsSender.OnStopRecording += StopTTSRecording;
+        NPCChatSystem.NPCChatManager.OnRecordingStateChanged += RecordingStateChanged;
     }
     
     private void OnDisable()
     {
-        _ttsSender.OnStartRecording -= StartTTSRecording;
-        _ttsSender.OnStopRecording -= StopTTSRecording;
+        NPCChatSystem.NPCChatManager.OnRecordingStateChanged -= RecordingStateChanged;
     }
     
     private void Start()
@@ -22,13 +20,8 @@ public class MicRecordMessageSetter : MonoBehaviour
         _updater.Initialize();
     }
 
-    private void StartTTSRecording()
+    private void RecordingStateChanged(bool recording)
     {
-        _updater.Active();
-    }
-
-    private void StopTTSRecording()
-    {
-        _updater.InActive();
+        _updater.SetActive(recording);
     }
 }
