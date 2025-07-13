@@ -8,14 +8,14 @@ public class NpcQuest : AQuest
     {
         // Test 용
         NPCChatSystem.NPCChatManager.OnProcessingStateChanged += OnQuestCompleted;
-            
         NPCChatSystem.NPCChatManager.OnQuestCompleted += OnQuestCompleted;
     }
 
     private void OnDisable()
     {
-        NPCChatSystem.NPCChatManager.OnProcessingStateChanged -= OnQuestCompleted;
+        if (NPCChatSystem.NPCChatManager == null) return;
         
+        NPCChatSystem.NPCChatManager.OnProcessingStateChanged -= OnQuestCompleted;
         NPCChatSystem.NPCChatManager.OnQuestCompleted -= OnQuestCompleted;
     }
     
