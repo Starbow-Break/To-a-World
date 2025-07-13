@@ -1,3 +1,4 @@
+using MagicaCloth2;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -5,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class SeatBelt : MonoBehaviour
 {
     [field: SerializeField] public BeltBuckle Buckle { get; private set; }
+    [SerializeField] private MagicaCloth _cloth;
     
     private void Start()
     {
@@ -24,6 +26,7 @@ public class SeatBelt : MonoBehaviour
 
     private void OnConnect(SelectEnterEventArgs args)
     {
+        _cloth.enabled = false;
         GameEventsManager.GetEvents<SeatBeltEvents>().ConnectedBelt();
     }
 }
