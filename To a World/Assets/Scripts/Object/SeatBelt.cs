@@ -11,7 +11,7 @@ public class SeatBelt : MonoBehaviour
     private void Start()
     {
         // 테스트용
-        GameEventsManager.GetEvents<QuestEvents>().StartQuest("SeatBeltQuest");
+        //GameEventsManager.GetEvents<QuestEvents>().StartQuest("SeatBeltQuest");
     }
 
     private void OnEnable()

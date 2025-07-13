@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740f51a1ac4b42088297287229057627, type: 3}
   m_Name: Move Pose
   m_EditorClassIdentifier: 
-  m_HandShape: {fileID: 11400000, guid: b9baa11123eaecb4480943b0a3583287, type: 2}
+  m_HandShape: {fileID: 11400000, guid: 10ba6704cf0fddc46901f717865acdc6, type: 2}
   m_RelativeOrientation:
     m_UserConditions:
     - m_HandAxis: 1
