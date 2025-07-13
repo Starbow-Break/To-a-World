@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [DefaultExecutionOrder(-1000)]
 public class ManagerSceneLoader : MonoBehaviour
 {
+    [SerializeField] private ESceneIndex currentScene;
     private const ESceneIndex ManagerSceneIndex = ESceneIndex.ManagerScene;
 
     private void Awake()
@@ -13,6 +14,7 @@ public class ManagerSceneLoader : MonoBehaviour
         if (!IsSceneLoaded(ManagerSceneIndex))
         {
             SceneManager.LoadScene((int)ManagerSceneIndex, LoadSceneMode.Additive);
+            ManagerSceneServices.SceneController.SetCurrentScene(currentScene);
         }    
         Destroy(gameObject);
     }

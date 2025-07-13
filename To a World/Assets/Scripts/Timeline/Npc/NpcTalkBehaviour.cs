@@ -15,7 +15,7 @@ public class NpcTalkBehaviour : PlayableBehaviour
             return;
         }
 
-        Debug.Log("NpcActionBehaviour: " + talkString);
-        //npc.Talk(talkString);
+        Debug.Log("SpeakText: " + talkString);
+        npc.SpeakText(talkString);
     }
 }

@@ -13,7 +13,7 @@ namespace ManagerScene
         private readonly List<AsyncOperation> _loadingOperations = new List<AsyncOperation>();
 
         private const float FadeDuration = 0.3f;
-
+        
         public void LoadScene(ESceneIndex scene)
         {
             if(_currentScene != ESceneIndex.None)
@@ -24,6 +24,11 @@ namespace ManagerScene
             //_fadeCanvas.SetActive(true);
         }
 
+        public void SetCurrentScene(ESceneIndex scene)
+        {
+            _currentScene = scene;
+        }
+        
         private IEnumerator GetSceneLoading(ESceneIndex scene)
         {
             foreach (var t in _loadingOperations)
