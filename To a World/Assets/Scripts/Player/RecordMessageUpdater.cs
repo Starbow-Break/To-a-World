@@ -8,16 +8,11 @@ public class RecordMessageUpdater : MonoBehaviour
 
     public void Initialize()
     {
-        InActive();
+        SetActive(false);
     }
 
-    public void Active()
+    public void SetActive(bool value)
     {
-        _text.enabled = true;
-    }
-    
-    public void InActive()
-    {
-        _text.enabled = false;
+        _text.enabled = value;
     }
 }

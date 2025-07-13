@@ -4,7 +4,6 @@ using UnityEngine;
 public class NpcSpeechBubbleSetter : MonoBehaviour
 {
     [SerializeField] private SpeechBubbleUpdater _speechBubbleUpdater;
-    [SerializeField] private UnityRealtimeTTSClient _ttsPlayer;
 
     private Npc _ownerNpc;
     private bool _isWorking = false;
@@ -21,41 +20,39 @@ public class NpcSpeechBubbleSetter : MonoBehaviour
     
     private void OnEnable()
     {
-        _ttsPlayer.OnRequestStarted += TTSPlayerStart;
-        _ttsPlayer.OnRequestCompleted += TTSPlayerAllCompleted;
-        _ttsPlayer.OnError += TTSPlayerError;
+        if (NPCChatSystem.NPCChatManager != null)
+        {
+            NPCChatSystem.NPCChatManager.OnProcessingStateChanged += ProcessingStateChange;
+        }
 
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc += OnEnteredNpc;
         GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc += OnExitedNpc;
     }
 
-    private void OnDisable()
-    {
-        _ttsPlayer.OnRequestStarted -= TTSPlayerStart;
-        _ttsPlayer.OnRequestCompleted -= TTSPlayerAllCompleted;
-        _ttsPlayer.OnError -= TTSPlayerError;
-        
+    private void OnDisable() {
+        if (NPCChatSystem.NPCChatManager != null)
+        {
+            NPCChatSystem.NPCChatManager.OnProcessingStateChanged -= ProcessingStateChange;
+        }
+    
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= OnEnteredNpc;
         GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= OnExitedNpc;
     }
 
-    private void TTSPlayerStart()
+    private void ProcessingStateChange(bool state)
     {
-        Debug.Log(_isWorking);
-        if (_isWorking)
+        if (state)
         {
-            _speechBubbleUpdater.Active();    
+            if (_isWorking)
+            {
+                _speechBubbleUpdater.Active();    
+            }
         }
-    }
-
-    private void TTSPlayerAllCompleted()
-    {
-        _speechBubbleUpdater.InActive();
-    }
-
-    private void TTSPlayerError(string message)
-    {
-        _speechBubbleUpdater.InActive();
+        else
+        {
+            _speechBubbleUpdater.InActive();
+        }
+        
     }
 
     private void OnEnteredNpc(Npc npc)

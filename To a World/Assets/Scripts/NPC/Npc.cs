@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using NPCSystem;
+using UnityEngine;
 
 public class Npc : MonoBehaviour
 {
     [field: SerializeField] public NpcInfo Info { get; private set; }
     [SerializeField] private Collider _interactionCollider;
-
+    
     private void Awake()
     {
         if (_interactionCollider == null)
@@ -13,9 +14,24 @@ public class Npc : MonoBehaviour
 
             if (_interactionCollider == null)
             {
-                Debug.LogError("No Collider attached to Npc. Npc can't interact player.");
+                Debug.LogWarning("No Collider attached to Npc. Npc can't interact player.");
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest += SetChatManagerQuestData;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest -= SetChatManagerQuestData;
+    }
+
+    private void Start()
+    {
+        GameEventsManager.GetEvents<QuestEvents>().StartQuest("NpcQuest_OrderPizza");
     }
 
     public void Sleep()
@@ -26,6 +42,25 @@ public class Npc : MonoBehaviour
     public void WakeUp()
     {
         _interactionCollider.enabled = true;
+    }
+
+    public void SpeakText(string text)
+    {
+        //  TODO : 인자로 받은 문자열 그대로 말해주는 로직 구성
+    }
+
+    private void SetChatManagerQuestData(string questId)
+    {
+        if (Info.TryGetNpcQuest(questId, out NpcQuest quest))
+        {
+            var chatQuestInfo = new NPCSystem.QuestInfo();
+            chatQuestInfo.id = quest.Info.ID;
+            chatQuestInfo.name = quest.Info.Name;
+            chatQuestInfo.description = quest.Info.Description;
+            chatQuestInfo.completion_condition = quest.CompletionCondition;
+            
+            NPCChatSystem.NPCChatManager.SetQuestInfo(chatQuestInfo);
+        }
     }
     
     protected void OnTriggerEnter(Collider other)
