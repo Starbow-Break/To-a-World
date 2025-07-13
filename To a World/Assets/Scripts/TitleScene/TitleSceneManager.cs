@@ -49,7 +49,8 @@ namespace TitleScene
         
         private void LoadNextScene()
         {
-            ManagerSceneServices.SceneController.LoadScene(ESceneIndex.DevAirplaneScene);
+            ManagerSceneServices.SceneController.SetCurrentScene(ESceneIndex.TitleScene);
+            ManagerSceneServices.SceneController.LoadScene(ESceneIndex.AirplaneScene);
         }
     }
 }

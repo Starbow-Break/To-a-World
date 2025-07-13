@@ -14,7 +14,6 @@ public class ManagerSceneLoader : MonoBehaviour
         if (!IsSceneLoaded(ManagerSceneIndex))
         {
             SceneManager.LoadScene((int)ManagerSceneIndex, LoadSceneMode.Additive);
-            ManagerSceneServices.SceneController.SetCurrentScene(currentScene);
         }    
         Destroy(gameObject);
     }
