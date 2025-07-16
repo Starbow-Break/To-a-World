@@ -10,7 +10,6 @@ namespace ManagerScene
         private ESceneIndex _currentScene = ESceneIndex.None;
         private readonly List<AsyncOperation> _loadingOperations = new List<AsyncOperation>();
 
-        private const float FadeDuration = 0.3f;
         
         public void LoadScene(ESceneIndex scene)
         {
@@ -36,7 +35,6 @@ namespace ManagerScene
                 }
             }
         
-            yield return new WaitForSeconds(FadeDuration);
             _currentScene = scene;
         }
     }
