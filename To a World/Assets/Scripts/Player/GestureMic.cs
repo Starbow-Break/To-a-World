@@ -66,12 +66,12 @@ public class GestureMic : MonoBehaviour
     private void EnteredNpc(Npc npc)
     {
         var ttsNpcInfo = new NPCSystem.NPCInfo();
-        ttsNpcInfo.name = npc.Info.Name;
-        ttsNpcInfo.gender = npc.Info.Gender;
-        ttsNpcInfo.personality = npc.Info.Personality;
-        ttsNpcInfo.background = npc.Info.Background;
-        ttsNpcInfo.age = npc.Info.Age;
-        ttsNpcInfo.voice_style = npc.Info.VoiceStyle;
+        ttsNpcInfo.name = npc.data.Name;
+        ttsNpcInfo.gender = npc.data.Gender;
+        ttsNpcInfo.personality = npc.data.Personality;
+        ttsNpcInfo.background = npc.data.Background;
+        ttsNpcInfo.age = npc.data.Age;
+        ttsNpcInfo.voice_style = npc.data.VoiceStyle;
         
         NPCChatSystem.NPCChatManager.SetNPCInfo(ttsNpcInfo);
     }

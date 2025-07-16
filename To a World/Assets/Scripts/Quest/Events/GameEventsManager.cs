@@ -20,7 +20,6 @@ public class GameEventsManager : MonoBehaviour
         Instance = this;
         
         _eventsList.Add(new QuestEvents());
-        _eventsList.Add(new CoinEvents());
         _eventsList.Add(new PlaceEvents());
         _eventsList.Add(new NpcEvents());
         _eventsList.Add(new SeatBeltEvents());

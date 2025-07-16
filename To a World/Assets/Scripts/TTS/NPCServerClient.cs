@@ -313,7 +313,7 @@ namespace NPCSystem
         {
             // 디버그 로그 추가
             Debug.Log($"[NPCServerClient] CreateChatTextRequestData - textMessage: '{textMessage}', memoryKey: '{memoryKey}'");
-            Debug.Log($"[NPCServerClient] NPC Info - name: '{npcInfo.name}', gender: '{npcInfo.gender}', personality: '{npcInfo.personality}'");
+            Debug.Log($"[NPCServerClient] NPC data - name: '{npcInfo.name}', gender: '{npcInfo.gender}', personality: '{npcInfo.personality}'");
             
             // memory_key가 빈 문자열이면 기본값 설정
             if (string.IsNullOrEmpty(memoryKey))

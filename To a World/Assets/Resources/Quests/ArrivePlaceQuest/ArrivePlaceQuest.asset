@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArrivePlaceQuest
   m_EditorClassIdentifier: 
   <ID>k__BackingField: ArrivePlaceQuest
-  <Type>k__BackingField: 1
+  <Type>k__BackingField: 0
   <Param>k__BackingField: {fileID: 11400000, guid: 00268cc6a94ecb145976366364ed0b2a, type: 2}
   <Name>k__BackingField: asdasd
   <Description>k__BackingField: asdasda

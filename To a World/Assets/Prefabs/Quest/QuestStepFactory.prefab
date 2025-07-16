@@ -46,13 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initEntity:
   - <Type>k__BackingField: 0
-    <Prefab>k__BackingField: {fileID: 5684772968950960958, guid: d2b40d573d80442458d21e6e88942d97, type: 3}
-  - <Type>k__BackingField: 1
     <Prefab>k__BackingField: {fileID: 2879045777018723807, guid: 79c9624311350ee47bdd78092b294fb4, type: 3}
-  - <Type>k__BackingField: 2
+  - <Type>k__BackingField: 1
     <Prefab>k__BackingField: {fileID: 2879045777018723807, guid: ec5adb89c3e4f3a4cb58b4b944878708, type: 3}
-  - <Type>k__BackingField: 3
+  - <Type>k__BackingField: 2
     <Prefab>k__BackingField: {fileID: 3899223640598964296, guid: 5d1734218c58cec418588b8c42455f9b, type: 3}
+  - <Type>k__BackingField: 3
+    <Prefab>k__BackingField: {fileID: 5527264390170642179, guid: dd0b66319fe918f40ac75d2c881b4a5f, type: 3}
 --- !u!1 &8813454404056177701
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
-  m_Name: SeatBeltQuest
+  m_Name: DialogueQuest_CheckIn
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: SeatBeltQuest
-  <Type>k__BackingField: 1
-  <Param>k__BackingField: {fileID: 11400000, guid: 14946af1d382f6342a8029ebf85b40b1, type: 2}
-  <Name>k__BackingField: "\uBCA8\uD2B8\uCC29\uC6A9"
-  <Description>k__BackingField: "\uC548\uC804\uBCA8\uD2B8\uB97C \uB9E4\uC138\uC694"
+  <ID>k__BackingField: DialogueQuest_CheckIn
+  <Type>k__BackingField: 2
+  <Param>k__BackingField: {fileID: 11400000, guid: c6c7922bfcbe9fc4a894c7ce82d0c32d, type: 2}
+  <Name>k__BackingField: "\uCCB4\uD06C\uC778"
+  <Description>k__BackingField: "\uD638\uD154 \uCCB4\uD06C\uC778\uD558\uC138\uC694."
   <questPrerequisites>k__BackingField: []
