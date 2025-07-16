@@ -7,8 +7,6 @@ namespace AirplaneScene
     {
         private void Start()
         {
-            if(ManagerSceneServices.Instance != null)
-                ManagerSceneServices.LoadingScreen.gameObject.SetActive(false);
             AirplaneSceneServices.TimelineSequencer.PlayTimeline();
         }
     }

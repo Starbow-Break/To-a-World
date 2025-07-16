@@ -42,11 +42,5 @@ namespace Phone.Widget
             updater.QuestTitle.fontStyle |= FontStyles.Strikethrough;
             updater.QuestDescription.fontStyle |= FontStyles.Strikethrough;
         }
-        
-        private void Start()
-        {
-        }
-        
-
     }
 }
