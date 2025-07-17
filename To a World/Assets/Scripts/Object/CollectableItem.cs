@@ -25,6 +25,12 @@ public class CollectableItem : MonoBehaviour
     {
         _interactable.selectEntered.RemoveAllListeners();
     }
+    
+    // 테스트용
+    private void Start()
+    {
+        GameEventsManager.GetEvents<QuestEvents>().StartQuest("ItemAcquisitionQuest_BreakfastVoucher");
+    }
 
     private void Collect(SelectEnterEventArgs args)
     {

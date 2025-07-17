@@ -23,6 +23,7 @@ public class GameEventsManager : MonoBehaviour
         _eventsList.Add(new PlaceEvents());
         _eventsList.Add(new NpcEvents());
         _eventsList.Add(new SeatBeltEvents());
+        _eventsList.Add(new ItemEvents());
     }
     
     private T GetEventsInternal<T>() where T : IEvents

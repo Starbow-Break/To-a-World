@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43fa1a813310ff438925e07d4a7411d, type: 3}
-  m_Name: CollectItemQuestParams_BreakfastVoucher
+  m_Script: {fileID: 11500000, guid: 6acf2ae4df954a4aae418232585cb1fd, type: 3}
+  m_Name: ArrivePlaceQuestParams_Npc
   m_EditorClassIdentifier: 
-  <ItemID>k__BackingField: Item Demo
-  <Quantity>k__BackingField: 1
+  <TargetPlaceID>k__BackingField: PlaceTargetPoint - 1

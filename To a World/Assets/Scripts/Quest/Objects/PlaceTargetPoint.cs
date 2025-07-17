@@ -5,6 +5,12 @@ public class PlaceTargetPoint : MonoBehaviour
 {
     [field: SerializeField]
     public string ID { get; private set; }
+    
+    // 테스트 용
+    private void Start()
+    {
+        GameEventsManager.GetEvents<QuestEvents>().StartQuest("ArrivePlaceQuest_Npc");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
