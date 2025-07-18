@@ -17,6 +17,11 @@ public class RecordButtonUpdater : MonoBehaviour
     {
         _xrInteractable.selectExited.AddListener(selectExitAction);
     }
+    
+    public void SetInteractable(bool interactable)
+    {
+        _xrInteractable.enabled = interactable;
+    }
 
     public void SetColor(Color color)
     {

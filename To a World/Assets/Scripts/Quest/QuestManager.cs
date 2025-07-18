@@ -29,7 +29,6 @@ public class QuestManager : SceneSingleton<QuestManager>
         foreach (var quest in _questMap.Values)
         {
             GameEventsManager.GetEvents<QuestEvents>().QuestStateChange(quest);
-            
             quest.gameObject.SetActive(quest.State == EQuestState.IN_PROGRESS || quest.State == EQuestState.CAN_FINISH);
         }
     }

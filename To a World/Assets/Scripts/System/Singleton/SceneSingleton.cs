@@ -1,15 +1,19 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-1000)]
 public abstract class SceneSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance;
+    protected static T _instance;
     
     public static T Instance
     {
         get
         {
             if (_instance == null)
+            {   
                 Debug.LogWarning($"SceneSingleton<{typeof(T).Name}> 초기화 안됨");
+            }
+                
             return _instance;
         }
     }

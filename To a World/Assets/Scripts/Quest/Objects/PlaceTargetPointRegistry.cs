@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1000)]
+[DefaultExecutionOrder(-200)]
 public class PlaceTargetPointRegistry : MonoBehaviour, IRegistry<string, PlaceTargetPoint>
 {
     [SerializeField] private List<PlaceTargetPoint> _initTargetPoints = new();
