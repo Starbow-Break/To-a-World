@@ -1,11 +1,21 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using UnityEngine;
 
 public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
 {
     private List<IEvents> _eventsList = new();
+    
+    public static T GetEvents<T>() where T : IEvents
+    {
+        if (Instance != null)
+        {
+            return Instance.GetEventsInternal<T>();
+        }
 
-    public static T GetEvents<T>() where T : IEvents 
-        => Instance.GetEventsInternal<T>();
+        Debug.LogWarning("GameEventsManager의 인스턴스가 존재하지 않습니다.");
+        return default;
+    }
 
     private void Awake()
     {

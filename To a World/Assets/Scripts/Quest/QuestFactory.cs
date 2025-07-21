@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class QuestFactory: SceneSingleton<QuestFactory>
+public class QuestFactory: NullSafeSceneSingleton<QuestFactory>
 {
     [SerializeField] private QuestPrefabRegistry _questPrefabRegistry;
     
@@ -9,7 +9,7 @@ public class QuestFactory: SceneSingleton<QuestFactory>
         base.Awake();
         DontDestroyOnLoad(gameObject);
     }
-    
+
     public static AQuest CreateQuest(EQuestType type, AQuestParams param, Transform parent = null)
         => Instance.CreateQuestInternal(type, param, parent);
     

@@ -21,12 +21,20 @@ public class Npc : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest += SetChatManagerQuestData;
+        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
+        if (questEvents != null)
+        {
+            questEvents.OnStartQuest += SetChatManagerQuestData;
+        }
     }
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest -= SetChatManagerQuestData;
+        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
+        if (questEvents != null)
+        {
+            questEvents.OnStartQuest -= SetChatManagerQuestData;
+        }
     }
 
     public void Sleep()

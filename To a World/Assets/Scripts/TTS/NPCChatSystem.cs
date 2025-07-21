@@ -1,8 +1,20 @@
 using UnityEngine;
 
-public class NPCChatSystem : SceneSingleton<NPCChatSystem>
+public class NPCChatSystem : NullSafeSceneSingleton<NPCChatSystem>
 {
      [SerializeField] NPCChatManager _npcChatManager;
 
-     public static NPCChatManager NPCChatManager => Instance._npcChatManager;
+     public static NPCChatManager NPCChatManager
+     {
+          get
+          {
+               if (Instance != null)
+               {
+                    return Instance._npcChatManager;
+               }
+               
+               Debug.LogWarning("NPCChatManager가 존재하지 않습니다.");
+               return null;
+          }
+     }
 }
