@@ -18,6 +18,16 @@ public class RecordButtonUpdater : MonoBehaviour
         _xrInteractable.selectExited.AddListener(selectExitAction);
     }
     
+    public void RemoveAllListenersSelectEnter()
+    {
+        _xrInteractable.selectEntered.RemoveAllListeners();
+    }
+    
+    public void RemoveAllListenersSelectExit()
+    {
+        _xrInteractable.selectExited.RemoveAllListeners();
+    }
+    
     public void SetInteractable(bool interactable)
     {
         _xrInteractable.enabled = interactable;
