@@ -1,8 +1,10 @@
 ﻿public class ProcessingGestureMicState: AGestureMicState
 {
-    public ProcessingGestureMicState(GestureMic gestureMic) : base(gestureMic) {  }
+    public ProcessingGestureMicState(
+        GestureMic gestureMic, 
+        GestureMicStateController controller) : base(gestureMic, controller) {  }
     
-    public override void UpdateButton()
+    public override void Enter()
     {
         _gestureMic.RecordButtonSetter.SetStartButtonInteractable(false);
         _gestureMic.RecordButtonSetter.SetStopButtonInteractable(false);
@@ -12,11 +14,19 @@
         NPCChatSystem.NPCChatManager.OnProcessingStateChanged += ProcessingStateChanged;
     }
 
+    public override void Update() {  }
+
+    public override void Exit()
+    {
+        base.Exit();
+        NPCChatSystem.NPCChatManager.OnProcessingStateChanged -= ProcessingStateChanged;
+    }
+
     private void ProcessingStateChanged(bool state)
     {
         if (!state)
         {
-            _gestureMic.ChangeState(new ReadyGestureMicState(_gestureMic));
+            _controller.ChangeState<ReadyGestureMicState>();
         }
     }
 }

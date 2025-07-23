@@ -2,12 +2,12 @@
 
 public class ReadyGestureMicState: AGestureMicState
 {
-    public ReadyGestureMicState(GestureMic gestureMic) : base(gestureMic) {  }
+    public ReadyGestureMicState(
+        GestureMic gestureMic, 
+        GestureMicStateController controller) : base(gestureMic, controller) {  }
 
-    public override void UpdateButton()
+    public override void Enter()
     {
-        RemoveAllRecordButtonListeners();
-        
         _gestureMic.SetActive(true);
         _gestureMic.RecordButtonSetter.AddStartButtonListenerSelectEnter(SelectStartRecordButton);
         
@@ -16,6 +16,8 @@ public class ReadyGestureMicState: AGestureMicState
         
         _gestureMic.RecordMessageSetter.HideMessage();
     }
+    
+    public override void Update() {  }
 
     private void SelectStartRecordButton(SelectEnterEventArgs arg)
     {
@@ -24,7 +26,7 @@ public class ReadyGestureMicState: AGestureMicState
         if (npcChatManager != null)
         {
             npcChatManager.TryStartRecording();
-            _gestureMic.ChangeState(new RecordingGestureMicState(_gestureMic));
+            _controller.ChangeState<RecordingGestureMicState>();
         }
     }
 }

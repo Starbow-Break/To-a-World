@@ -19,11 +19,6 @@ public class GestureMic : MonoBehaviour
 
     private bool _nextAcviveValue => _wakeUpFlag && (_gestureFlag || _recordingFlag);
 
-    private void Start()
-    {
-        ChangeState(new ReadyGestureMicState(this));
-    }
-
     private void OnEnable()
     {
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc += EnteredNpc;
@@ -47,19 +42,8 @@ public class GestureMic : MonoBehaviour
         if (IsActive != _nextAcviveValue)
         {
             IsActive = _nextAcviveValue;
-            
             SetActive(IsActive);
-            if (_state is RecordingGestureMicState) {
-                NPCChatSystem.NPCChatManager.CancelRecording();
-                ChangeState(new ReadyGestureMicState(this));
-            }
         }
-    }
-
-    public void ChangeState(AGestureMicState state)
-    {
-        _state = state;
-        _state.UpdateButton();
     }
 
     public void Sleep() => _wakeUpFlag = false;

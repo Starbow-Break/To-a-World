@@ -2,12 +2,12 @@
 
 public class RecordingGestureMicState: AGestureMicState
 {
-    public RecordingGestureMicState(GestureMic gestureMic) : base(gestureMic) {  }
+    public RecordingGestureMicState(
+        GestureMic gestureMic, 
+        GestureMicStateController controller) : base(gestureMic, controller) {  }
 
-    public override void UpdateButton()
+    public override void Enter()
     {
-        RemoveAllRecordButtonListeners();
-        
         _gestureMic.RecordButtonSetter.AddStopButtonListenerSelectEnter(SelectStopRecordButton);
         
         _gestureMic.RecordButtonSetter.SetStartButtonInteractable(false);
@@ -16,17 +16,18 @@ public class RecordingGestureMicState: AGestureMicState
         _gestureMic.RecordMessageSetter.ShowMessage();
     }
 
-    private void SelectStopRecordButton(SelectEnterEventArgs arg)
+    public override void Update()
     {
-        if (_gestureMic.IsActive)
-        {
-            NPCChatSystem.NPCChatManager.TryStopRecording();
-            _gestureMic.ChangeState(new ProcessingGestureMicState(_gestureMic));
-        }
-        else
+        if (!_gestureMic.IsActive)
         {
             NPCChatSystem.NPCChatManager.CancelRecording();
-            _gestureMic.ChangeState(new ReadyGestureMicState(_gestureMic));
+            _controller.ChangeState<ReadyGestureMicState>();
         }
+    }
+
+    private void SelectStopRecordButton(SelectEnterEventArgs arg)
+    {
+        NPCChatSystem.NPCChatManager.TryStopRecording(); 
+        _controller.ChangeState<ProcessingGestureMicState>();
     }
 }

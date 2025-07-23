@@ -1,13 +1,20 @@
-﻿public abstract class AGestureMicState
+﻿public abstract class AGestureMicState: IState
 {
     protected GestureMic _gestureMic;
+    protected GestureMicStateController _controller;
 
-    public AGestureMicState(GestureMic gestureMic)
+    public AGestureMicState(GestureMic gestureMic, GestureMicStateController controller)
     {
         _gestureMic = gestureMic;
+        _controller = controller;
     }
     
-    public abstract void UpdateButton();
+    public abstract void Enter();
+    public abstract void Update();
+    public virtual void Exit()
+    {
+        RemoveAllRecordButtonListeners();
+    }
 
     protected void RemoveAllRecordButtonListeners()
     {
