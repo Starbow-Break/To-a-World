@@ -112,7 +112,7 @@ public class QuestManager : SceneSingleton<QuestManager>
 
     public AQuest GetQuestById(string id)
     {
-        var quest = _questMap[id];
+        _questMap.TryGetValue(id, out AQuest quest);
         
         if (quest == null)
         {

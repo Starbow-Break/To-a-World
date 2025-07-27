@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3af8a0c1c84c27a27b334337dd2fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <QuestStepDescription>k__BackingField: 
-  placeTargetPointRegistry: {fileID: 250651670538167020, guid: 734583b87ff5b8040bd118b3dbe47696, type: 3}
-  _targetPointId: 1
+  State: 0
+  placeTargetPointRegistry: {fileID: 5086073152751946370, guid: a624f0aa1b0e88e459e8cef229295bf6, type: 3}

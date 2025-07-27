@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
-  m_Name: ArrivePlaceQuest_Npc
+  m_Name: ArrivePlaceQuest_FrontDeskAgent
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: ArrivePlaceQuest_Npc
+  <ID>k__BackingField: ArrivePlaceQuest_FrontDeskAgent
   <Type>k__BackingField: 0
   <Param>k__BackingField: {fileID: 11400000, guid: 86cf013c4312a36438b39ac37dd531a8, type: 2}
   <Name>k__BackingField: asdasd

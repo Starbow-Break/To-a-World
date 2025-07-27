@@ -3,15 +3,31 @@ using UnityEngine;
 
 public class PlaceTargetPoint : MonoBehaviour
 {
-    [field: SerializeField]
-    public string ID { get; private set; }
+    [field: SerializeField] public string ID { get; private set; }
+    [SerializeField] private GameObject _visualizer;
     
-    // 테스트 용
-    private void Start()
+    private void OnEnable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().StartQuest("ArrivePlaceQuest_Npc");
+        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange += OnQuestStateChange;
+    }
+    
+    private void OnDisable()
+    {
+        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= OnQuestStateChange;
     }
 
+    private void OnQuestStateChange(AQuest quest)
+    {
+        if (quest is ArrivePlaceQuest apQuest)
+        {
+            if (apQuest != null && apQuest.TargetPointId == ID)
+            {
+                bool active = apQuest.State == EQuestState.IN_PROGRESS || apQuest.State == EQuestState.CAN_FINISH;
+                _visualizer.SetActive(active);
+            }
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Constants.PlayerTag))
