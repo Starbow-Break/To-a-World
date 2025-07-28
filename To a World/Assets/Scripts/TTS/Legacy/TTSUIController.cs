@@ -185,7 +185,7 @@
 //     /// <summary>녹음 시작 오류 메시지</summary>
 //     private string recordingStartError = "";
 //
-//     private NpcInfo currentNpc = null;
+//     private NpcData currentNpc = null;
 //
 //     private float lastRecordingTime = 0f;
 //
@@ -585,15 +585,15 @@
 //
 //     private void OnEnteredNpc(Npc npc)
 //     {
-//         if (currentNpc == null || npc.Info != currentNpc)
+//         if (currentNpc == null || npc.data != currentNpc)
 //         {
-//             currentNpc = npc.Info;
+//             currentNpc = npc.data;
 //         }
 //     }
 //
 //     private void OnExitedNpc(Npc npc)
 //     {
-//         if (npc.Info == currentNpc)
+//         if (npc.data == currentNpc)
 //         {
 //             currentNpc = null;
 //         }

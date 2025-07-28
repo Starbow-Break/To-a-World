@@ -20,8 +20,13 @@ public class QuestManager : SceneSingleton<QuestManager>
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest -= StartQuest;
-        GameEventsManager.GetEvents<QuestEvents>().OnFinishQuest -= FinishQuest;
+        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
+
+        if (questEvents != null)
+        {
+            questEvents.OnStartQuest -= StartQuest;
+            questEvents.OnFinishQuest -= FinishQuest;
+        }
     }
     
     private void Start()
@@ -29,7 +34,6 @@ public class QuestManager : SceneSingleton<QuestManager>
         foreach (var quest in _questMap.Values)
         {
             GameEventsManager.GetEvents<QuestEvents>().QuestStateChange(quest);
-            
             quest.gameObject.SetActive(quest.State == EQuestState.IN_PROGRESS || quest.State == EQuestState.CAN_FINISH);
         }
     }
@@ -108,7 +112,7 @@ public class QuestManager : SceneSingleton<QuestManager>
 
     public AQuest GetQuestById(string id)
     {
-        var quest = _questMap[id];
+        _questMap.TryGetValue(id, out AQuest quest);
         
         if (quest == null)
         {

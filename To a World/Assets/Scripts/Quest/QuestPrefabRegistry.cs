@@ -8,43 +8,29 @@ public struct QuestPrefabRegistryEntity
     [field: SerializeField] public GameObject Prefab { get; private set; }
 }
 
-[DefaultExecutionOrder(-1000)]
-public class QuestPrefabRegistry: SceneSingleton<QuestPrefabRegistry>, IRegistry<EQuestType, GameObject>
+public class QuestPrefabRegistry: ASingletonRegistry<EQuestType, GameObject>
 {
     [SerializeField] private List<QuestPrefabRegistryEntity> _initEntity;
     
-    private Dictionary<EQuestType, GameObject> _container;
+    private bool _initialized = false;
 
-    protected override void Awake()
+    private void Initialize()
     {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-
-        _container = new();
         foreach (var entity in _initEntity)
         {
             Register(entity.Type, entity.Prefab);
         }
-    }
-    
-    public void Register(EQuestType type, GameObject prefab)
-    {
-        if (!_container.TryAdd(type, prefab))
-        {
-            Debug.LogWarning($"Duplicate Type : {type}");
-        }
+
+        _initialized = true;
     }
 
-    public void UnRegister(EQuestType type)
+    public override GameObject Get(EQuestType type)
     {
-        if (!_container.Remove(type))
+        if (!_initialized)
         {
-            Debug.LogWarning($"Object With Type {type} does not exist");
+            Initialize();
         }
-    }
 
-    public GameObject Get(EQuestType type)
-    {
-        return _container[type];
+        return base.Get(type);
     }
 }

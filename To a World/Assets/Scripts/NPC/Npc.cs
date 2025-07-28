@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Npc : MonoBehaviour
 {
-    [field: SerializeField] public NpcInfo Info { get; private set; }
+    [field: SerializeField] public NpcData data { get; private set; }
     [SerializeField] private Collider _interactionCollider;
     
     private void Awake()
@@ -21,12 +21,20 @@ public class Npc : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest += SetChatManagerQuestData;
+        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
+        if (questEvents != null)
+        {
+            questEvents.OnStartQuest += SetChatManagerQuestData;
+        }
     }
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnStartQuest -= SetChatManagerQuestData;
+        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
+        if (questEvents != null)
+        {
+            questEvents.OnStartQuest -= SetChatManagerQuestData;
+        }
     }
 
     public void Sleep()
@@ -46,7 +54,7 @@ public class Npc : MonoBehaviour
 
     private void SetChatManagerQuestData(string questId)
     {
-        if (Info.TryGetNpcQuest(questId, out NpcQuest quest))
+        if (data.TryGetNpcQuest(questId, out DialogueQuest quest))
         {
             var chatQuestInfo = new NPCSystem.QuestInfo();
             chatQuestInfo.id = quest.Info.ID;

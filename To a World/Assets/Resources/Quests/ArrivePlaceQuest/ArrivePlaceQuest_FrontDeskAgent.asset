@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
+  m_Name: ArrivePlaceQuest_FrontDeskAgent
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: ArrivePlaceQuest_FrontDeskAgent
+  <Type>k__BackingField: 0
+  <Param>k__BackingField: {fileID: 11400000, guid: 86cf013c4312a36438b39ac37dd531a8, type: 2}
+  <Name>k__BackingField: asdasd
+  <Description>k__BackingField: asdasda
+  <questPrerequisites>k__BackingField: []

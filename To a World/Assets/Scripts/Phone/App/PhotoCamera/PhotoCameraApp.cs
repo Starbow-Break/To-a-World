@@ -76,6 +76,8 @@ namespace Phone
             
             window.PhotoPreview.texture = photoTexture;
             galleryViewer.AddPhoto(photoTexture);
+            
+            GameEventsManager.GetEvents<CameraEvents>().CameraShot(photoCamera);
         }
     }
 }

@@ -20,21 +20,19 @@ public class NpcSpeechBubbleSetter : MonoBehaviour
     
     private void OnEnable()
     {
-        if (NPCChatSystem.NPCChatManager != null)
-        {
-            NPCChatSystem.NPCChatManager.OnProcessingStateChanged += ProcessingStateChange;
-        }
+        NPCChatSystem.NPCChatManager.OnProcessingStateChanged += ProcessingStateChange;
 
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc += OnEnteredNpc;
         GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc += OnExitedNpc;
     }
 
     private void OnDisable() {
-        if (NPCChatSystem.NPCChatManager != null)
+        var npcChatManager = NPCChatSystem.NPCChatManager;
+        if (npcChatManager != null)
         {
-            NPCChatSystem.NPCChatManager.OnProcessingStateChanged -= ProcessingStateChange;
+            npcChatManager.OnProcessingStateChanged -= ProcessingStateChange;
         }
-    
+        
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= OnEnteredNpc;
         GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= OnExitedNpc;
     }

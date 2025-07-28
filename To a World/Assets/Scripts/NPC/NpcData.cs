@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using NPCSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NpcInfo", menuName = "Scriptable Objects/NpcInfo", order = 3)]
-public class NpcInfo : ScriptableObject
+[CreateAssetMenu(fileName = "NpcData", menuName = "ScriptableObjects/NpcData", order = 3)]
+public class NpcData : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public NPCGender Gender { get; private set; } = NPCGender.FEMALE;
@@ -14,18 +14,18 @@ public class NpcInfo : ScriptableObject
 
     [SerializeField] List<QuestData> _questDatas = new();
 
-    public bool TryGetNpcQuest(string questId, out NpcQuest npcQuest)
+    public bool TryGetNpcQuest(string questId, out DialogueQuest dialogueQuest)
     {
-        npcQuest = null;
+        dialogueQuest = null;
         
         foreach (var questData in _questDatas)
         {
             if (questData.ID == questId)
             {
                 var quest = QuestManager.Instance.GetQuestById(questId);
-                if (quest is NpcQuest)
+                if (quest is DialogueQuest)
                 {
-                    npcQuest = quest as NpcQuest;
+                    dialogueQuest = quest as DialogueQuest;
                     return true;
                 }
             }
