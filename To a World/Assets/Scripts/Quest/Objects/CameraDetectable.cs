@@ -36,7 +36,7 @@ public class CameraDetectable: MonoBehaviour
         if (CheckDetectCamera(camera))
         {
             Debug.Log($"찍혔다!! : {gameObject.name}");
-            GameEventsManager.GetEvents<CameraEvents>().ShotInCamera(camera, this);
+            GameEventsManager.GetEvents<CameraEvents>().ShotInCamera(ID);
         }
     }
     

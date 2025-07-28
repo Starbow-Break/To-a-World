@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class CameraQuest : AQuest
 {
-    private GameObject _target;
+    private string _targetId;
     
     public override void Initialize(AQuestParams questParams)
     {
         var param = questParams as CameraQuestParams;
         if (param != null)
         {
-            
+            _targetId = param.TargetID;
         }
     }
 
@@ -23,12 +23,11 @@ public class CameraQuest : AQuest
         GameEventsManager.GetEvents<CameraEvents>().OnShotInCamera -= OnShotInCamera;
     }
 
-    private void OnShotInCamera(Camera camera, CameraDetectable detectable)
+    private void OnShotInCamera(string id)
     {
-        
-        if (detectable != null)
+        if (id == _targetId)
         {
-            CompleteQuest();    
+            CompleteQuest();
         }
     }
 }
