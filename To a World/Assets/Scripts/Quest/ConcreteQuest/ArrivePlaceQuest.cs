@@ -31,15 +31,4 @@ public class ArrivePlaceQuest : AQuest
             CompleteQuest();
         }
     }
-    
-    private void OnValidate()
-    {
-#if UNITY_EDITOR
-        if (String.IsNullOrEmpty(TargetPointId))
-        {
-            TargetPointId = this.name;
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-#endif
-    }
 }

@@ -30,6 +30,7 @@ public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
         _eventsList.Add(new NpcEvents());
         _eventsList.Add(new SeatBeltEvents());
         _eventsList.Add(new ItemEvents());
+        _eventsList.Add(new CameraEvents());
     }
 
     private T GetEventsInternal<T>() where T : IEvents

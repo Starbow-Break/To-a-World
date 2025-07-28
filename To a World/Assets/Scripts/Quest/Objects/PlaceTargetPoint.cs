@@ -5,6 +5,11 @@ public class PlaceTargetPoint : MonoBehaviour
 {
     [field: SerializeField] public string ID { get; private set; }
     [SerializeField] private GameObject _visualizer;
+
+    private void Start()
+    {
+        PlaceTargetPointRegistry.Instance.Register(ID, this);
+    }
     
     private void OnEnable()
     {

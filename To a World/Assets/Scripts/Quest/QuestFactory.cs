@@ -2,8 +2,6 @@
 
 public class QuestFactory: NullSafeSceneSingleton<QuestFactory>
 {
-    [SerializeField] private QuestPrefabRegistry _questPrefabRegistry;
-    
     protected override void Awake()
     {
         base.Awake();
@@ -15,7 +13,7 @@ public class QuestFactory: NullSafeSceneSingleton<QuestFactory>
     
     public AQuest CreateQuestInternal(EQuestType type, AQuestParams param, Transform parent = null)
     {
-        var questPrefab = _questPrefabRegistry.Get(type);
+        var questPrefab = QuestPrefabRegistry.Instance.Get(type);
         if (questPrefab != null)
         {
             var quest = Instantiate(questPrefab, parent)

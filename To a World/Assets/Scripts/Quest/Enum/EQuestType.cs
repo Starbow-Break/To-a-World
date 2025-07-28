@@ -4,5 +4,6 @@ public enum EQuestType
     ARRIVE_PLACE,
     BELT,
     DIALOGUE,
-    COLLECT_ITEM
+    COLLECT_ITEM,
+    CAMERA
 }
