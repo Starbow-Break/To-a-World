@@ -5,5 +5,6 @@ public enum EQuestType
     BELT,
     DIALOGUE,
     COLLECT_ITEM,
-    CAMERA
+    PLACE_ITEM,
+    CAMERA,
 }
