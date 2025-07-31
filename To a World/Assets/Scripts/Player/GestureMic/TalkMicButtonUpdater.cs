@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class RecordButtonUpdater : MonoBehaviour
+public class TalkMicButtonUpdater : MonoBehaviour
 {
     [SerializeField] private XRSimpleInteractable _xrInteractable;
     [SerializeField] private Renderer _modelRenderer;

@@ -1,9 +1,9 @@
 using NPCSystem;
 using UnityEngine;
 
-public class MicRecordMessageSetter : MonoBehaviour
+public class TalkMicMessageSetter : MonoBehaviour
 {
-    [SerializeField] private RecordMessageUpdater _updater;
+    [SerializeField] private MicMessageUpdater _updater;
     
     private void Start()
     {

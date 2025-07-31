@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class RecordMessageUpdater : MonoBehaviour
+public class MicMessageUpdater : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
 

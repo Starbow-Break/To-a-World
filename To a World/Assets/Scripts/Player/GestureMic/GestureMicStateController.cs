@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class GestureMicStateController: StateController
 {
-    [SerializeField] private GestureMic _gestureMic;
+    [SerializeField] private TalkMic talkMic;
 
     private void Start()
     {
-        AddState(new ReadyGestureMicState(_gestureMic, this));
-        AddState(new RecordingGestureMicState(_gestureMic, this));
-        AddState(new ProcessingGestureMicState(_gestureMic, this));
+        AddState(new ReadyTalkMicState(talkMic, this));
+        AddState(new RecordingTalkMicState(talkMic, this));
+        AddState(new ProcessingTalkMicState(talkMic, this));
         
-        ChangeState<ReadyGestureMicState>();
+        ChangeState<ReadyTalkMicState>();
     }
 }

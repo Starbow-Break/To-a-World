@@ -1,40 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GestureMic : MonoBehaviour
+public class TalkMic : MonoBehaviour
 {
     public bool IsActive { get; private set; }
+    
+    [SerializeField] private List<GameObject> _visualObjects;
 
-    [SerializeField] private StaticHandGesture _handGesture;
-    [SerializeField] private List<GameObject> _objects;
+    [field: SerializeField] public TalkMicButtonSetter ButtonSetter { get; private set; }
+    [field: SerializeField] public TalkMicMessageSetter MessageSetter { get; private set; }
 
-    [field: SerializeField] public MicRecordButtonSetter RecordButtonSetter { get; private set; }
-    [field: SerializeField] public MicRecordMessageSetter RecordMessageSetter { get; private set; }
-
-    private AGestureMicState _state;
+    private ATalkMicState _state;
     
     private bool _wakeUpFlag = true;
-    private bool _gestureFlag = false;
-    private bool _recordingFlag = false;
+    private bool _meetNpcFlag;
+    private bool _recordingFlag;
 
-    private bool _nextAcviveValue => _wakeUpFlag && (_gestureFlag || _recordingFlag);
+    private bool _nextAcviveValue => _wakeUpFlag && (_meetNpcFlag || _recordingFlag);
 
     private void OnEnable()
     {
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc += EnteredNpc;
-        NPCChatSystem.NPCChatManager.OnRecordingStateChanged += SetRecordingFlag;
+        GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc += ExitedNpc;
         
-        _handGesture.GesturePerformed.AddListener(SetTrueGestureFlag);
-        _handGesture.GestureEnded.AddListener(SetFalseGestureFlag);
+        NPCChatSystem.NPCChatManager.OnRecordingStateChanged += RecordingStateChanged;
     }
 
     private void OnDisable()
     {
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= EnteredNpc;
-        NPCChatSystem.NPCChatManager.OnRecordingStateChanged -= SetRecordingFlag;
-
-        _handGesture.GesturePerformed.RemoveAllListeners();
-        _handGesture.GestureEnded.RemoveAllListeners();
+        GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= ExitedNpc;
+        
+        NPCChatSystem.NPCChatManager.OnRecordingStateChanged -= RecordingStateChanged;
     }
 
     private void Update()
@@ -51,16 +48,14 @@ public class GestureMic : MonoBehaviour
 
     public void SetActive(bool active)
     {
-        foreach (GameObject obj in _objects)
+        foreach (GameObject obj in _visualObjects)
         {
             obj.SetActive(IsActive);
         }
     }
 
-    private void SetTrueGestureFlag() => _gestureFlag = true;
-    private void SetFalseGestureFlag() => _gestureFlag = false;
-
-    private void SetRecordingFlag(bool value) => _recordingFlag = value;
+    #region Event Callbacks
+    private void RecordingStateChanged(bool value) => _recordingFlag = value;
 
     private void EnteredNpc(Npc npc)
     {
@@ -73,5 +68,12 @@ public class GestureMic : MonoBehaviour
         ttsNpcInfo.voice_style = npc.data.VoiceStyle;
         
         NPCChatSystem.NPCChatManager.SetNPCInfo(ttsNpcInfo);
+        _meetNpcFlag = true;
     }
+    
+    private void ExitedNpc(Npc npc)
+    {
+        _meetNpcFlag = false;
+    }
+    #endregion
 }
