@@ -1,3 +1,4 @@
+using System;
 using NPCSystem;
 using UnityEngine;
 
@@ -12,9 +13,8 @@ public class TalkMicMessageSetter : MonoBehaviour
 
     private void Initialize()
     {
-        HideMessage();
+        UpdateMessage(String.Empty);
     }
     
-    public void ShowMessage() => _updater.SetActive(true);
-    public void HideMessage() => _updater.SetActive(false);
+    public void UpdateMessage(string message) => _updater.SetText(message);
 }

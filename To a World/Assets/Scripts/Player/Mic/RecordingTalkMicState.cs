@@ -4,12 +4,13 @@ public class RecordingTalkMicState: ATalkMicState
 {
     public RecordingTalkMicState(
         TalkMic talkMic, 
-        GestureMicStateController controller) : base(talkMic, controller) {  }
+        TalkMicStateController controller,
+        TalkMicStateParams stateParams) : base(talkMic, controller, stateParams) {  }
 
     public override void Enter()
     {
+        base.Enter();
         _talkMic.ButtonSetter.AddListenerSelectEnter(SelectEnteredTalkMicButton);
-        _talkMic.MessageSetter.ShowMessage();
     }
 
     public override void Update()
@@ -23,7 +24,7 @@ public class RecordingTalkMicState: ATalkMicState
 
     protected override void SelectEnteredTalkMicButton(SelectEnterEventArgs arg)
     {
-        NPCChatSystem.NPCChatManager.TryStopRecording(); 
+        NPCChatSystem.NPCChatManager.TryStopRecording();
         _controller.ChangeState<ProcessingTalkMicState>();
     }
 }

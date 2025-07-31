@@ -285,7 +285,7 @@
 //     /// </summary>
 //     private void SetupInitialState()
 //     {
-//         UpdateStatusText("준비됨", Color.white);
+//         UpdateStatusText("준비됨", ButtonColor.white);
 //         
 //         if (generatedText != null)
 //             generatedText.text = "";
@@ -357,7 +357,7 @@
 //         if (ttsClient == null)
 //         {
 //             Debug.LogError("[TTSUIController] TTS 클라이언트가 설정되지 않았습니다!");
-//             UpdateStatusText("TTS 클라이언트 누락", Color.red);
+//             UpdateStatusText("TTS 클라이언트 누락", ButtonColor.red);
 //         }
 //         
 //         if (inputTextField == null)
@@ -392,14 +392,14 @@
 //     {
 //         if (isGenerating || isRecording)
 //         {
-//             UpdateStatusText("이미 처리 중입니다", Color.yellow);
+//             UpdateStatusText("이미 처리 중입니다", ButtonColor.yellow);
 //             return;
 //         }
 //             
 //         string inputText = inputTextField?.text?.Trim() ?? "";
 //         if (string.IsNullOrEmpty(inputText))
 //         {
-//             UpdateStatusText("텍스트를 입력해주세요", Color.red);
+//             UpdateStatusText("텍스트를 입력해주세요", ButtonColor.red);
 //             return;
 //         }
 //         
@@ -422,7 +422,7 @@
 //         }
 //         
 //         ResetUIState();
-//         UpdateStatusText("중지됨", Color.yellow);
+//         UpdateStatusText("중지됨", ButtonColor.yellow);
 //     }
 //     
 //     /// <summary>
@@ -435,7 +435,7 @@
 //         
 //         if (isRecording || isGenerating)
 //         {
-//             UpdateStatusText("이미 처리 중입니다", Color.yellow);
+//             UpdateStatusText("이미 처리 중입니다", ButtonColor.yellow);
 //             return;
 //         }
 //
@@ -476,7 +476,7 @@
 //     {
 //         isGenerating = true;
 //         UpdateGenerationUIState(true);
-//         UpdateStatusText("요청 시작됨", Color.blue);
+//         UpdateStatusText("요청 시작됨", ButtonColor.blue);
 //         
 //         Debug.Log("[TTSUIController] TTS 요청이 시작되었습니다.");
 //     }
@@ -491,7 +491,7 @@
 //         if (isGenerating && completedSentences == 0)
 //         {
 //             ResetUIState();
-//             UpdateStatusText("요청 완료", Color.green);
+//             UpdateStatusText("요청 완료", ButtonColor.green);
 //         }
 //         
 //         Debug.Log("[TTSUIController] TTS 요청이 완료되었습니다.");
@@ -534,7 +534,7 @@
 //             currentSentenceText.text = $"재생 완료: 문장 {sentenceId}";
 //         }
 //         
-//         UpdateStatusText($"진행 중 ({completedSentences}/{totalSentences})", Color.green);
+//         UpdateStatusText($"진행 중 ({completedSentences}/{totalSentences})", ButtonColor.green);
 //         
 //         Debug.Log($"[TTSUIController] 문장 {sentenceId} 완료: {text}");
 //     }
@@ -549,7 +549,7 @@
 //         completedSentences = totalSentenceCount;
 //         UpdateProgress();
 //         
-//         UpdateStatusText($"완료! (총 {totalSentenceCount}개 문장)", Color.green);
+//         UpdateStatusText($"완료! (총 {totalSentenceCount}개 문장)", ButtonColor.green);
 //         
 //         if (currentSentenceText != null)
 //         {
@@ -567,7 +567,7 @@
 //     /// <param name="errorMessage">오류 메시지</param>
 //     private void OnError(string errorMessage)
 //     {
-//         UpdateStatusText($"오류: {errorMessage}", Color.red);
+//         UpdateStatusText($"오류: {errorMessage}", ButtonColor.red);
 //         
 //         if (currentSentenceText != null)
 //         {
@@ -617,7 +617,7 @@
 //         generatedTextBuilder.Clear();
 //         
 //         UpdateGenerationUIState(true);
-//         UpdateStatusText("생성 요청 중...", Color.blue);
+//         UpdateStatusText("생성 요청 중...", ButtonColor.blue);
 //         
 //         if (generatedText != null)
 //             generatedText.text = "";
@@ -719,7 +719,7 @@
 //         microphoneDevice = Microphone.devices[0];
 // #endif
 //         
-//         UpdateStatusText($"마이크 준비됨: {microphoneDevice}", Color.white);
+//         UpdateStatusText($"마이크 준비됨: {microphoneDevice}", ButtonColor.white);
 //         Debug.Log($"[TTSUIController] 마이크 장치 초기화: {microphoneDevice}");
 //         
 //         // 마이크 미리 초기화 시작 (비동기)
@@ -727,7 +727,7 @@
 //     }
 //     else
 //     {
-//         UpdateStatusText("마이크 장치를 찾을 수 없습니다", Color.red);
+//         UpdateStatusText("마이크 장치를 찾을 수 없습니다", ButtonColor.red);
 //         
 //         if (recordStartButton != null)
 //             recordStartButton.interactable = false;
@@ -793,12 +793,12 @@
 //         microphonePermissionChecked = true;
 //         
 //         Debug.Log("[TTSUIController] 마이크 미리 초기화 완료");
-//         UpdateStatusText("마이크 최적화 완료", Color.green);
+//         UpdateStatusText("마이크 최적화 완료", ButtonColor.green);
 //     }
 //     else
 //     {
 //         Debug.LogError($"[TTSUIController] 마이크 미리 초기화 실패: {microphoneError}");
-//         UpdateStatusText("마이크 초기화 실패", Color.red);
+//         UpdateStatusText("마이크 초기화 실패", ButtonColor.red);
 //         
 //         if (recordStartButton != null)
 //             recordStartButton.interactable = false;
@@ -814,14 +814,14 @@
 // {
 //     if (string.IsNullOrEmpty(microphoneDevice))
 //     {
-//         UpdateStatusText("마이크 장치가 없습니다", Color.red);
+//         UpdateStatusText("마이크 장치가 없습니다", ButtonColor.red);
 //         return;
 //     }
 //     
 //     // 이미 초기화 중이거나 녹음 중이면 대기
 //     if (isMicrophoneInitializing)
 //     {
-//         UpdateStatusText("마이크 초기화 중...", Color.yellow);
+//         UpdateStatusText("마이크 초기화 중...", ButtonColor.yellow);
 //         StartCoroutine(WaitForMicrophoneAndStartCoroutine());
 //         return;
 //     }
@@ -857,7 +857,7 @@
 //     // UI 상태 먼저 업데이트 (즉시 반응성 제공)
 //     isRecording = true;
 //     UpdateMicrophoneUIState(true);
-//     UpdateStatusText("녹음 준비 중...", Color.yellow);
+//     UpdateStatusText("녹음 준비 중...", ButtonColor.yellow);
 //     
 //     if (currentSentenceText != null)
 //     {
@@ -930,7 +930,7 @@
 // /// </summary>
 // private IEnumerator StartActualRecordingCoroutine()
 // {
-//     UpdateStatusText("녹음 시작 중...", Color.orange);
+//     UpdateStatusText("녹음 시작 중...", ButtonColor.orange);
 //     yield return new WaitForEndOfFrame();
 //     
 //     recordingStartError = "";
@@ -957,7 +957,7 @@
 //     if (recordingSuccess)
 //     {
 //         // 녹음 상태 업데이트
-//         UpdateStatusText("녹음 중...", Color.red);
+//         UpdateStatusText("녹음 중...", ButtonColor.red);
 //         
 //         if (currentSentenceText != null)
 //         {
@@ -976,7 +976,7 @@
 //         // 오류 발생 시 상태 복구
 //         isRecording = false;
 //         UpdateMicrophoneUIState(false);
-//         UpdateStatusText($"녹음 시작 실패: {recordingStartError}", Color.red);
+//         UpdateStatusText($"녹음 시작 실패: {recordingStartError}", ButtonColor.red);
 //         
 //         if (currentSentenceText != null)
 //         {
@@ -1016,7 +1016,7 @@
 // {
 //     isRecording = false;
 //     UpdateMicrophoneUIState(false);
-//     UpdateStatusText("녹음 중지 중...", Color.yellow);
+//     UpdateStatusText("녹음 중지 중...", ButtonColor.yellow);
 //     
 //     yield return new WaitForEndOfFrame();
 //     
@@ -1038,7 +1038,7 @@
 //     // 결과 처리 (yield 사용 가능)
 //     if (stopSuccess)
 //     {
-//         UpdateStatusText("녹음 완료, 처리 중...", Color.blue);
+//         UpdateStatusText("녹음 완료, 처리 중...", ButtonColor.blue);
 //         
 //         if (currentSentenceText != null)
 //         {
@@ -1053,7 +1053,7 @@
 //     else
 //     {
 //         Debug.LogError($"[TTSUIController] 녹음 중지 실패: {stopError}");
-//         UpdateStatusText($"녹음 중지 오류: {stopError}", Color.red);
+//         UpdateStatusText($"녹음 중지 오류: {stopError}", ButtonColor.red);
 //         
 //         // 상태 리셋
 //         ResetUIState();
@@ -1082,7 +1082,7 @@
 //     {
 //         if (recordedClip == null)
 //         {
-//             UpdateStatusText("녹음된 오디오가 없습니다", Color.red);
+//             UpdateStatusText("녹음된 오디오가 없습니다", ButtonColor.red);
 //             ResetUIState();
 //             yield break;
 //         }
@@ -1108,7 +1108,7 @@
 //         }
 //         else
 //         {
-//             UpdateStatusText("오디오 변환 실패", Color.red);
+//             UpdateStatusText("오디오 변환 실패", ButtonColor.red);
 //             ResetUIState();
 //         }
 //         
@@ -1129,7 +1129,7 @@
 //         generatedTextBuilder.Clear();
 //         
 //         UpdateGenerationUIState(true);
-//         UpdateStatusText("음성 생성 중...", Color.blue);
+//         UpdateStatusText("음성 생성 중...", ButtonColor.blue);
 //         
 //         if (generatedText != null)
 //             generatedText.text = "";
@@ -1340,7 +1340,7 @@
 //     /// </summary>
 //     /// <param name="message">메시지</param>
 //     /// <param name="color">텍스트 색상</param>
-//     private void UpdateStatusText(string message, Color color)
+//     private void UpdateStatusText(string message, ButtonColor color)
 //     {
 //         if (statusText != null)
 //         {

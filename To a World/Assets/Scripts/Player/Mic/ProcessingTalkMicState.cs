@@ -4,14 +4,14 @@ public class ProcessingTalkMicState: ATalkMicState
 {
     public ProcessingTalkMicState(
         TalkMic talkMic, 
-        GestureMicStateController controller) : base(talkMic, controller) {  }
+        TalkMicStateController controller,
+        TalkMicStateParams stateParams) : base(talkMic, controller, stateParams) {  }
     
     public override void Enter()
     {
+        base.Enter();
         _talkMic.ButtonSetter.SetButtonInteractable(false);
         
-        _talkMic.MessageSetter.HideMessage();
-
         NPCChatSystem.NPCChatManager.OnProcessingStateChanged += ProcessingStateChanged;
     }
 

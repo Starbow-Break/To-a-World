@@ -4,16 +4,14 @@ public class ReadyTalkMicState: ATalkMicState
 {
     public ReadyTalkMicState(
         TalkMic talkMic, 
-        GestureMicStateController controller) : base(talkMic, controller) {  }
+        TalkMicStateController controller,
+        TalkMicStateParams stateParams) : base(talkMic, controller, stateParams) {  }
 
     public override void Enter()
     {
-        _talkMic.SetActive(true);
-        
+        base.Enter();
         _talkMic.ButtonSetter.AddListenerSelectEnter(SelectEnteredTalkMicButton);
         _talkMic.ButtonSetter.SetButtonInteractable(true);
-        
-        _talkMic.MessageSetter.HideMessage();
     }
     
     public override void Update() {  }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TalkMic : MonoBehaviour
 {
-    public bool IsActive { get; private set; }
+    public bool IsActive { get; private set; } = true;
     
     [SerializeField] private List<GameObject> _visualObjects;
 
@@ -14,24 +14,19 @@ public class TalkMic : MonoBehaviour
     
     private bool _wakeUpFlag = true;
     private bool _meetNpcFlag;
-    private bool _recordingFlag;
 
-    private bool _nextAcviveValue => _wakeUpFlag && (_meetNpcFlag || _recordingFlag);
+    private bool _nextAcviveValue => _wakeUpFlag && _meetNpcFlag;
 
     private void OnEnable()
     {
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc += EnteredNpc;
         GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc += ExitedNpc;
-        
-        NPCChatSystem.NPCChatManager.OnRecordingStateChanged += RecordingStateChanged;
     }
 
     private void OnDisable()
     {
         GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= EnteredNpc;
         GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= ExitedNpc;
-        
-        NPCChatSystem.NPCChatManager.OnRecordingStateChanged -= RecordingStateChanged;
     }
 
     private void Update()
@@ -55,8 +50,6 @@ public class TalkMic : MonoBehaviour
     }
 
     #region Event Callbacks
-    private void RecordingStateChanged(bool value) => _recordingFlag = value;
-
     private void EnteredNpc(Npc npc)
     {
         var ttsNpcInfo = new NPCSystem.NPCInfo();

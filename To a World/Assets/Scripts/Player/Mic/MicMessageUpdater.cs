@@ -10,4 +10,9 @@ public class MicMessageUpdater : MonoBehaviour
     {
         _text.enabled = value;
     }
+
+    public void SetText(string text)
+    {
+        _text.text = text;
+    }
 }
