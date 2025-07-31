@@ -1,4 +1,3 @@
-using TTSSystem;
 using UnityEngine;
 
 public class NpcSpeechBubbleSetter : MonoBehaviour
