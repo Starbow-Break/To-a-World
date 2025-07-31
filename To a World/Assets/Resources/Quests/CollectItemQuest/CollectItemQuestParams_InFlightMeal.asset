@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d43fa1a813310ff438925e07d4a7411d, type: 3}
-  m_Name: CollectItemQuestParams_RoomKey
+  m_Name: CollectItemQuestParams_InFlightMeal
   m_EditorClassIdentifier: 
-  <ItemData>k__BackingField: {fileID: 11400000, guid: edce1ed4e1475fd4fa30ddb27b2050af, type: 2}
+  <ItemData>k__BackingField: {fileID: 11400000, guid: db631adad324e494b8370dfba3ae4602, type: 2}
   <Quantity>k__BackingField: 1

@@ -5,6 +5,6 @@ using UnityEngine;
     order = 3)]
 public class CollectItemQuestParams : AQuestParams
 {
-    [field: SerializeField] public string ItemID { get; private set; }
+    [field: SerializeField] public ItemData ItemData { get; private set; }
     [field: SerializeField] public int Quantity { get; private set; }
 }

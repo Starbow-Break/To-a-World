@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43fa1a813310ff438925e07d4a7411d, type: 3}
-  m_Name: CollectItemQuestParams_RoomKey
+  m_Script: {fileID: 11500000, guid: 73dd2ed10667431bbf289a61b138e8d4, type: 3}
+  m_Name: PlaceItemQuestParams_Passport
   m_EditorClassIdentifier: 
-  <ItemData>k__BackingField: {fileID: 11400000, guid: edce1ed4e1475fd4fa30ddb27b2050af, type: 2}
-  <Quantity>k__BackingField: 1
+  <Item>k__BackingField: {fileID: 11400000, guid: 45e1b68360de30447b14d6b686f03516, type: 2}

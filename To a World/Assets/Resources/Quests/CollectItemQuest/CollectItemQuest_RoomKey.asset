@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
   m_Name: CollectItemQuest_RoomKey
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: ItemAcquisitionQuest_RoomKey
+  <ID>k__BackingField: CollectItemQuest_RoomKey
   <Type>k__BackingField: 3
   <Param>k__BackingField: {fileID: 11400000, guid: c2b3df42be39a1546b25ce56bfedf9ef, type: 2}
   <Name>k__BackingField: "\uAC1D\uC2E4 \uD0A4 \uC218\uB839"

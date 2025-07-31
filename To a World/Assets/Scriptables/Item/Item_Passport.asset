@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43fa1a813310ff438925e07d4a7411d, type: 3}
-  m_Name: CollectItemQuestParams_BreakfastVoucher
+  m_Script: {fileID: 11500000, guid: 7ba232d5052d42849b7d9be3a4f58cf3, type: 3}
+  m_Name: Item_Passport
   m_EditorClassIdentifier: 
-  <ItemID>k__BackingField: Item Demo
-  <Quantity>k__BackingField: 1
+  <ID>k__BackingField: Item_Passport
+  <Prefab>k__BackingField: {fileID: 3122706331161576241, guid: 2fb632dac5596c345a032895d2c4c8cd, type: 3}

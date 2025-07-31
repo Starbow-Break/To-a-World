@@ -20,7 +20,7 @@ public class CollectItemQuest : AQuest
         var param = questParams as CollectItemQuestParams;
         if (param != null)
         {
-            _targetItemId = param.ItemID;
+            _targetItemId = param.ItemData.ID;
             _targetQuantity = param.Quantity;
         }
     }

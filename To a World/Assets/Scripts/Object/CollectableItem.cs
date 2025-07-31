@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class CollectableItem : MonoBehaviour
+public class CollectableItem : Item
 {
-    [field: SerializeField] public string ID { get; private set; }
     [SerializeField] private XRBaseInteractable _interactable;
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         if (_interactable == null)
         {
             _interactable = GetComponentInChildren<XRBaseInteractable>();
@@ -31,15 +32,4 @@ public class CollectableItem : MonoBehaviour
         GameEventsManager.GetEvents<ItemEvents>().Collect(ID, 1);
         Destroy(gameObject);
     }
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (String.IsNullOrEmpty(ID))
-        {
-            ID = this.name;
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-    }
-#endif
 }
