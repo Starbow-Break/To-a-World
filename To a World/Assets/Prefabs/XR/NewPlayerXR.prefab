@@ -5623,6 +5623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd700740534a2d34484e306f5481b9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _handGesture: {fileID: 0}
 --- !u!1 &9088247742946320829
 GameObject:
   m_ObjectHideFlags: 0
@@ -7881,7 +7882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Spawn
+      value: TrySpawn
       objectReference: {fileID: 0}
     - target: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
