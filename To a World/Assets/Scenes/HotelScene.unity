@@ -2455,6 +2455,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 321705817}
     m_Modifications:
+    - target: {fileID: 2064182534602427377, guid: 7ed823e1743d27649a0355ad10cc674c, type: 3}
+      propertyPath: <data>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e4234fa1b70a15243b996c39d421b530, type: 2}
     - target: {fileID: 3572571727588809056, guid: 7ed823e1743d27649a0355ad10cc674c, type: 3}
       propertyPath: m_Name
       value: FrontDeskAgent_Demo

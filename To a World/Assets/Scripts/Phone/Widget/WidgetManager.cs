@@ -22,6 +22,10 @@ namespace Phone.Widget
 
         private void OnQuestStateChange(AQuest quest)
         {
+            if (quest.State == EQuestState.REQUIREMENTS_NOT_MET
+                || quest.State == EQuestState.CAN_START)
+                return;
+            
             if (quest.State == EQuestState.IN_PROGRESS
                 || quest.State == EQuestState.CAN_FINISH)
             {
