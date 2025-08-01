@@ -12,18 +12,23 @@ public class TalkMicButtonSetter : MonoBehaviour
         Updater.SetInteractable(interactable);
     }
 
-    public void SetColor(Color color)
+    public void SetBackgroundColor(Color color)
     {
-        Updater.SetColor(color);
+        Updater.SetBackgroundColor(color);
+    }
+    
+    public void SetIcon(Sprite sprite)
+    {
+        Updater.SetIcon(sprite);
     }
 
-    public void AddListenerSelectEnter(UnityAction<SelectEnterEventArgs> selectEnterAction)
+    public void AddOnClickListener(UnityAction selectEnterAction)
     {
-        Updater.AddListenerSelectEnter(selectEnterAction);
+        Updater.AddOnClickListener(selectEnterAction);
     }
     
     public void RemoveAllListenersSelectEnter()
     {
-        Updater.RemoveAllListenersSelectEnter();
+        Updater.RemoveAllOnClickListeners();
     }
 }

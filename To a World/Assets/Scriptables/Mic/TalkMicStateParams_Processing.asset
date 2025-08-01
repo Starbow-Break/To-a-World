@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4e976e072d4c92ab883b5693c22f72, type: 3}
   m_Name: TalkMicStateParams_Processing
   m_EditorClassIdentifier: 
-  <Color>k__BackingField: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
-  <Message>k__BackingField: Processing
+  <ButtonColor>k__BackingField: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  <ButtonIconSprite>k__BackingField: {fileID: 21300000, guid: 4529359fc105a7a40996faebbb5cb83e, type: 3}
+  <Message>k__BackingField: Wait

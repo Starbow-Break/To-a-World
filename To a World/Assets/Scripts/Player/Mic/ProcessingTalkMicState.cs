@@ -23,7 +23,7 @@ public class ProcessingTalkMicState: ATalkMicState
         NPCChatSystem.NPCChatManager.OnProcessingStateChanged -= ProcessingStateChanged;
     }
 
-    protected override void SelectEnteredTalkMicButton(SelectEnterEventArgs arg) {  }
+    protected override void OnClickTalkMicButton() {  }
 
     private void ProcessingStateChanged(bool state)
     {

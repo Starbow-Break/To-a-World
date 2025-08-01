@@ -10,13 +10,13 @@ public class ReadyTalkMicState: ATalkMicState
     public override void Enter()
     {
         base.Enter();
-        _talkMic.ButtonSetter.AddListenerSelectEnter(SelectEnteredTalkMicButton);
+        _talkMic.ButtonSetter.AddOnClickListener(OnClickTalkMicButton);
         _talkMic.ButtonSetter.SetButtonInteractable(true);
     }
     
     public override void Update() {  }
 
-    protected override void SelectEnteredTalkMicButton(SelectEnterEventArgs arg)
+    protected override void OnClickTalkMicButton()
     {
         var npcChatManager = NPCChatSystem.NPCChatManager;
 
