@@ -10,7 +10,7 @@ public class RecordingTalkMicState: ATalkMicState
     public override void Enter()
     {
         base.Enter();
-        _talkMic.ButtonSetter.AddListenerSelectEnter(SelectEnteredTalkMicButton);
+        _talkMic.ButtonSetter.AddOnClickListener(OnClickTalkMicButton);
     }
 
     public override void Update()
@@ -22,7 +22,7 @@ public class RecordingTalkMicState: ATalkMicState
         }
     }
 
-    protected override void SelectEnteredTalkMicButton(SelectEnterEventArgs arg)
+    protected override void OnClickTalkMicButton()
     {
         NPCChatSystem.NPCChatManager.TryStopRecording();
         _controller.ChangeState<ProcessingTalkMicState>();

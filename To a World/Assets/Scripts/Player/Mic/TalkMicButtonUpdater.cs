@@ -1,40 +1,42 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.UI;
 
 public class TalkMicButtonUpdater : MonoBehaviour
 {
-    [SerializeField] private XRSimpleInteractable _xrInteractable;
-    [SerializeField] private Renderer _modelRenderer;
+    [SerializeField] private Image Background;
+    [SerializeField] private Image Icon;
     
-    public void AddListenerSelectEnter(UnityAction<SelectEnterEventArgs> selectEnterAction)
+    private Button _button;
+
+    private void Awake()
     {
-        _xrInteractable.selectEntered.AddListener(selectEnterAction);
-    }
-    
-    public void AddListenerSelectExit(UnityAction<SelectExitEventArgs> selectExitAction)
-    {
-        _xrInteractable.selectExited.AddListener(selectExitAction);
-    }
-    
-    public void RemoveAllListenersSelectEnter()
-    {
-        _xrInteractable.selectEntered.RemoveAllListeners();
-    }
-    
-    public void RemoveAllListenersSelectExit()
-    {
-        _xrInteractable.selectExited.RemoveAllListeners();
+        _button = GetComponent<Button>();
     }
     
     public void SetInteractable(bool interactable)
     {
-        _xrInteractable.enabled = interactable;
+        _button.enabled = interactable;
     }
 
-    public void SetColor(Color color)
+    public void SetBackgroundColor(Color color)
     {
-        _modelRenderer.material.color = color;
+        Background.color = color;
+    }
+    
+    public void SetIcon(Sprite sprite)
+    {
+        Icon.sprite = sprite;
+    }
+    
+    public void AddOnClickListener(UnityAction onClickAction)
+    {
+        _button.onClick.AddListener(onClickAction);
+    }
+    
+    
+    public void RemoveAllOnClickListeners()
+    {
+        _button.onClick.RemoveAllListeners();
     }
 }

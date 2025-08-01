@@ -1,7 +1,9 @@
+using UnityEngine;
+
 public class CollectItemQuest : AQuest
 {
-    private string _targetItemId;
-    private int _targetQuantity;
+    public string TargetItemId { get; private set; }
+    public int TargetQuantity { get; private set; }
 
     private int _acquiredItems = 0;
 
@@ -20,17 +22,17 @@ public class CollectItemQuest : AQuest
         var param = questParams as CollectItemQuestParams;
         if (param != null)
         {
-            _targetItemId = param.ItemData.ID;
-            _targetQuantity = param.Quantity;
+            TargetItemId = param.ItemData.ID;
+            TargetQuantity = param.Quantity;
         }
     }
 
     private void OnAcquire(string itemId, int quantity)
     {
-        if (itemId == _targetItemId)
+        if (itemId == TargetItemId)
         {
             _acquiredItems += quantity;
-            if (_acquiredItems >= _targetQuantity)
+            if (_acquiredItems >= TargetQuantity)
             {
                 CompleteQuest();
             }

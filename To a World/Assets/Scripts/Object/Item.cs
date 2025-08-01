@@ -16,11 +16,6 @@ public class Item: MonoBehaviour
         }
     }
 
-    protected virtual void Start()
-    {
-        ItemRegistry.Instance.Register(ID, gameObject);
-    }
-
 #if UNITY_EDITOR
     protected virtual void OnValidate()
     {

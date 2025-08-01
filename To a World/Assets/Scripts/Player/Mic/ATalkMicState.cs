@@ -7,6 +7,8 @@ public abstract class ATalkMicState: IState
     protected TalkMicStateController _controller;
 
     protected Color _buttonColor;
+    protected Sprite _icon;
+    
     protected string _message;
 
     public ATalkMicState(TalkMic talkMic, TalkMicStateController controller, TalkMicStateParams stateParams)
@@ -15,12 +17,14 @@ public abstract class ATalkMicState: IState
         _controller = controller;
 
         _buttonColor = stateParams.ButtonColor;
+        _icon = stateParams.ButtonIconSprite;
         _message = stateParams.Message;
     }
 
     public virtual void Enter()
     {
-        _talkMic.ButtonSetter.SetColor(_buttonColor);
+        _talkMic.ButtonSetter.SetBackgroundColor(_buttonColor);
+        _talkMic.ButtonSetter.SetIcon(_icon);
         _talkMic.MessageSetter.UpdateMessage(_message);
     }
     
@@ -31,5 +35,5 @@ public abstract class ATalkMicState: IState
         _talkMic.ButtonSetter.RemoveAllListenersSelectEnter();
     }
 
-    protected abstract void SelectEnteredTalkMicButton(SelectEnterEventArgs arg);
+    protected abstract void OnClickTalkMicButton();
 }
