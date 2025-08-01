@@ -5716,7 +5716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee01ee2fb8403a242aa78a293b775a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updater: {fileID: 2182560196970296345}
+  updater: {fileID: 8091409162653482674}
   finishedTextColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
 --- !u!1 &8988033466871409305
 GameObject:

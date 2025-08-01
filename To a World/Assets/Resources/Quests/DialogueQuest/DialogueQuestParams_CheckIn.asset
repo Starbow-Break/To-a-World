@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8064dcafdaeb44f7a00cbe468c3c6f29, type: 3}
   m_Name: DialogueQuestParams_CheckIn
   m_EditorClassIdentifier: 
-  <CompletionCondition>k__BackingField: Check in at the hotel.
+  <CompletionCondition>k__BackingField: Player asks to Check-in

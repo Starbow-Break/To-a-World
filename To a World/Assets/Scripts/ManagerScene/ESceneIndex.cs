@@ -8,5 +8,7 @@ namespace ManagerScene
         AirportScene = 2,
         AirplaneScene = 3,
         DevAirplaneScene = 4,
+        HotelScene = 5,
+        DevHotelScene = 6,
     }
 }
