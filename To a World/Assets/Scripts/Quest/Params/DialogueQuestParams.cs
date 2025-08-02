@@ -6,6 +6,6 @@
 
 public class DialogueQuestParams : AQuestParams
 {
-    [field: SerializeField] 
-    public string CompletionCondition { get; private set; }
+    [field: SerializeField] public string CompletionCondition { get; private set; }
+    [field: SerializeField] public string CompletionDialogue { get; private set; }
 }
