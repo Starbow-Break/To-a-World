@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8064dcafdaeb44f7a00cbe468c3c6f29, type: 3}
   m_Name: DialogueQuestParams_Breakfast
   m_EditorClassIdentifier: 
-  <CompletionCondition>k__BackingField: Apply for breakfast.
+  <CompletionCondition>k__BackingField: Player answers whether he wants breakfast
+    or not
+  <CompletionDialogue>k__BackingField: 

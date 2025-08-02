@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a841dc13e5658a42a2005f624acd0f8, type: 3}
   m_Name: FrontDeskAgentNpcData
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Hotel Front Desk Staff
+  <Name>k__BackingField: Jane
   <Gender>k__BackingField: 1
   <Personality>k__BackingField: "\uCE5C\uADFC\uD558\uACE0 \uB3C4\uC6C0\uC774 \uB418\uB294"
-  <Background>k__BackingField: 'Hotel '
+  <Background>k__BackingField: Hotel Front Desk Staff
   <Age>k__BackingField: 25
   <VoiceStyle>k__BackingField: "\uC790\uC5F0\uC2A4\uB7EC\uC6B4"
   _questDatas:
