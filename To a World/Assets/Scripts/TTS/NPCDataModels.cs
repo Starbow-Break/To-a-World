@@ -75,6 +75,7 @@ namespace NPCSystem
         public string name;
         public string description;
         public string completion_condition;
+        public string completion_dialogue;
         public string reward;
         public string difficulty = "normal";
         public QuestStatus status = QuestStatus.ACTIVE;

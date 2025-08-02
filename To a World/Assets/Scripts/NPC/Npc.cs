@@ -60,6 +60,7 @@ public class Npc : MonoBehaviour
             chatQuestInfo.id = quest.Info.ID;
             chatQuestInfo.name = quest.Info.Name;
             chatQuestInfo.description = quest.Info.Description;
+            chatQuestInfo.completion_dialogue = quest.CompletionDialogue;
             chatQuestInfo.completion_condition = quest.CompletionCondition;
             
             NPCChatSystem.NPCChatManager.SetQuestInfo(chatQuestInfo);

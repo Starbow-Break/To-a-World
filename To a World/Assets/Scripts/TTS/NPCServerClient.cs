@@ -194,6 +194,8 @@ namespace NPCSystem
             string language = "en", 
             bool useThinking = false)
         {
+            
+            
             if (IsRequestActive)
             {
                 Debug.LogWarning("[NPCServerClient] 이미 요청이 진행 중입니다.");
