@@ -2900,7 +2900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 4032056589240230399}
   _moveHandInput: {fileID: 3511079451796981828}
-  _maxSpeed: 3
+  _maxSpeed: 2
 --- !u!1 &4343959596255456514
 GameObject:
   m_ObjectHideFlags: 0
@@ -4616,7 +4616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Base>k__BackingField: {fileID: 2841074031173655444}
   _target: {fileID: 711697034019266049}
-  _sensitivity: 7
+  _sensitivity: 5
 --- !u!1 &6544950733014716189
 GameObject:
   m_ObjectHideFlags: 0

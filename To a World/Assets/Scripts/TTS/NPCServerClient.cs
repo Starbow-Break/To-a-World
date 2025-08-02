@@ -252,6 +252,7 @@ namespace NPCSystem
                     ["name"] = questInfo.name ?? "",
                     ["description"] = questInfo.description ?? "",
                     ["completion_condition"] = questInfo.completion_condition ?? "",
+                    ["completion_dialogue"] = questInfo.completion_dialogue ?? "",
                     ["reward"] = questInfo.reward ?? "",
                     ["difficulty"] = questInfo.difficulty ?? "normal",
                     ["status"] = questInfo.status.ToString().ToLower()
@@ -351,6 +352,7 @@ namespace NPCSystem
                     {"name", questInfo.name ?? ""},
                     {"description", questInfo.description ?? ""},
                     {"completion_condition", questInfo.completion_condition ?? ""},
+                    {"completion_dialogue", questInfo.completion_dialogue ?? ""},
                     {"reward", questInfo.reward ?? ""},
                     {"difficulty", questInfo.difficulty ?? "normal"},
                     {"status", questInfo.status.ToString().ToLower()}
@@ -439,6 +441,7 @@ namespace NPCSystem
                     ["name"] = questInfo.name ?? "",
                     ["description"] = questInfo.description ?? "",
                     ["completion_condition"] = questInfo.completion_condition ?? "",
+                    ["completion_dialogue"] = questInfo.completion_dialogue ?? "",
                     ["reward"] = questInfo.reward ?? "",
                     ["difficulty"] = questInfo.difficulty ?? "normal",
                     ["status"] = questInfo.status.ToString().ToLower()

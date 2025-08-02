@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DialogueQuestParams_AnswerSmoking
   m_EditorClassIdentifier: 
   <CompletionCondition>k__BackingField: Please indicate whether you smoke or not.
+  <CompletionDialogue>k__BackingField: Great. Would you like to include breakfast
+    with your stay?

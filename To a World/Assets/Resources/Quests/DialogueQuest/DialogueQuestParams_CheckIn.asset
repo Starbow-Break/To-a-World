@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DialogueQuestParams_CheckIn
   m_EditorClassIdentifier: 
   <CompletionCondition>k__BackingField: Player asks to Check-in
+  <CompletionDialogue>k__BackingField: May I see your ID, please?
