@@ -21,7 +21,6 @@ public class HandGestureMovement : BaseHandXRInput<Vector2>
 
     protected override void FixedUpdate()
     {
-        Debug.Log(IsWork);
         base.FixedUpdate();
         
         if (!IsWork) return;

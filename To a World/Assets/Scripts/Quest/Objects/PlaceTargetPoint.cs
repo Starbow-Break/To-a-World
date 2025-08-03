@@ -18,7 +18,11 @@ public class PlaceTargetPoint : MonoBehaviour
     
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= OnQuestStateChange;
+        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
+        if (questEvents != null)
+        {
+            questEvents.OnQuestStateChange -= OnQuestStateChange;
+        }
     }
 
     private void OnQuestStateChange(AQuest quest)

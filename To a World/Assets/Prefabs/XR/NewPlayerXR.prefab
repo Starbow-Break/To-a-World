@@ -46,36 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GesturePerformed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3036402300788490695}
-        m_TargetAssemblyTypeName: SequentialSwitcher`1[[UnityEngine.MonoBehaviour,
-          UnityEngine
-        m_MethodName: ActiveSwitcher
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   GestureEnded:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3036402300788490695}
-        m_TargetAssemblyTypeName: SequentialSwitcher`1[[UnityEngine.MonoBehaviour,
-          UnityEngine
-        m_MethodName: InactiveSwitcher
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _handTrackingEvents: {fileID: 135408466508445209}
   _handShapeOrPose: {fileID: 11400000, guid: 41ea0ed9399f2844baef4949c87a3ab3, type: 2}
   _targetTransform: {fileID: 0}
@@ -129,7 +103,7 @@ MonoBehaviour:
   m_Mediator: {fileID: 1329958341810633636}
   m_TransformationPriority: 0
   m_TurnAmount: 60
-  m_DebounceTime: 0.5
+  m_DebounceTime: 0
   m_EnableTurnLeftRight: 1
   m_EnableTurnAround: 1
   m_DelayTime: 0
@@ -2157,6 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e6c9668d094f8fa5d33bd013e44457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _handGesture: {fileID: 2307691892112879906}
   <Base>k__BackingField: {fileID: 1558332253324535143}
   _target: {fileID: 7669039811400195138}
   _unhandleBorder: 15
@@ -3695,6 +3670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb78443d52df984194d8dfb3a1e583c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _handGesture: {fileID: 5577084590028254100}
   <Base>k__BackingField: {fileID: 2841074031173655444}
   _target: {fileID: 711697034019266049}
   _sensitivity: 5
@@ -5766,6 +5742,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 7050229297548867205}
     m_Modifications:
     - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
+      propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
+      propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GestureEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3036402300788490695}
@@ -5870,6 +5854,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2851155203393545796}
     - target: {fileID: 7129383489033121805, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
+      propertyPath: _minimumHoldTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129383489033121805, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
+      propertyPath: _gestureDetectionInterval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129383489033121805, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
       propertyPath: GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3036402300788490695}
@@ -5909,6 +5901,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5904046915814626933, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
   m_PrefabInstance: {fileID: 7107843203529715154}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5577084590028254100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3441288183971595846, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}
+  m_PrefabInstance: {fileID: 7107843203529715154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c57b3ca8d5db34eb6fcf77629f3875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6128331952927984906 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4010478339115639000, guid: c91a3f24d8839f1419349cc6e0964bda, type: 3}

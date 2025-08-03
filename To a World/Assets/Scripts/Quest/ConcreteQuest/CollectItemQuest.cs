@@ -14,7 +14,11 @@ public class CollectItemQuest : AQuest
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<ItemEvents>().OnCollect -= OnAcquire;
+        var itemEvents = GameEventsManager.GetEvents<ItemEvents>();
+        if (itemEvents != null)
+        {
+            itemEvents.OnCollect -= OnAcquire;
+        }
     }
 
     public override void Initialize(AQuestParams questParams)

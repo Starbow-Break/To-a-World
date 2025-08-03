@@ -32,8 +32,12 @@ public class NpcSpeechBubbleSetter : MonoBehaviour
             npcChatManager.OnProcessingStateChanged -= ProcessingStateChange;
         }
         
-        GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= OnEnteredNpc;
-        GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= OnExitedNpc;
+        var npcEvents = GameEventsManager.GetEvents<NpcEvents>();
+        if (npcEvents != null)
+        {
+            GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= OnEnteredNpc;
+            GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= OnExitedNpc;
+        }
     }
 
     private void ProcessingStateChange(bool state)
