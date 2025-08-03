@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class HandGestureMovement : ABaseInput<Vector2>
+public class HandGestureMovement : BaseHandXRInput<Vector2>
 {
     #region Fields
+    [Header("General")]
     [field: SerializeField] public Transform Base { get; private set; }
-    
-    [Header("Movement")]
     [SerializeField] private Transform _target;
     [SerializeField] private float _sensitivity = 4f;
 
     private Vector3 _startPosition;
+    private bool _gestureFlag;
     #endregion
     
     #region Unity Lifecycle
@@ -19,19 +19,22 @@ public class HandGestureMovement : ABaseInput<Vector2>
         TestAssertion();
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        if (_isActive)
-        {
-            Vector3 currentDistance = _target.position - Base.position;
-            Vector2 newValue = CalculateInputValue(currentDistance);
-            Value = newValue;
-        }
+        Debug.Log(IsWork);
+        base.FixedUpdate();
+        
+        if (!IsWork) return;
+            
+        Vector3 currentDistance = _target.position - Base.position;
+        Vector2 newValue = CalculateInputValue(currentDistance);
+        _value = newValue;
     }
     #endregion
 
     #region Methods
-    public override void StartInput()
+
+    protected override void StartInput()
     {
         Base.position = _target.position;
         base.StartInput();

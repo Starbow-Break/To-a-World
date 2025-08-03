@@ -56,18 +56,16 @@ public class HandGestureRotationVisualizer : MonoBehaviour, IVisualizer<HandGest
     
     public void UpdateVisual()
     {
-        var value = _rotation.Value;
-
-        switch (value)
+        if (_rotation.TryReadValue(out var value))
         {
-            case ERotationDirection.LEFT:
+            if (value == RotationDirection.Left)
+            {
                 _leftArrowAnim.Play();
-                break;
-            case ERotationDirection.RIGHT:
+            }
+            else if (value == RotationDirection.Right)
+            {
                 _rightArrowAnim.Play();
-                break;
-            default:
-                break;
+            }
         }
     }
 }

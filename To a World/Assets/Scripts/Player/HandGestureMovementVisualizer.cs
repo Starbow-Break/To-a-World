@@ -57,18 +57,20 @@ public class HandGestureMovementVisualizer : MonoBehaviour, IVisualizer<HandGest
 
     public void UpdateVisual()
     {
-        Vector2 inputValue = _movement.Value;
-        Quaternion invLineLocalRot = Quaternion.Inverse(_line.transform.localRotation);
-        _line.SetPositions(new Vector3[]
+        if (_movement.TryReadValue(out var value))
         {
-            invLineLocalRot * new Vector3(inputValue.x, 0f, inputValue.y),
-            invLineLocalRot * new Vector3(0f, 0f, 0f)
-        });
+            Quaternion invLineLocalRot = Quaternion.Inverse(_line.transform.localRotation);
+            _line.SetPositions(new Vector3[]
+            {
+                invLineLocalRot * new Vector3(value.x, 0f, value.y),
+                invLineLocalRot * new Vector3(0f, 0f, 0f)
+            });
         
-        float valueMagnitude = _movement.Value.magnitude;
-        if (!Mathf.Approximately(valueMagnitude, 0f))
-        {
-            _line.textureScale = new Vector3(-valueMagnitude / _line.startWidth, 1f, 1f);
+            float valueMag = value.magnitude;
+            if (!Mathf.Approximately(valueMag, 0f))
+            {
+                _line.textureScale = new Vector3(-valueMag / _line.startWidth, 1f, 1f);
+            }
         }
     }        
 }
