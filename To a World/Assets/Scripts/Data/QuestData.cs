@@ -14,15 +14,16 @@ public class QuestData : ScriptableObject
 
     [Header("Requirements")] 
     [field: SerializeField] public QuestData[] questPrerequisites { get; private set; }
-    
+
+
     private void OnValidate()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR       
         if (String.IsNullOrEmpty(ID))
         {
             ID = this.name;
             UnityEditor.EditorUtility.SetDirty(this);
         }
-        #endif
+#endif
     }
 }

@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class CameraDetectable: MonoBehaviour
 {
-    [field: SerializeField] public string ID { get; private set; } = "";
+    [SerializeField] private CameraDetectableData _data;
     
+    public string ID { get; private set; }
     private Collider _collider;
     
     private void Awake()
@@ -14,6 +15,8 @@ public class CameraDetectable: MonoBehaviour
         {
             Debug.LogWarning($"Collider not found. Object {gameObject.name} cannot be detected.");
         }
+
+        ID = _data.ID;
     }
 
     private void Start()
@@ -35,7 +38,6 @@ public class CameraDetectable: MonoBehaviour
     {
         if (CheckDetectCamera(camera))
         {
-            Debug.Log($"찍혔다!! : {gameObject.name}");
             GameEventsManager.GetEvents<CameraEvents>().ShotInCamera(ID);
         }
     }
@@ -46,15 +48,4 @@ public class CameraDetectable: MonoBehaviour
         var bounds = _collider.bounds;
         return GeometryUtility.TestPlanesAABB(frustum, bounds);
     }
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (String.IsNullOrEmpty(ID))
-        {
-            ID = this.name;
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-    }
-#endif
 }

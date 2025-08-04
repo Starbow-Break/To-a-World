@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4424669918004801806}
   - component: {fileID: 8295516621765924659}
   m_Layer: 0
-  m_Name: ArrivePlaceQuestPrefab
+  m_Name: SpotQuestPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

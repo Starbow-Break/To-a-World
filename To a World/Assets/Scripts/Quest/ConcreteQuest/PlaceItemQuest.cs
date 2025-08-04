@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlaceItemQuest : AQuest
 {
+    public string TargetSocketId { get; private set; }
     public string TargetItemId { get; private set; }
 
     public override void Initialize(AQuestParams questParams)
@@ -9,6 +10,7 @@ public class PlaceItemQuest : AQuest
         var param = questParams as PlaceItemQuestParams;
         if (param != null)
         {
+            TargetSocketId = param.Socket.ID;
             TargetItemId = param.Item.ID;
         }
     }
@@ -31,9 +33,9 @@ public class PlaceItemQuest : AQuest
         GameEventsManager.GetEvents<ItemEvents>().OnPlaceItem -= OnPlaceItem;
     }
 
-    private void OnPlaceItem(string itemId)
+    private void OnPlaceItem(string socketId, string itemId)
     {
-        if (itemId == TargetItemId)
+        if (socketId == TargetSocketId && itemId == TargetItemId)
         {
             CompleteQuest();
         }

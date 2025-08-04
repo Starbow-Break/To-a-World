@@ -6,12 +6,28 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class ItemXRTargetFilter : XRBaseTargetFilter
 {
-    private string _targetItemId;
+    [SerializeField] List<ItemData> _items;
 
-    public void Initialize(string itemId)
+    private HashSet<string> _targetItemIds = new();
+
+    private void Start()
     {
-        _targetItemId = itemId;
-        Debug.Log(_targetItemId);
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        foreach (var item in _items)
+        {
+            if (_targetItemIds.TryGetValue(item.ID, out var _))
+            {
+                Debug.LogWarning($"Duplicate ID : {item.ID}");
+            }
+            else
+            {
+                _targetItemIds.Add(item.ID);
+            }
+        }
     }
 
     public override void Process(IXRInteractor interactor, List<IXRInteractable> targets, List<IXRInteractable> results)
@@ -19,8 +35,7 @@ public class ItemXRTargetFilter : XRBaseTargetFilter
         foreach (var target in targets)
         {
             var item = target.transform.GetComponentInParent<Item>();
-            Debug.Log($"{item.ID}");
-            if (item != null && item.ID == _targetItemId)
+            if (item != null && _targetItemIds.TryGetValue(item.ID, out var _))
             {
                 results.Add(target);
             }

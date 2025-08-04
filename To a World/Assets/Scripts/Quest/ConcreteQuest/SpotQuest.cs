@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-public class ArrivePlaceQuest : AQuest
+public class SpotQuest : AQuest
 {
-    public string TargetPointId { get; private set; }
+    public string TargetId { get; private set; }
     
     private void OnEnable()
     {
@@ -20,13 +20,13 @@ public class ArrivePlaceQuest : AQuest
         var param = questParams as ArrivePlaceQuestParams;
         if (param != null)
         {
-            TargetPointId = param.TargetPlaceID;
+            TargetId = param.Spot.ID;
         }
     }
 
     private void OnArrive(string placeId)
     {
-        if (placeId == TargetPointId)
+        if (placeId == TargetId)
         {
             CompleteQuest();
         }

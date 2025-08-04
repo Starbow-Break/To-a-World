@@ -1,14 +1,21 @@
 using System;
 using UnityEngine;
 
-public class PlaceTargetPoint : MonoBehaviour
+public class Spot : MonoBehaviour
 {
-    [field: SerializeField] public string ID { get; private set; }
+    [SerializeField] private SpotData _spotData;
     [SerializeField] private GameObject _visualizer;
+
+    public string ID { get; private set; }
+
+    private void Awake()
+    {
+        ID = _spotData.ID;
+    }
 
     private void Start()
     {
-        PlaceTargetPointRegistry.Instance.Register(ID, this);
+        SpotRegistry.Instance.Register(ID, this);
     }
     
     private void OnEnable()
@@ -27,9 +34,9 @@ public class PlaceTargetPoint : MonoBehaviour
 
     private void OnQuestStateChange(AQuest quest)
     {
-        if (quest is ArrivePlaceQuest apQuest)
+        if (quest is SpotQuest apQuest)
         {
-            if (apQuest != null && apQuest.TargetPointId == ID)
+            if (apQuest != null && apQuest.TargetId == ID)
             {
                 bool active = apQuest.State == EQuestState.IN_PROGRESS || apQuest.State == EQuestState.CAN_FINISH;
                 _visualizer.SetActive(active);
@@ -43,16 +50,5 @@ public class PlaceTargetPoint : MonoBehaviour
         {
             GameEventsManager.GetEvents<PlaceEvents>().Arrive(ID);
         }
-    }
-    
-    private void OnValidate()
-    {
-#if UNITY_EDITOR
-        if (String.IsNullOrEmpty(ID))
-        {
-            ID = this.name;
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-#endif
     }
 }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dd2ed10667431bbf289a61b138e8d4, type: 3}
   m_Name: PlaceItemQuestParams_Passport
   m_EditorClassIdentifier: 
+  <Socket>k__BackingField: {fileID: 11400000, guid: 014f45687ab90b44093c409d26636b81, type: 2}
   <Item>k__BackingField: {fileID: 11400000, guid: 45e1b68360de30447b14d6b686f03516, type: 2}
