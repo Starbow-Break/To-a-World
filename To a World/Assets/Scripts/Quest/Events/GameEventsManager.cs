@@ -1,11 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
 {
     private List<IEvents> _eventsList = new();
+    
+    public static bool TryGetEvents<T>(out T events) where T : IEvents
+    {
+        events = default;
+        
+        if (Instance != null)
+        {
+            return Instance.TryGetEventsInternal(out events);
+        }
+
+        return false;
+    }
 
     public static T GetEvents<T>() where T : IEvents
     {
@@ -14,8 +24,7 @@ public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
             return Instance.GetEventsInternal<T>();
         }
 
-        Debug.LogWarning("GameEventsManager의 인스턴스가 존재하지 않습니다.");
-        return default;
+        throw new EventsNotFoundException($"{nameof(T)} not found.");
     }
 
     private void Awake()
@@ -33,7 +42,7 @@ public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
         _eventsList.Add(new ItemEvents());
         _eventsList.Add(new CameraEvents());
     }
-
+    
     private T GetEventsInternal<T>() where T : IEvents
     {
         foreach (var e in _eventsList)
@@ -44,6 +53,22 @@ public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
             }
         }
 
-        return default;
+        throw new EventsNotFoundException($"{nameof(T)} not found.");
+    }
+
+    private bool TryGetEventsInternal<T>(out T events) where T : IEvents
+    {
+        events = default;
+        
+        foreach (var e in _eventsList)
+        {
+            if (e is T tempEvents)
+            {
+                events = tempEvents;
+                return true;
+            }
+        }
+
+        return false;
     }
 }

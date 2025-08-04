@@ -1,1 +1,4 @@
-﻿public interface IEvents {  }
+﻿using System;
+using System.Collections.Generic;
+
+public interface IEvents {  }

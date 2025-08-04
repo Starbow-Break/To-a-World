@@ -14,23 +14,8 @@ public class NpcData : ScriptableObject
 
     [SerializeField] List<QuestData> _questDatas = new();
 
-    public bool TryGetNpcQuest(string questId, out DialogueQuest dialogueQuest)
+    public bool IsNpcQuest(string questId)
     {
-        dialogueQuest = null;
-        
-        foreach (var questData in _questDatas)
-        {
-            if (questData.ID == questId)
-            {
-                var quest = QuestManager.Instance.GetQuestById(questId);
-                if (quest is DialogueQuest)
-                {
-                    dialogueQuest = quest as DialogueQuest;
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return _questDatas.Find(questData => questData.ID == questId) != null;
     }
 }

@@ -31,7 +31,10 @@ public class CameraDetectable: MonoBehaviour
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<CameraEvents>().OnCameraShot -= OnCameraShot;
+        if (GameEventsManager.TryGetEvents<CameraEvents>(out var cameraEvents))
+        {
+            cameraEvents.OnCameraShot -= OnCameraShot;
+        }
     }
 
     private void OnCameraShot(Camera camera)

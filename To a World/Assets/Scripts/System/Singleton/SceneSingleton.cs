@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[DefaultExecutionOrder(-1000)]
 public abstract class SceneSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     protected static T _instance;
