@@ -21,19 +21,14 @@ public class Npc : MonoBehaviour
 
     private void OnEnable()
     {
-        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
-        if (questEvents != null)
-        {
-            questEvents.OnStartQuest += SetChatManagerQuestData;
-        }
+        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange += SetChatManagerQuestData;
     }
 
     private void OnDisable()
     {
-        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
-        if (questEvents != null)
+        if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
         {
-            questEvents.OnStartQuest -= SetChatManagerQuestData;
+            questEvents.OnQuestStateChange -= SetChatManagerQuestData;
         }
     }
 
@@ -52,16 +47,16 @@ public class Npc : MonoBehaviour
         NPCChatSystem.NPCChatManager.SendTextToNPC(text);
     }
 
-    private void SetChatManagerQuestData(string questId)
+    private void SetChatManagerQuestData(AQuest quest)
     {
-        if (data.TryGetNpcQuest(questId, out DialogueQuest quest))
+        if(quest is DialogueQuest dialogueQuest && data.IsNpcQuest(quest.Info.ID))
         {
             var chatQuestInfo = new NPCSystem.QuestInfo();
-            chatQuestInfo.id = quest.Info.ID;
-            chatQuestInfo.name = quest.Info.Name;
-            chatQuestInfo.description = quest.Info.Description;
-            chatQuestInfo.completion_dialogue = quest.CompletionDialogue;
-            chatQuestInfo.completion_condition = quest.CompletionCondition;
+            chatQuestInfo.id = dialogueQuest.Info.ID;
+            chatQuestInfo.name = dialogueQuest.Info.Name;
+            chatQuestInfo.description = dialogueQuest.Info.Description;
+            chatQuestInfo.completion_dialogue = dialogueQuest.CompletionDialogue;
+            chatQuestInfo.completion_condition = dialogueQuest.CompletionCondition;
             
             NPCChatSystem.NPCChatManager.SetQuestInfo(chatQuestInfo);
         }

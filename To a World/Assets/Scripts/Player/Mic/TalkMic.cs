@@ -25,8 +25,11 @@ public class TalkMic : MonoBehaviour
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<NpcEvents>().OnEnteredNpc -= EnteredNpc;
-        GameEventsManager.GetEvents<NpcEvents>().OnExitedNpc -= ExitedNpc;
+        if (GameEventsManager.TryGetEvents<NpcEvents>(out var npcEvents))
+        {
+            npcEvents.OnEnteredNpc -= EnteredNpc;
+            npcEvents.OnExitedNpc -= ExitedNpc;
+        }
     }
 
     private void Update()

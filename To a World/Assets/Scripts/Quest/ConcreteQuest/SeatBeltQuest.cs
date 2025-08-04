@@ -10,8 +10,7 @@ public class SeatBeltQuest : AQuest
 
     private void OnDisable()
     {
-        var seatBeltEvents = GameEventsManager.GetEvents<SeatBeltEvents>();
-        if (seatBeltEvents != null)
+        if (GameEventsManager.TryGetEvents<SeatBeltEvents>(out var seatBeltEvents))
         {
             seatBeltEvents.OnConnect -= OnConnect;
         }

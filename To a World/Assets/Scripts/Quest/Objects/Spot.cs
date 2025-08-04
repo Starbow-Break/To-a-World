@@ -25,8 +25,7 @@ public class Spot : MonoBehaviour
     
     private void OnDisable()
     {
-        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
-        if (questEvents != null)
+        if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
         {
             questEvents.OnQuestStateChange -= OnQuestStateChange;
         }

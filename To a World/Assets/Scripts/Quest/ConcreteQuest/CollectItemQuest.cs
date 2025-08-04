@@ -14,8 +14,7 @@ public class CollectItemQuest : AQuest
 
     private void OnDisable()
     {
-        var itemEvents = GameEventsManager.GetEvents<ItemEvents>();
-        if (itemEvents != null)
+        if (GameEventsManager.TryGetEvents<ItemEvents>(out var itemEvents))
         {
             itemEvents.OnCollect -= OnAcquire;
         }

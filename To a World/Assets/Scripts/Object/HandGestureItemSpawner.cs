@@ -15,8 +15,11 @@ public class HandGestureItemSpawner : MonoBehaviour, IItemSpawner
 
     private void OnDisable()
     {
-        _handGesture.GesturePerformed.RemoveAllListeners();
-        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= QuestStateChange;
+        _handGesture.GesturePerformed.RemoveListener(GesturePerformed);
+        if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
+        {
+            questEvents.OnQuestStateChange -= QuestStateChange;
+        }
     }
     
     public bool TrySpawn()

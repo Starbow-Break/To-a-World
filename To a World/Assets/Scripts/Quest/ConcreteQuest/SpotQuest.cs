@@ -12,7 +12,10 @@ public class SpotQuest : AQuest
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<PlaceEvents>().OnArrive -= OnArrive;
+        if (GameEventsManager.TryGetEvents<PlaceEvents>(out var placeEvents))
+        {
+            placeEvents.OnArrive -= OnArrive;
+        }
     }
     
     public override void Initialize(AQuestParams questParams)

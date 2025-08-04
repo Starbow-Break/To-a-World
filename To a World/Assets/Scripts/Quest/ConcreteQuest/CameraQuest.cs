@@ -20,7 +20,10 @@ public class CameraQuest : AQuest
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<CameraEvents>().OnShotInCamera -= OnShotInCamera;
+        if (GameEventsManager.TryGetEvents<CameraEvents>(out var cameraEvents))
+        {
+            cameraEvents.OnShotInCamera -= OnShotInCamera;
+        }
     }
 
     private void OnShotInCamera(string id)

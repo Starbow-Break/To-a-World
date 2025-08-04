@@ -14,7 +14,10 @@ public class CollectItemQuestItemSpawner: MonoBehaviour, IItemSpawner
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= QuestStateChange;
+        if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
+        {
+            questEvents.OnQuestStateChange -= QuestStateChange;
+        }
     }
     
     public bool TrySpawn()

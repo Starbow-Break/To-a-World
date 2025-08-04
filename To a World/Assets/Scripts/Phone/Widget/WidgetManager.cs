@@ -17,7 +17,10 @@ namespace Phone.Widget
         
         private void OnDestroy()
         {
-            GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= OnQuestStateChange;
+            if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
+            {
+                questEvents.OnQuestStateChange -= OnQuestStateChange;
+            }
         }
 
         private void OnQuestStateChange(AQuest quest)

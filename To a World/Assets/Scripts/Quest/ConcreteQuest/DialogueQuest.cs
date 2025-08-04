@@ -13,8 +13,10 @@ public class DialogueQuest : AQuest
     private void OnDisable()
     {
         var npcChatMgr = NPCChatSystem.NPCChatManager;
-        if (npcChatMgr == null) return;
-        npcChatMgr.OnQuestCompleted -= OnQuestCompleted;
+        if (npcChatMgr != null)
+        {
+            npcChatMgr.OnQuestCompleted -= OnQuestCompleted;
+        }
     }
     
     public override void Initialize(AQuestParams questParams)

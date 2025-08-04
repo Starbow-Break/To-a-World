@@ -15,14 +15,6 @@ public class PlaceItemQuest : AQuest
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            GameEventsManager.GetEvents<QuestEvents>().StartQuest(Info.ID);
-        }
-    }
-
     private void OnEnable()
     {
         GameEventsManager.GetEvents<ItemEvents>().OnPlaceItem += OnPlaceItem;
@@ -30,7 +22,10 @@ public class PlaceItemQuest : AQuest
 
     private void OnDisable()
     {
-        GameEventsManager.GetEvents<ItemEvents>().OnPlaceItem -= OnPlaceItem;
+        if (GameEventsManager.TryGetEvents<ItemEvents>(out var itemEvents))
+        {
+            itemEvents.OnPlaceItem -= OnPlaceItem;
+        }
     }
 
     private void OnPlaceItem(string socketId, string itemId)

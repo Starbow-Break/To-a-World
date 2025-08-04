@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : SceneSingleton<QuestManager>
+public class QuestManager: MonoBehaviour
 {
     private Dictionary<string, AQuest> _questMap;
     
     #region Unity Lifecycles
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         _questMap = CreateQuestMap();
     }
 
@@ -20,9 +19,7 @@ public class QuestManager : SceneSingleton<QuestManager>
 
     private void OnDisable()
     {
-        var questEvents = GameEventsManager.GetEvents<QuestEvents>();
-
-        if (questEvents != null)
+        if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
         {
             questEvents.OnStartQuest -= StartQuest;
             questEvents.OnFinishQuest -= FinishQuest;
