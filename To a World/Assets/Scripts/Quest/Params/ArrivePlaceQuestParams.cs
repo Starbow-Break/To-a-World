@@ -5,5 +5,6 @@
     order = 0)]
 public class ArrivePlaceQuestParams: AQuestParams
 {
-    [field: SerializeField] public string TargetPlaceID { get; private set; }
+    [field: SerializeField] 
+    public SpotData Spot { get; private set; }
 }

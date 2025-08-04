@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class GameEventsManager : AInitializedSceneSingleton<GameEventsManager>
 {
     private List<IEvents> _eventsList = new();
-    
+
     public static T GetEvents<T>() where T : IEvents
     {
         if (Instance != null)

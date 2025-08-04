@@ -9,7 +9,7 @@ public class CameraQuest : AQuest
         var param = questParams as CameraQuestParams;
         if (param != null)
         {
-            _targetId = param.TargetID;
+            _targetId = param.CameraDetectable.ID;
         }
     }
 

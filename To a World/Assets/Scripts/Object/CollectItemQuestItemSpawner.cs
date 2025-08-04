@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CollectItemQuestItemSpawner: MonoBehaviour
+public class CollectItemQuestItemSpawner: MonoBehaviour, IItemSpawner
 {
     [SerializeField] private QuestData _questData;
     [SerializeField] private Vector3 _offset;
@@ -16,6 +16,18 @@ public class CollectItemQuestItemSpawner: MonoBehaviour
     {
         GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= QuestStateChange;
     }
+    
+    public bool TrySpawn()
+    {
+        Spawn();
+        return true;
+    }
+
+    public void Spawn()
+    {
+        var prefab = ItemRegistry.Instance.Get(_itemId);
+        Instantiate(prefab, transform.position + _offset, transform.rotation, null);
+    }
 
     private void QuestStateChange(AQuest quest)
     {
@@ -29,11 +41,5 @@ public class CollectItemQuestItemSpawner: MonoBehaviour
                 Spawn();
             }
         }
-    }
-
-    private void Spawn()
-    {
-        var prefab = ItemRegistry.Instance.Get(_itemId);
-        Instantiate(prefab, transform.position + _offset, transform.rotation, null);
     }
 }

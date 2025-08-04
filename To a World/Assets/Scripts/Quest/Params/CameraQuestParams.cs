@@ -5,5 +5,6 @@
     order = 4)]
 public class CameraQuestParams: AQuestParams
 {
-    [field: SerializeField] public string TargetID { get; private set; }
+    [field: SerializeField] 
+    public CameraDetectableData CameraDetectable { get; private set; }
 }

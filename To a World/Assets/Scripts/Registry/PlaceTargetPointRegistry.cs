@@ -1,1 +1,0 @@
-﻿public class PlaceTargetPointRegistry : ASingletonRegistry<string, PlaceTargetPoint> {  }

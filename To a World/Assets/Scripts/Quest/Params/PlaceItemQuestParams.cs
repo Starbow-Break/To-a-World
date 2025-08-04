@@ -5,6 +5,6 @@
     order = 5)]
 public class PlaceItemQuestParams: AQuestParams
 {
-    [field: SerializeField]
-    public ItemData Item { get; private set; }
+    [field: SerializeField] public ItemSocketData Socket { get; private set; }
+    [field: SerializeField] public ItemData Item { get; private set; }
 }

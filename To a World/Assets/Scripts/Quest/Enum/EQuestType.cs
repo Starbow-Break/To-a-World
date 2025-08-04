@@ -1,7 +1,7 @@
 ﻿[System.Serializable]
 public enum EQuestType
 {
-    ARRIVE_PLACE,
+    SPOT,
     BELT,
     DIALOGUE,
     COLLECT_ITEM,

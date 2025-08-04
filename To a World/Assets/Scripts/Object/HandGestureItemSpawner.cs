@@ -1,16 +1,15 @@
 using UnityEngine;
-using UnityEngine.XR.Hands.Gestures;
 
-public class HandGestureItemSpawner : ItemSpawner
+public class HandGestureItemSpawner : MonoBehaviour, IItemSpawner
 {
     [SerializeField] private StaticHandGesture _handGesture;
     
     private string _itemId;
-    private bool _isReady = false;
+    private bool _isReady;
 
     private void OnEnable()
     {
-        _handGesture.GesturePerformed.AddListener(TrySpawn);
+        _handGesture.GesturePerformed.AddListener(GesturePerformed);
         GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange += QuestStateChange;
     }
 
@@ -20,11 +19,28 @@ public class HandGestureItemSpawner : ItemSpawner
         GameEventsManager.GetEvents<QuestEvents>().OnQuestStateChange -= QuestStateChange;
     }
     
-    public void TrySpawn()
+    public bool TrySpawn()
     {
         if (_isReady)
         {
             Spawn();
+            return true;
+        }
+
+        return false;
+    }
+    
+    public void Spawn()
+    {
+        var prefab = ItemRegistry.Instance.Get(_itemId);
+        Instantiate(prefab, transform.position, transform.rotation, null);
+    }
+    
+    private void GesturePerformed()
+    {
+        if (TrySpawn())
+        {
+            _isReady = false;
         }
     }
 
@@ -44,12 +60,5 @@ public class HandGestureItemSpawner : ItemSpawner
     {
         _itemId = itemId;
         _isReady = true;
-    }
-    
-    private void Spawn()
-    {
-        var prefab = ItemRegistry.Instance.Get(_itemId);
-        Instantiate(prefab, transform.position, transform.rotation, null);
-        _isReady = false;
     }
 }
