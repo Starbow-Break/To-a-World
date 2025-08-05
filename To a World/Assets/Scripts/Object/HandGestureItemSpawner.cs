@@ -56,6 +56,10 @@ public class HandGestureItemSpawner : MonoBehaviour, IItemSpawner
             {
                 ReadySpawn(placeItemQuest.TargetItemId);
             }
+            else if (placeItemQuest.State == EQuestState.CAN_FINISH || placeItemQuest.State == EQuestState.FINISHED)
+            {
+                TryReleaseSpawn(placeItemQuest.TargetItemId);
+            }
         }
     }
 
@@ -63,5 +67,19 @@ public class HandGestureItemSpawner : MonoBehaviour, IItemSpawner
     {
         _itemId = itemId;
         _isReady = true;
+    }
+
+    private void TryReleaseSpawn(string itemId)
+    {
+        if (_itemId == itemId)
+        {
+            ReleaseSpawn();
+        }
+    }
+
+    private void ReleaseSpawn()
+    {
+        _itemId = null;
+        _isReady = false;
     }
 }
