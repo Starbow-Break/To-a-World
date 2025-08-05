@@ -38,16 +38,15 @@ namespace Phone.Widget
                 updater.QuestTitle.color = _originalTextColor;
                 updater.QuestDescription.color = _originalTextColor;
 
-                updater.QuestTitle.fontStyle |= FontStyles.Normal;
-                updater.QuestDescription.fontStyle |= FontStyles.Normal;
+                // updater.QuestTitle.fontStyle |= FontStyles.Normal;
+                // updater.QuestDescription.fontStyle |= FontStyles.Normal;
                 return;
             }
             
             updater.QuestTitle.color = finishedTextColor;
             updater.QuestDescription.color = finishedTextColor;
-
-            updater.QuestTitle.fontStyle |= FontStyles.Strikethrough;
-            updater.QuestDescription.fontStyle |= FontStyles.Strikethrough;
+            // updater.QuestTitle.fontStyle |= FontStyles.Strikethrough;
+            // updater.QuestDescription.fontStyle |= FontStyles.Strikethrough;
         }
     }
 }

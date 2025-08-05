@@ -1904,6 +1904,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6801c7e9cbb793f45aeb003b57060b1c, type: 3}
+--- !u!114 &1424135157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6027826481727755043, guid: 6801c7e9cbb793f45aeb003b57060b1c, type: 3}
+  m_PrefabInstance: {fileID: 1424135156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d527a86555e7d4e9a6173b3fa37f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1494855452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7087608632818592425, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
+      propertyPath: conversationManager
+      value: 
+      objectReference: {fileID: 1424135157}
     - target: {fileID: 7545744248819906841, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
