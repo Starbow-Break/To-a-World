@@ -17,4 +17,14 @@ public class NPCChatSystem : NullSafeSceneSingleton<NPCChatSystem>
                return null;
           }
      }
+
+     private void Awake()
+     {
+          InitializeSystem();
+     }
+     
+     private void InitializeSystem()
+     {
+          NPCChatManager.ClearNPCMemory("Start New Scene");
+     }
 }
