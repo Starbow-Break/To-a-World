@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8710712824996759202}
   - component: {fileID: 1940278544707838383}
   - component: {fileID: 9019947978745381008}
-  - component: {fileID: 7857311424988401931}
+  - component: {fileID: 6335207371722743642}
   m_Layer: 11
   m_Name: Passport
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3122706331161576241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.58, y: 1.598, z: -2.44}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
---- !u!114 &7857311424988401931
+--- !u!114 &6335207371722743642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,10 +193,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3122706331161576241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c30c0dac8494704a3c6f331d93e3e8a, type: 3}
+  m_Script: {fileID: 11500000, guid: c59c3994bdd744e7aba61c6586188997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 45e1b68360de30447b14d6b686f03516, type: 2}
+  _destroyDelayWhenFinishQuest: 3
 --- !u!1 &3800113894279929168
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,8 +226,8 @@ Transform:
   m_GameObject: {fileID: 3800113894279929168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.02, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8710712824996759202}
