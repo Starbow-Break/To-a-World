@@ -27,7 +27,7 @@ public class HandGestureRotationVisualizer : MonoBehaviour, IVisualizer<HandGest
 
     private void Start()
     {
-        SetEnableAllRenderers(_rotation.isActiveAndEnabled);
+        Hide();
     }
 
     private void Update()

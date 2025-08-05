@@ -25,7 +25,7 @@ public class HandGestureMovementVisualizer : MonoBehaviour, IVisualizer<HandGest
 
     private void Start()
     {
-        SetEnableAllRenderers(_movement.isActiveAndEnabled);
+        Hide();
     }
 
     private void Update()
