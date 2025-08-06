@@ -12,13 +12,13 @@ namespace Phone
         [SerializeField] private NPCConversationManager conversationManager;
 
         private string _currentLog = string.Empty;
-        
-        private void OnEnable()
+
+        private void Awake()
         {
             conversationManager.OnMessageAdded += OnMessageAdded;
         }
-
-        private void OnDisable()
+        
+        private void OnDestroy()
         {
             if (conversationManager != null)
             {
