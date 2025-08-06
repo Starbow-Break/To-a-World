@@ -13,15 +13,11 @@ public class QuestSkipperApp : AApp
     private void Awake()
     {
         window.SkipButton.onClick.AddListener(SkipAllProgressingQuest);
-    }
-
-    private void OnEnable()
-    {
         GameEventsManager.GetEvents<QuestEvents>().OnStartQuest += StartQuest;
         GameEventsManager.GetEvents<QuestEvents>().OnFinishQuest += FinishQuest;
     }
-
-    private void OnDisable()
+    
+    private void OnDestroy()
     {
         if (GameEventsManager.TryGetEvents<QuestEvents>(out var questEvents))
         {
