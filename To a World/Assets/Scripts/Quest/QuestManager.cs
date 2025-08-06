@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class QuestManager: MonoBehaviour
 {
+    [SerializeField] QuestDatabase _questDatabase;
+    
     private Dictionary<string, AQuest> _questMap;
     
     #region Unity Lifecycles
@@ -85,10 +87,10 @@ public class QuestManager: MonoBehaviour
 
     private Dictionary<string, AQuest> CreateQuestMap()
     {
-        QuestData[] allQuests = Resources.LoadAll<QuestData>("Quests");
+        var questDatas = _questDatabase.QuestDatas;
         
         Dictionary<string, AQuest> idToQuestMap = new();
-        foreach (var questData in allQuests)
+        foreach (var questData in questDatas)
         {
             var quest = QuestFactory.CreateQuest(questData.Type, questData.Param, transform);
             quest.Info = new QuestInfo(
