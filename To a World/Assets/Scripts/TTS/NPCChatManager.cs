@@ -26,7 +26,6 @@ using NPCSystem;
 /// chatManager.StartRecording();
 /// ```
 /// </summary>
-[DefaultExecutionOrder(-1000)]
 public class NPCChatManager : MonoBehaviour
 {
     #region 컴포넌트 참조
