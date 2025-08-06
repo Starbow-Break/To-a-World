@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20035dbed7b344d92f671f22802cb6, type: 3}
+  m_Name: PlaceItemQuest_Passport
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: PlaceItemQuest_Passport
+  <Type>k__BackingField: 4
+  <Param>k__BackingField: {fileID: 11400000, guid: 4ee744a4c0bd64c42a03e929780f2414, type: 2}
+  <Name>k__BackingField: "\uC2E0\uBD84\uC99D \uC81C\uC2DC"
+  <Description>k__BackingField: "\uC9C1\uC6D0\uC5D0\uAC8C \uC5EC\uAD8C\uC744 \uC81C\uC2DC\uD558\uC138\uC694."
+  <questPrerequisites>k__BackingField: []
