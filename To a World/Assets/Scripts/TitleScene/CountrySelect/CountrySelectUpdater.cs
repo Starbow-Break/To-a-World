@@ -10,5 +10,8 @@ namespace TitleScene
         
         [SerializeField] private Button submitButton;
         public Button SubmitButton => submitButton;
-    }
+
+        [SerializeField] private Image selectedImage;
+        public Image SelectedImage => selectedImage;
+    } 
 }

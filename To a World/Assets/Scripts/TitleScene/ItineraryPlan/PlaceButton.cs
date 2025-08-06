@@ -9,7 +9,6 @@ namespace TitleScene.ItineraryPlan
     {
         [SerializeField] private Button button;
         [SerializeField] private Image image;
-        [SerializeField] private TMP_Text nameText;
     
         public void SetButton(Action<Sprite> onClick)
         {

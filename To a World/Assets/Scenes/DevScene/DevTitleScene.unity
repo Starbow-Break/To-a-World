@@ -298,6 +298,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5017150919466131408, guid: 19b3c4fe220687c41bd0cf61713d8cf7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017150919466131408, guid: 19b3c4fe220687c41bd0cf61713d8cf7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017150919466131408, guid: 19b3c4fe220687c41bd0cf61713d8cf7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017150919466131408, guid: 19b3c4fe220687c41bd0cf61713d8cf7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5317494814139858398, guid: 19b3c4fe220687c41bd0cf61713d8cf7, type: 3}
       propertyPath: m_Name
       value: TitleSceneUI 1

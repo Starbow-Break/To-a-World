@@ -11,12 +11,12 @@ namespace TitleScene.ItineraryPlan
         
         public bool IsInitialized { get; private set;}
         public Button Button => button;
+
         public void SetButton(Sprite sprite)
         {
             placeImage.gameObject.SetActive(true);
             placeImage.sprite = sprite;
             IsInitialized = true;
         }
-        
     }
 }

@@ -1,25 +1,25 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CountryButton : ARadioButton
 {
     [SerializeField] private Image image;
-    [SerializeField] private Color _selectedColor;
-    [SerializeField] private Color _deselectedColor;
+    [SerializeField] private GameObject selectedOutline;
 
+    public Sprite SelectedSprite => image.sprite;
+    
     private void Awake()
     {
-        image.color = _deselectedColor;
+        selectedOutline.SetActive(false);
     }
 
     public override void SetSelected()
     {
-        image.color = _selectedColor;
+        selectedOutline.SetActive(true);
     }
 
     public override void SetDeselected()
     {
-        image.color = _deselectedColor;
+        selectedOutline.SetActive(false);
     }
 }

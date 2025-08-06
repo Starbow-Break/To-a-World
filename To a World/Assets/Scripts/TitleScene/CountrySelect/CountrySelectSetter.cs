@@ -10,7 +10,7 @@ namespace TitleScene
         {
             updater.SubmitButton.onClick.AddListener(Submit);
 
-            //updater.RadioButtonGroup.OnValueChanged += ToggleSubmitButton;
+            updater.RadioButtonGroup.OnValueChanged += SetSelectedImage;
         }
         
         private void Submit()
@@ -23,6 +23,15 @@ namespace TitleScene
         {
             updater.gameObject.SetActive(true);
             updater.SubmitButton.gameObject.SetActive(true);
+        }
+
+        private void SetSelectedImage(ARadioButton args)
+        {
+            if (args.TryGetComponent(out CountryButton countryButton) == false)
+            {
+                Debug.LogError($"CountryButton {args.name} is not a CountryButton");
+            }
+            updater.SelectedImage.sprite = countryButton.SelectedSprite;
         }
         
         private void ToggleSubmitButton(int obj)
