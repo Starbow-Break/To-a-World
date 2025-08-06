@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Action = Unity.Android.Gradle.Manifest.Action;
 
 public class RadioButtonGroup : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class RadioButtonGroup : MonoBehaviour
 
     private ARadioButton SelectedButton { get; set; } = null;
     private int SelectedIndex { get; set; } = -1;  //-1 선택안됨
-    public event Action<int> OnValueChanged;   // 선택된 값이 바뀔때 발생하는 이벤트
-    
+    public event Action<ARadioButton> OnValueChanged; // 선택된 값이 바뀔때 발생하는 이벤트
     
     public void RegisterButton(ARadioButton aRadioButton)
     {
@@ -49,7 +49,7 @@ public class RadioButtonGroup : MonoBehaviour
             SelectedButton.SetSelected();
         }
 
-        OnValueChanged?.Invoke(SelectedIndex);
+        OnValueChanged?.Invoke(RadioButtons[selectedIndex]);
     }
 
 }

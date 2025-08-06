@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updater: {fileID: 203528951447893724}
-  itineraryButtonPrefab: {fileID: 338753955606004887, guid: 552916821ecddb34c9c9c4e5bb4bf4fa, type: 3}
+  itineraryButtonPrefab: {fileID: 8121567516053284855, guid: 706e1b3e82eea4a40a208e1755dd1710, type: 3}
 --- !u!1 &5317494814139858398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1477,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleSceneCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2023000309697028627, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023000309697028627, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023000309697028627, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 418.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023000309697028627, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178
+      objectReference: {fileID: 0}
     - target: {fileID: 2070739889576170471, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1601,16 +1617,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7791859993369647018, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9024686551100640339, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
       propertyPath: m_Name
       value: PlayerNameInputUpdater
       objectReference: {fileID: 0}
     - target: {fileID: 9024686551100640339, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103033720419623826, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9024686551100640339, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+    - {fileID: 4709046629079382377, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
+    - {fileID: 6186261279910683691, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7c324809af914142ab270bdeb5fbea3, type: 3}
