@@ -380,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b548d4a8c1ea7774a8caa197a9f2c0b5, type: 3}
       propertyPath: m_Name
-      value: Npc_Demo
+      value: Hotelier
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: b548d4a8c1ea7774a8caa197a9f2c0b5, type: 3}
       propertyPath: m_Avatar
@@ -421,9 +421,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b548d4a8c1ea7774a8caa197a9f2c0b5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1300726352733232778}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b548d4a8c1ea7774a8caa197a9f2c0b5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2185776803031306062}
   m_SourcePrefab: {fileID: 100100000, guid: b548d4a8c1ea7774a8caa197a9f2c0b5, type: 3}
 --- !u!1 &3572571727588809056 stripped
 GameObject:
@@ -581,18 +578,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2185776803031306062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3572571727588809056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5d8aa0354462a48ab53dacb88a26b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4242254107143341018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b548d4a8c1ea7774a8caa197a9f2c0b5, type: 3}

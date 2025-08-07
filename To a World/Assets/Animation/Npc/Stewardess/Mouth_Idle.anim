@@ -42,11 +42,11 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: blendShape.mouthOpen
-    path: Stewardess/Wolf3D_Avatar
+    attribute: blendShape.mouthSmile
+    path: Wolf3D_Avatar
     classID: 137
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -72,11 +72,11 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: blendShape.mouthSmile
-    path: Stewardess/Wolf3D_Avatar
+    attribute: blendShape.mouthOpen
+    path: Wolf3D_Avatar
     classID: 137
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -86,8 +86,8 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3702657162
-      attribute: 3762929435
+      path: 1754500094
+      attribute: 1494258734
       script: {fileID: 0}
       typeID: 137
       customType: 20
@@ -95,8 +95,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3702657162
-      attribute: 1494258734
+      path: 1754500094
+      attribute: 3762929435
       script: {fileID: 0}
       typeID: 137
       customType: 20
@@ -150,11 +150,11 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: blendShape.mouthOpen
-    path: Stewardess/Wolf3D_Avatar
+    attribute: blendShape.mouthSmile
+    path: Wolf3D_Avatar
     classID: 137
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -180,11 +180,11 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: blendShape.mouthSmile
-    path: Stewardess/Wolf3D_Avatar
+    attribute: blendShape.mouthOpen
+    path: Wolf3D_Avatar
     classID: 137
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
