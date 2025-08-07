@@ -1568,12 +1568,80 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: 570320740365431942, guid: 71c933dafbe89c8429a60682b7e2584b, type: 2}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.data[4].key
+      value: 
+      objectReference: {fileID: -7136478655448791537, guid: 71c933dafbe89c8429a60682b7e2584b, type: 2}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.data[5].key
+      value: 
+      objectReference: {fileID: -2369211435829023459, guid: 71c933dafbe89c8429a60682b7e2584b, type: 2}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
       propertyPath: m_SceneBindings.Array.data[2].value
       value: 
       objectReference: {fileID: 1924296380}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].value
+      value: 
+      objectReference: {fileID: 1252485328}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.data[4].value
+      value: 
+      objectReference: {fileID: 2045264343}
+    - target: {fileID: 2253914129491649186, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_SceneBindings.Array.data[5].value
+      value: 
+      objectReference: {fileID: 2045264343}
     - target: {fileID: 2304583066214926870, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
       propertyPath: m_Name
       value: HotelSceneRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Signals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: 'm_Events.m_Signals.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 77fbec4a27289bc48ac59c9aaf822b7a, type: 2}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1252485329}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToNextScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HotelSceneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3842895604462801372, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1620,6 +1688,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+--- !u!114 &1252485328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3708181688694897855, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+  m_PrefabInstance: {fileID: 1252485327}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1252485329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1360222932826150184, guid: aed41bfd2aa53d3428c24db1d280e960, type: 3}
+  m_PrefabInstance: {fileID: 1252485327}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c46ed3f98b4944ea26327e90ac044f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1325679892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,6 +3129,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
+--- !u!95 &2045264343 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8516381254989265471, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
+  m_PrefabInstance: {fileID: 2045264342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339980644209595972
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,8 +15,7 @@ MonoBehaviour:
   <ID>k__BackingField: ArrivePlaceQuest_FrontDeskAgent
   <Type>k__BackingField: 0
   <Param>k__BackingField: {fileID: 11400000, guid: 86cf013c4312a36438b39ac37dd531a8, type: 2}
-  <Name>k__BackingField: "\uD504\uB7F0\uD2B8 \uB370\uC2A4\uD06C \uC55E\uC73C\uB85C
-    \uC774\uB3D9\uD558\uAE30"
+  <Name>k__BackingField: "\uC774\uB3D9\uD558\uAE30"
   <Description>k__BackingField: "\uD504\uB7F0\uD2B8 \uB370\uC2A4\uD06C \uC9C1\uC6D0\uC55E\uC73C\uB85C
     \uC774\uB3D9"
   <questPrerequisites>k__BackingField: []

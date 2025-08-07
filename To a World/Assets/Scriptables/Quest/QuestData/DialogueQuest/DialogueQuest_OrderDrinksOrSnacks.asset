@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DialogueQuest_OrderDrinksOrSnacks
   m_EditorClassIdentifier: 
   <ID>k__BackingField: QuestData_OrderDrinksOrSnacks
-  <Type>k__BackingField: 0
-  <Param>k__BackingField: {fileID: 0}
+  <Type>k__BackingField: 2
+  <Param>k__BackingField: {fileID: 11400000, guid: c70fe8a06971bb7448c164f7de6c4de8, type: 2}
   <Name>k__BackingField: "\uC74C\uB8CC/\uC2A4\uB0B5 \uC8FC\uBB38"
   <Description>k__BackingField: "\uC74C\uB8CC \uB610\uB294 \uC2A4\uB0B5\uC744 \uC8FC\uBB38\uD558\uC138\uC694"
   <questPrerequisites>k__BackingField: []
