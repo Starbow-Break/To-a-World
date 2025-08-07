@@ -9,8 +9,12 @@ namespace ManagerScene
     {
         private ESceneIndex _currentScene = ESceneIndex.None;
         private readonly List<AsyncOperation> _loadingOperations = new List<AsyncOperation>();
+        public ESceneIndex CurrentScene
+        {
+            get => _currentScene;
+            set => _currentScene = value;
+        }
 
-        
         public void LoadScene(ESceneIndex scene)
         {
             if(_currentScene != ESceneIndex.None)
