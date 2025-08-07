@@ -148,13 +148,13 @@ namespace TitleScene.ItineraryPlan
             switch (_currentItinerarySelectIndex)
             {
                 case 0:
-                    title = "Spot";
-                    break;
-                case 1:
                     title = "Hotel";
                     break;
+                case 1:
+                    title = "Transportation";
+                    break;
                 case 2:
-                    title = "Transport";
+                    title = "Sight";
                     break;
             }
             

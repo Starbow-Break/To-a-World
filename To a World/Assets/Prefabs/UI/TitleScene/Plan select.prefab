@@ -104,7 +104,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAD50\uD1B5"
+  m_text: 'Hotel
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bfb590d599c29334c92c5552f08dcd36, type: 2}
   m_sharedMaterial: {fileID: -614947028252918996, guid: bfb590d599c29334c92c5552f08dcd36, type: 2}
@@ -3189,7 +3191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACC4\uD68D \uC9DC\uAE30"
+  m_text: Itinerary
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bfb590d599c29334c92c5552f08dcd36, type: 2}
   m_sharedMaterial: {fileID: -614947028252918996, guid: bfb590d599c29334c92c5552f08dcd36, type: 2}

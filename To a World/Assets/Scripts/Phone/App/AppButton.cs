@@ -6,7 +6,7 @@ namespace Phone
 {
     public class AppButton : MonoBehaviour
     {
-        [SerializeField] private Button _button;
+        [SerializeField] protected Button _button;
         [SerializeField] private EAppType _appType;
 
         public UnityEvent<EAppType> OnClickButton;
