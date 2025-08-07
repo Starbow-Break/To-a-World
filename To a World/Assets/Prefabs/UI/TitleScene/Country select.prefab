@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB274\uC695"
+  m_text: New York
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bfb590d599c29334c92c5552f08dcd36, type: 2}
   m_sharedMaterial: {fileID: -614947028252918996, guid: bfb590d599c29334c92c5552f08dcd36, type: 2}
