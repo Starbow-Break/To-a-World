@@ -535,35 +535,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1811.6245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0000637384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0000637384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.0000637384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5941525420254557848, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.100000024
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5974833556072830728, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -580,10 +580,6 @@ PrefabInstance:
     - target: {fileID: 5974833556072830728, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6193387191194199466, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
-      propertyPath: m_RenderMode
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7050229297548867205, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -655,7 +651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7590830549765761711, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8129300271560435387, guid: 898635afe77c6744a9fdb5e9fbf6bcbd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10256,6 +10252,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41ba1b25cbc24cb4988999558665f950, type: 3}
+--- !u!1 &1456714404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1456714406}
+  - component: {fileID: 1456714405}
+  m_Layer: 0
+  m_Name: CIQuestItemSpawner - FlightMeal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1456714405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456714404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5c278d9b274f0893970ab99f2d7d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 11400000, guid: 1273241022e5d704096113457ca0e927, type: 2}
+  _offset: {x: 0, y: 0, z: 0}
+--- !u!4 &1456714406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456714404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.145, y: 0.766, z: -0.206}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1479287585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4445980052596637388, guid: b9e8600afd7336d4cb24109c1f2cf166, type: 3}
@@ -15766,3 +15808,4 @@ SceneRoots:
   - {fileID: 232301625897327155}
   - {fileID: 1207819136}
   - {fileID: 1560786154}
+  - {fileID: 1456714406}
