@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/ManagerScene.unity
-    guid: a464f39993f5ac143b15ea2d3ed6833e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: 6bef53e7c1cd5b44b9743afa1168074b
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/AirportScene.unity
+    guid: 9953f5c71a6b2dc4bbaf3aeec391991f
+  - enabled: 1
     path: Assets/Scenes/AirplaneScene.unity
     guid: eda8f279f3570794dbf2d93d84bd142b
   - enabled: 1
@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CruiseScene.unity
     guid: 2d9d60f4f162bf3449e090dc6089fc34
+  - enabled: 1
+    path: Assets/Scenes/ManagerScene.unity
+    guid: a464f39993f5ac143b15ea2d3ed6833e
+  - enabled: 0
+    path: Assets/Scenes/Hand Demo/Hand Demo.unity
+    guid: 151d1299d60d3c34aafd19ca951692e4
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5c2c51f210b583542ba0b0f256e77efa, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 366cd0c4f1523fc4ba1152399841b8c5, type: 2}

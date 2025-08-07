@@ -3,12 +3,11 @@ namespace ManagerScene
     public enum ESceneIndex
     {
         None = -1,
-        ManagerScene = 0,
-        TitleScene = 1,
-        AirportScene = 2,
-        AirplaneScene = 3,
-        DevAirplaneScene = 4,
-        HotelScene = 5,
-        DevHotelScene = 6,
+        TitleScene = 0,
+        AirportScene = 1,
+        AirplaneScene = 2,
+        HotelScene = 3,
+        CruiseScene = 4,
+        ManagerScene = 5,
     }
 }
