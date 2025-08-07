@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8064dcafdaeb44f7a00cbe468c3c6f29, type: 3}
   m_Name: DialogueQuestParams_PlaceQuiz
   m_EditorClassIdentifier: 
-  <CompletionCondition>k__BackingField: Please give the correct answer for "****".
+  <CompletionCondition>k__BackingField: Player gives the correct answer for "Where
+    was the original torch of the Statue of Liberty located?".
+  <CompletionDialogue>k__BackingField: 
