@@ -24,6 +24,9 @@ public class NpcTalk : MonoBehaviour
 
     private void AudioStateChanged(bool isPlaying)
     {
-        _anim.SetBool("Talk", isPlaying);
+        if (_anim)
+        {
+            _anim.SetBool(Constants.TalkAnimHash, isPlaying);
+        }
     }
 }
