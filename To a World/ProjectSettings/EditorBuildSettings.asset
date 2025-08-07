@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ManagerScene.unity
-    guid: a464f39993f5ac143b15ea2d3ed6833e
-  - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: 6bef53e7c1cd5b44b9743afa1168074b
   - enabled: 1
@@ -18,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/AirplaneScene.unity
     guid: eda8f279f3570794dbf2d93d84bd142b
   - enabled: 1
+    path: Assets/Scenes/HotelScene.unity
+    guid: 1c9a221edc87559448e9d9eeed960598
+  - enabled: 1
+    path: Assets/Scenes/CruiseScene.unity
+    guid: 2d9d60f4f162bf3449e090dc6089fc34
+  - enabled: 1
+    path: Assets/Scenes/ManagerScene.unity
+    guid: a464f39993f5ac143b15ea2d3ed6833e
+  - enabled: 0
     path: Assets/Scenes/Hand Demo/Hand Demo.unity
     guid: 151d1299d60d3c34aafd19ca951692e4
   m_configObjects:

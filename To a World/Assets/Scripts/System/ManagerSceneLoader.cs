@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using ManagerScene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +14,17 @@ public class ManagerSceneLoader : MonoBehaviour
         if (!IsSceneLoaded(ManagerSceneIndex))
         {
             SceneManager.LoadScene((int)ManagerSceneIndex, LoadSceneMode.Additive);
-        }    
+        }
+
+        StartCoroutine(WaitForManagerSceneLoad());
         Destroy(gameObject);
+    }
+
+    private IEnumerator WaitForManagerSceneLoad()
+    {
+        yield return new WaitUntil(()=> IsSceneLoaded(ManagerSceneIndex) == true);
+        
+        ManagerSceneServices.SceneController.SetCurrentScene(currentScene);
     }
     
     private bool IsSceneLoaded(ESceneIndex sceneIndex)
@@ -30,6 +39,4 @@ public class ManagerSceneLoader : MonoBehaviour
         }
         return false;
     }
-
-
 }
