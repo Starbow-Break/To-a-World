@@ -122,9 +122,19 @@ namespace NPCSystem
                 // 마이크 장치 감지
                 if (Microphone.devices.Length > 0)
                 {
+                    #if UNITY_EDITOR
+                    foreach (var device in Microphone.devices)
+                    {
+                        if (device.Contains("Oculus") || device.Contains("Quest"))
+                        {
+                            MicrophoneDevice = device;
+                        }
+                    }
+                    #else
                     MicrophoneDevice = Microphone.devices[0];
-                    IsMicrophoneAvailable = true;
+                    #endif
                     
+                    IsMicrophoneAvailable = true;
                     Debug.Log($"[AudioRecorder] 마이크 장치 초기화 완료: {MicrophoneDevice}");
                 }
                 else
