@@ -77,3 +77,6 @@ crashlytics-build.properties
 #Environment Assets
 /[Aa]ssets/Models/Environment/
 /[Aa]ssets/Prefabs/Environment/
+
+#Third Party Assets
+/[Aa]ssets/Others/
